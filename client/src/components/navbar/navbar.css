@@ -1,0 +1,133 @@
+.main__container{
+  width: 100vw;
+  height: 6rem;  
+  position: absolute;
+  display: flex;
+  z-index: 999;
+  background: transparent;
+  top: 0;
+}
+
+.nav__bar{
+  display: flex;
+  place-items: center;
+  gap: 50px; 
+  width: max-content;
+  height: max-content;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: larger;
+  padding: 20px 25px;
+  position: absolute;
+  right: 0;
+  perspective: 400px;
+}
+
+.active{
+  border-bottom: #fff solid 2px;
+ }
+
+.nav__bar a{
+  color: white;
+  /* border:  solid wheat; */
+  padding: 0px 0px 0px 0px;
+  transition: var(--transitions-sm);
+  animation: navAnimations 600ms ease forwards;
+  transform: rotate(5deg);
+  opacity: 0;
+  transform-origin: top;
+}
+.nav__bar a:hover{
+  scale: var(--scale);
+  transition: var(--transitions-sm);
+}
+
+
+
+
+ .credentials{
+  padding: 10px 10px;
+  border: solid white 2px;
+  border-radius: 30px;
+  color: #fff;
+}
+
+
+.toggle__icon{
+  display: none;
+  color: var(--icons-colors);
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+.toggle__icon svg{
+  font-size: 30px;
+}
+
+.show__nav{
+  display: flex;
+}
+
+.hide__nav{
+  display: none;
+}
+
+.nav__bar a:nth-child(2){
+  animation-delay: 200ms;
+}
+
+.nav__bar a:nth-child(3){
+  animation-delay: 400ms;
+}
+
+.nav__bar a:nth-child(4){
+  animation-delay: 600ms;
+}
+
+.blur {
+  filter: (5px);
+}
+
+
+
+@keyframes navAnimations{
+  to{
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+
+/* ========= medium screen ======= */
+@media screen and (max-width: 1024px) {
+  .nav__bar{
+    position: absolute;
+    flex-direction: column;
+    top: 100%;
+    gap: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    box-shadow: 2rem 2rem 5rem rgba(0, 0, 0, 1);
+    color: black;
+    perspective: 400px;
+    background-color: var(--primary-color);
+   }
+   .toggle__icon{
+    display: inline-block;
+   }
+}
+
+/* ========= small screen ======= */
+@media screen and (max-width: 600px) {
+  .nav__bar{
+    position: absolute;
+    flex-direction: column;
+    top: 44%;
+    gap: 2rem;
+   }
+   .toggle__icon{
+    display: inline-block;
+   }
+
+}

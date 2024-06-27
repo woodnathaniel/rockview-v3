@@ -1,0 +1,28 @@
+.bookingScreen__container{
+ border: solid 2px red;
+}
+
+
+.bookingScreen__header-container{
+  border: solid blue 2px;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  overflow: hidden;
+} 
+
+.header__pic-carousel-container{
+  position: relative;
+  border: solid 2px rgb(0, 0, 0);
+  height: 400px;
+  width: 100vw;
+}
+
+.ant-booking-carousel
+img{
+  object-position:center;
+  object-fit: fill;
+  height: 400px;
+  width: 100%;
+}
+

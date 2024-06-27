@@ -1,0 +1,218 @@
+.room__header-text{
+  width: 70vw;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 50px;
+  margin-top: 100px;
+  border-bottom: var(--border-color) solid 1px;
+  padding-bottom: 30px;
+}
+
+.room__header-text h1{
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.room__header-text p{
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.room__type-picContainer{
+  position: relative;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-top: 100px;
+}
+
+.carousel__container{
+  /* position: relative; */
+}
+.carousel{
+  position: absolute;
+  border: solid red 2px;
+  width: fit-content;
+}
+
+.first__section{
+  width: 50vw;
+  /* height: 600px; */
+  position: relative;
+  border: solid var(--border-color) 1px;
+  border-radius: 0px 0px  10px 10px ;
+}
+
+
+/* .room__type-pic{
+  flex-direction: column;
+
+} */
+
+.room__type-name{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 0px;
+}
+
+.room__type-name h1{
+  font-family: 'Poppins';
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.room__type-datails{
+  padding: 1rem 0px;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.room__type-datails svg{
+  color: var(--primary-color);
+  font-size: 34px;
+  cursor: pointer;
+}
+
+
+
+.room__type-datails div{
+  font-family: 'Poppins';
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.room__type-datails div h4{
+  text-align: center;
+}
+
+.room__type-datails div:nth-child(1){
+  color: var(--icons-colors);
+  /* background-color: aqua; */
+  width: fit-content;
+
+}
+
+.room__type-datails div:nth-child(2){
+  font-family: 'Poppins';
+  font-weight: 200;
+  background-color: var(--opt-color);
+  padding: 15px 10px;
+  border-radius: 10px;
+  color: white;
+}
+
+
+
+
+/*--------------- Ant Designs styles -------------*/
+
+.antd-room-carousel img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+/* --------------- MEDIA QUERIES -------------------- */
+
+/*------------- SMALL DEVICE QUERIES -------------*/
+@media screen and (max-width: 768px) {
+
+  .first__section{
+    width: 90vw;
+  }
+
+
+  .room__type-datails{
+    gap: 0px;
+    padding: 0.5rem 5px;
+  }
+
+  .room__type-datails div:nth-child(2){
+    padding: 10px 10px;
+  }
+}
+
+@media screen and (max-width: 1039px) {
+  .room__type-datails{
+    gap: 30px;
+  }
+
+  .first__section{
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .room__type-datails{
+    gap: 15px;
+  }
+}
+
+
+
+
+/*------------------------ ANIMATIONS ----------------------- */
+@media (prefers-reduced-motion: no-preference){
+    
+  .room__header-text{
+    scale: .4;
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 300px;
+  }
+
+  @keyframes fade-in{
+    /* from {
+      
+    } */
+
+    to{
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
+  .first__section{
+    scale: 0.6;
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 270px;
+  }
+
+  @keyframes fade-in{
+    /* from {
+      
+    } */
+
+    to{
+      scale: 1;
+      opacity: 1;
+    }
+  }
+}
+
+
