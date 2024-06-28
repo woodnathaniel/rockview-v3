@@ -35,7 +35,7 @@ export default function () {
 
   },[])
 
-  // console.log(rooms[0]._id);
+
 
 
 
