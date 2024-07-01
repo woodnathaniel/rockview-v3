@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Carousel } from 'antd'
+import { Card } from 'antd';
 import '../bookingScreen/bookingScreen.css'
 import {BookingCard} from '../../components/bookingCard/BookingCard'
 import axios from 'axios'
@@ -9,20 +10,39 @@ import TourIcon from "@mui/icons-material/Tour";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
+import Booking from '../booking/Booking';
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+
+const { Meta } = Card;
+
 
 
 export default function () {
 
   const [rooms, setRooms] = useState([]);
+  const [show, setShow] = useState(false)
+  const [data, setData] = useState([])
 
+
+  const formattedAmountExecutive = new Intl.NumberFormat('en-GH', {
+    style: 'currency',
+    currency: 'GHS' // GHS is the currency code for Cedis
+  }).format(rooms[0]?.rentperday);
   
+  useEffect(() => {
+      if (show) {
+          document.body.style.overflow = 'hidden';
+      } else {
+          document.body.style.overflow = 'auto';
+      }
+  }, [show]);
 
   useEffect(() =>{
     const fetchData = async() =>{
       try {
         const data = (await axios.get('/api/rooms/getallrooms')).data
         setRooms(data.getroomsInfo);
-        console.log(rooms);
+       
       } 
       
       catch (error) {
@@ -35,13 +55,22 @@ export default function () {
 
   },[])
 
+  console.log(rooms);
 
+ const handelClick = (data)=>{
+  console.log(data);
+  setData(data)
+  setShow(!show)
+ }
+ const closeClick = () => {
+  setShow(!show);
+};
 
+return (
+      <div>
 
-    return (
-      <div className='bookingScreen__container'>
-
-  {/*-------------- Heaer Picture Carousel section ---------------*/}
+        <div className={`bookingScreen__container ${show ? 'deactive__background' : ''}`}>
+           {/*-------------- Heaer Picture Carousel section ---------------*/}
         <section className='bookingScreen__header-container'>
           <div  className="header__pic-carousel-container">
           <Carousel className='ant-booking-carousel' autoplay autoplaySpeed={6000} fade={true} speed={4000}>
@@ -104,8 +133,95 @@ export default function () {
 
 
         <section className="avilable__rooms__section">
+
+
+{/*----------------- Executive Suite Card section ------------------*/}
+
+            <Card
+            style={{
+              width: 650,
+            }}
+            cover={
+                <div>
+                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} >
+                  
+                      {
+                        
+                        rooms[0]?.imageurls.map((url) =>{
+                        return <div>
+                            <img src={url} alt="pictures of rooms" />
+                          </div>
+                          
+                        })
+                      }
+                  </Carousel>
+
+                {/* <img
+                  alt="example"
+                  src={imgurl}
+                /> */}
+              </div>
+              
+            }
+            actions={[
+              <div ><h4>Room Name</h4> <p>{rooms[0]?.roomname}</p></div>,
+              <h3>Max count: {rooms[0]?.maxcount}</h3>,
+              <button className='bkcard__btn__booknow' onClick={ () => handelClick(rooms[0])}> Book Now</button>,
+            ]}
+          >
+            <Meta
+              // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
+              title={rooms[0]?.roomtype}
+              description={formattedAmountExecutive}
+              
+            />
+          </Card>
+
+
+
+{/*----------------- Standard suite Card section ------------------*/}
+
+          <Card
+            style={{
+              width: 650,
+            }}
+            cover={
+                <div>
+                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} >
+                  
+                      {
+                        
+                        rooms[1]?.imageurls.map((url) =>{
+                        return <div>
+                            <img src={url} alt="pictures of rooms" />
+                          </div>
+                          
+                        })
+                      }
+                  </Carousel>
+
+                {/* <img
+                  alt="example"
+                  src={imgurl}
+                /> */}
+              </div>
+              
+            }
+            actions={[
+              <div ><h4>Room Name</h4> <p>{rooms[1]?.roomname}</p></div>,
+              <h3>Max count: {rooms[1]?.maxcount}</h3>,
+              <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}> Book Now</button>,
+            ]}
+          >
+            <Meta
+              // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
+              title={rooms[1]?.roomtype}
+              description={formattedAmountExecutive}
+              
+            />
+          </Card>
           
-          {
+          {/* {
             rooms.map((room)=>{
              return <BookingCard 
              data={room}
@@ -117,8 +233,17 @@ export default function () {
                 rentperday={room?.rentperday}
               />
             })
-          }
+          } */}
         </section>
+        </div>
+ 
+
+        <div className={`booking_details ${show ? 'setShow' : 'removeShow'}`} >
+        <div  className="close__icon" >
+          <DisabledByDefaultIcon onClick={()=> closeClick()}/>
+          </div>
+          <Booking  data={data}/>
+        </div>
       </div>
     )
 }

@@ -19,8 +19,6 @@
 }
 
 .header__container button{
-  color: var(--secondary-color);
-  background-color: var(--primary-color);
   border: none;
   padding: 15px 30px;
   border-radius: 10px;

@@ -57,6 +57,7 @@ const booking = async (req, res) => {
         },
         { new: true }
       );
+      console.log('successfuly saved booking to DB');
     }else{
       console.log('failed to save booking to the DB');
     }

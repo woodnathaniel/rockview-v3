@@ -18,10 +18,10 @@ const bookingSchema = mongoose.Schema(
       required: true
     },
 
-    userid:{
-      type: String,
-      required: true
-    },
+    // userid:{
+    //   type: String,
+    //   required: true
+    // },
 
     contact:{
       type: Number,

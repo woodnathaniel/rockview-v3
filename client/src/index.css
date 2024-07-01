@@ -12,7 +12,15 @@ body {
 }
 
 button{
+ transition: var(--transitions-sm);
+ background-color: var(--primary-color);
+ color: white;
+}
+
+button:hover{
   cursor: pointer;
+  scale: 1.08; 
+  background-color: rgba(163, 5, 5, .8);
 }
 
 img{

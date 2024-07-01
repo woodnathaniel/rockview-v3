@@ -2,6 +2,7 @@ import{ useState, useEffect } from 'react'
 import { Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'antd';
+import Booking from '../../pages/booking/Booking';
 
 const { Meta } = Card;
 
@@ -10,6 +11,10 @@ const { Meta } = Card;
 export const BookingCard = ({data}) => {
 
   const [imageurls, setImageurls] = useState([]);
+  const [show, setShow] = useState(false);
+  const [bookNow, setBookNow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(!show);
 
   useEffect(() => {
     if (data?.imageurls) {
@@ -22,16 +27,12 @@ export const BookingCard = ({data}) => {
     currency: 'GHS' // GHS is the currency code for Cedis
   }).format(data?.rentperday);
 
-  const [show, setShow] = useState(false);
-  const [bookNow, setBookNow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(!show);
 
   const BookingScreen = useNavigate()
   const handleClick = () => {
     // Navigate to the desired route on button click
-    BookingScreen(`/booking/${data._id}`,  { state: {data: data} });
+    // BookingScreen(`/booking/${data._id}`,  { state: {data: data} });
+    setShow(false)
   };
 
 
@@ -54,14 +55,6 @@ export const BookingCard = ({data}) => {
                       
                     })
                   }
-                  
-           
-                {/* <div>
-                  <img src={data?.imageurls[1]} alt="pictures of rooms" />
-                </div>
-                <div>
-                  <img src={data?.imageurls[2]} alt="pictures of rooms" />
-                </div> */}
               </Carousel>
 
             {/* <img
@@ -84,6 +77,9 @@ export const BookingCard = ({data}) => {
           
         />
       </Card>
+      <div className={`booking_details ${show ? 'setShow' : 'removeShow'}`}>
+        <Booking />
+      </div>
     </div>
   )
 }

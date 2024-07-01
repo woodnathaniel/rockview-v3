@@ -1,0 +1,9 @@
+.success{
+  color: rgb(11, 92, 0);
+  opacity: 0.7;
+  padding: 10px;
+  border-radius: 5px;
+  transition: opacity 1.5s ease;
+  background-color: rgb(71, 179, 98);
+  width: 100%;
+}

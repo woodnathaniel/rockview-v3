@@ -15,13 +15,21 @@
 form{
   display: flex;
   flex-wrap: wrap;
-  gap: 100px;
+  gap: 30px;
+}
+
+form button{
+  padding: 20px 20px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
 }
 
 .form__first__section__container{
   display: grid;
   place-items: center;
-  gap: 50px;
+  gap: 30px;
   width: 100%;
 }
 
@@ -29,41 +37,60 @@ form{
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: solid 1px rgb(20, 39, 74);
   padding: 10px 20px;
-}
-
-.booking__inputdetails__container{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2Flogo.jpg?alt=media&token=c68e88d3-da3e-4b0e-95c0-8d87af382101');
-  width: 100vw;
-  height: 100%;
-  /* border: solid red 2px; */
-  display: grid;
-  place-items: center;
-  /* margin-top: 100px; */
-  object-fit: contain;
-  background-repeat: repeat;
-  background-size: containS;
-  padding: 120px;
-  isolation: isolate;
-  position: relative;
-  color: white;
-}
-
-.form__wrapper{
-  width: 60vw;
-  border: solid var(--opt-color) 2px;
-  display: grid;
-  place-items: center;
-  padding: 50px;
+  border: solid 2px var(--opt-color);
   border-radius: 10px;
 }
 
-.booking__inputdetails__container::after{
-  content: '';
-  inset: 0;
-  z-index: -1;
-  background-color: var(--opt-color);
-  position: absolute;
-  opacity: .7;
+.form__field__container input{
+  height: 40px;
+}
+
+.booking__inputdetails__container{
+  /* background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2Flogo.jpg?alt=media&token=c68e88d3-da3e-4b0e-95c0-8d87af382101'); */
+  /* width: 100vw; */
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  background-color: rgba(179, 0, 0, .6);
+  border-radius: 10px;
+  border: solid 1px rgb(20, 39, 74);
+  box-shadow: 5px 7px 10px rgba(231, 74, 74, 0.8);
+}
+
+.form__wrapper{
+  /* width: 50vw; */
+  border: solid var(--opt-color) 2px;
+  display: grid;
+  place-items: center;
+  margin:  50px;
+  padding: 20px;
+}
+
+.date__picker{
+ margin-top: 50px; 
+ margin: auto;
+}
+
+.success{
+  color: rgb(0, 255, 0);
+  opacity: 0.7;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 50px;
+  width: 600px;
+  border-radius: 5px;
+  transition: opacity 1.5s ease;
+  background-color: rgb(174, 211, 174);
+}
+
+
+
+/*----------------antd css design overwrite ----------------------*/
+.ant-picker{
+  width: 80%;
 }
