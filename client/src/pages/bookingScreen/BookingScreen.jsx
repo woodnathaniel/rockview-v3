@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Carousel } from 'antd'
 import '../bookingScreen/bookingScreen.css'
+import {BookingCard} from '../../components/bookingCard/BookingCard'
 import axios from 'axios'
 import LocalCarWashIcon from "@mui/icons-material/LocalCarWash";
 import SecurityIcon from "@mui/icons-material/Security";
@@ -14,15 +15,14 @@ export default function () {
 
   const [rooms, setRooms] = useState([]);
 
-
-
+  
 
   useEffect(() =>{
     const fetchData = async() =>{
       try {
         const data = (await axios.get('/api/rooms/getallrooms')).data
         setRooms(data.getroomsInfo);
-        console.log(data.getroomsInfo[0].imageurls);
+        console.log(rooms);
       } 
       
       catch (error) {
@@ -38,15 +38,13 @@ export default function () {
 
 
 
-
-
     return (
       <div className='bookingScreen__container'>
 
   {/*-------------- Heaer Picture Carousel section ---------------*/}
         <section className='bookingScreen__header-container'>
           <div  className="header__pic-carousel-container">
-          <Carousel className='ant-booking-carousel' autoplay>
+          <Carousel className='ant-booking-carousel' autoplay autoplaySpeed={6000} fade={true} speed={4000}>
             <div>
               <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/bookingScreenCarousel%2F10%20Secrets%20to%20Score%20a%20Free%20Hotel%20Room%20Upgrade.jpeg?alt=media&token=2ac266d3-a51b-4cfe-9591-814186da2c04" alt="pictures of rooms" />
             </div>
@@ -106,7 +104,20 @@ export default function () {
 
 
         <section className="avilable__rooms__section">
-          <img src='' alt="" />
+          
+          {
+            rooms.map((room)=>{
+             return <BookingCard 
+             data={room}
+                key={room.id}
+                imgurl={room?.imageurls[0]} 
+                roomname={room?.roomname} 
+                roomtype={room?.roomtype}
+                maxcount={room?.maxcount}
+                rentperday={room?.rentperday}
+              />
+            })
+          }
         </section>
       </div>
     )

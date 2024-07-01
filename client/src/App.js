@@ -6,6 +6,7 @@ import Rooms from './pages/rooms/Rooms';
 import Contact from './pages/Contact';
 import Footer from './components/footer/Footer';
 import BookingScreen from './pages/bookingScreen/BookingScreen';
+import Booking from './pages/booking/Booking';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route exact path='/rooms' element={<Rooms/>}/>
         <Route exact path='/contact' element={<Contact/>}/>
         <Route exact path='/booking' element={<BookingScreen/>}/>
+        <Route exact path="/booking/:roomID" element={<Booking />} />
       </Routes>
       <Footer />
     </div>

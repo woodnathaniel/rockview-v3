@@ -18,6 +18,18 @@
   width: 100vw;
 }
 
+.avilable__rooms__section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+
+
+
+/*-------------- ant designs -----------------*/
 .ant-booking-carousel
 img{
   object-position:center;
@@ -26,3 +38,10 @@ img{
   width: 100%;
 }
 
+.bkcard__btn__booknow{
+  padding: 20px 30px;
+  color: white;
+  background: var(--primary-color);
+  border: 0;
+  border-radius: 3px;
+}

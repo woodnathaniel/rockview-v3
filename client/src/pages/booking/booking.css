@@ -1,0 +1,69 @@
+.booking__header_container{
+  display: flex;
+  width: 100vw;
+  height: 300px;
+  background-color: var(--opt-color);
+  position: relative;
+}
+
+.booking__header_container header{
+  position: absolute;
+  bottom: 0;
+  color: white;
+}
+
+form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.form__first__section__container{
+  display: grid;
+  place-items: center;
+  gap: 50px;
+  width: 100%;
+}
+
+.form__field__container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgb(20, 39, 74);
+  padding: 10px 20px;
+}
+
+.booking__inputdetails__container{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2Flogo.jpg?alt=media&token=c68e88d3-da3e-4b0e-95c0-8d87af382101');
+  width: 100vw;
+  height: 100%;
+  /* border: solid red 2px; */
+  display: grid;
+  place-items: center;
+  /* margin-top: 100px; */
+  object-fit: contain;
+  background-repeat: repeat;
+  background-size: containS;
+  padding: 120px;
+  isolation: isolate;
+  position: relative;
+  color: white;
+}
+
+.form__wrapper{
+  width: 60vw;
+  border: solid var(--opt-color) 2px;
+  display: grid;
+  place-items: center;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.booking__inputdetails__container::after{
+  content: '';
+  inset: 0;
+  z-index: -1;
+  background-color: var(--opt-color);
+  position: absolute;
+  opacity: .7;
+}

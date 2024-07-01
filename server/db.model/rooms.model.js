@@ -42,6 +42,10 @@ const roomSchema = mongoose.Schema(
       type: Array
       
     }, 
+    approvedbookings:{
+      type: Array
+      
+    }, 
     description:{
       type: String,
       required: true
