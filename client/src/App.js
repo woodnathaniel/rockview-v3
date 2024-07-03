@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Footer from './components/footer/Footer';
 import BookingScreen from './pages/bookingScreen/BookingScreen';
 import Booking from './pages/booking/Booking';
+import LogIn from './pages/login/LogIn';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route exact path='/contact' element={<Contact/>}/>
         <Route exact path='/booking' element={<BookingScreen/>}/>
         <Route exact path="/booking/:roomID" element={<Booking />} />
+        <Route exact path="/login" element={<LogIn />} />
       </Routes>
       <Footer />
     </div>

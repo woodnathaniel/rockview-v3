@@ -3,6 +3,11 @@ const { Timestamp } = require('mongodb')
 
 const userSchema = mongoose.Schema(
   {
+    googleid: {
+      type: String,
+      required: true
+    },
+
     name: {
       type: String,
       required: true
@@ -15,7 +20,7 @@ const userSchema = mongoose.Schema(
 
     password: {
       type: String,
-      required: true
+      required: false
     },
 
     isAdmin: {
