@@ -1,8 +1,8 @@
-// const passport = require('passport')
+const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const usersModelDb = require('./db.model/users.model');
 
-module.exports = function (passport){
+module.exports = function (){
 
   passport.use(new GoogleStrategy({
       clientID: '475901348280-mpdeki5b8brn8r8jlmnn28cplunc3vkq.apps.googleusercontent.com',

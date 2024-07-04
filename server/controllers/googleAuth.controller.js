@@ -6,7 +6,7 @@ require('../auth')
 
 const googleAuth = (req, res)=>{
   console.log('google auth api hit');
- const user = passport.authenticate('google', {scope: ['email' , 'profile']})
+ passport.authenticate('google', {scope: ['email' , 'profile']})
  console.log(user);
 
 }

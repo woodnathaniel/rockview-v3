@@ -1,5 +1,8 @@
 const bookingModel = require("../db.model/booking.model");
 const roomModel = require("../db.model/rooms.model");
+const nodemailer = require("nodemailer");
+
+
 
 
 //Users making bookings api
@@ -19,6 +22,17 @@ const booking = async (req, res) => {
     totaldays,
     totalamount,
   } = req.body;
+  
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // Use `true` for port 465, `false` for all other ports
+    auth: {
+      user: "nathanielwood002@gmail.com",
+      pass: "jlvc dxfh fppt xavj",
+    },
+  });
 
   try {
     newBooking = new bookingModel({
@@ -57,6 +71,31 @@ const booking = async (req, res) => {
         },
         { new: true }
       );
+
+      
+        const mailOptions = {
+          from: {
+            name: "Nathaniel Wood 👻", 
+            address: 'nathanielwood002@gmail.com'
+          },
+          to: ['woodnathaniel557@gmail.com'], 
+          subject: "Nodejs mailer ✔",
+          text: "Hello world?", 
+          html: "<b>Thank for choosing us</b>", 
+        };
+
+        const sendMail = async(transporter, mailOptions)=>{
+          try {
+            await transporter.sendMail(mailOptions)
+            console.log('mail sent succesfully');
+          } catch (error) {
+            console.log(error);
+          }
+        }
+
+        sendMail(transporter, mailOptions)
+      
+
       console.log('successfuly saved booking to DB');
     }else{
       console.log('failed to save booking to the DB');
@@ -72,6 +111,8 @@ const booking = async (req, res) => {
     console.log(error);
     console.log("falied booked api");
   }
+
+    
 };
 
 
