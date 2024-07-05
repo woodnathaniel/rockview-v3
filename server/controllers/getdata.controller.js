@@ -7,7 +7,9 @@ const getData = async (req, res) =>{
   try{
     const getroomsInfo = await roomModel.find()
     res.status(200).json({getroomsInfo})
-    console.log('room api hitted');
+    console.log('room api hitted kflaksfnlak');
+    console.log('room api hitted kflaksfnlak');
+    console.log('room api hitted kflaksfnlak');
     console.log('get rooms data ', getroomsInfo);
   }catch(error){
     req.status(404).json({message: error})

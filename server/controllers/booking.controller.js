@@ -97,7 +97,9 @@ const booking = async (req, res) => {
         sendMail(transporter, mailOptions)
       
 
-      console.log('successfuly saved booking to DB');
+      console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
+      console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
+      console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
     }else{
       console.log('failed to save booking to the DB');
     }
