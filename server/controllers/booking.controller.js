@@ -85,6 +85,7 @@ const booking = async (req, res) => {
         };
 
         const sendMail = async(transporter, mailOptions)=>{
+          console.log('email api hit');
           try {
             await transporter.sendMail(mailOptions)
             console.log('mail sent succesfully');
