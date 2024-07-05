@@ -56,4 +56,3 @@ const getAllUsers = async(req, res)=>{
   }
 }
 
-module.exports = { userData, loginData, getAllUsers };
