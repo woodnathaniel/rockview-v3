@@ -78,7 +78,7 @@ const booking = async (req, res) => {
             name: "Nathaniel Wood 👻", 
             address: 'nathanielwood002@gmail.com'
           },
-          to: ['woodnathaniel557@gmail.com'], 
+          to: [{email}], 
           subject: "Nodejs mailer ✔",
           text: "Hello world?", 
           html: "<b>Thank for choosing us</b>", 

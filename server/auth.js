@@ -2,14 +2,15 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const usersModelDb = require('./db.model/users.model');
 
-module.exports = function (){
+
 
   passport.use(new GoogleStrategy({
       clientID: '475901348280-mpdeki5b8brn8r8jlmnn28cplunc3vkq.apps.googleusercontent.com',
       clientSecret: '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',
-      callbackURL: "/auth/google/callback"
+      callbackURL: "http://localhost:5000/auth/google/callback",
+      scope: ["profile", "email"]
     },
-    async (accessToken, refreshToken, profile, cb) => {
+     async (accessToken, refreshToken, profile, cb) => {
        console.log(profile);
     }
   ));
@@ -21,5 +22,5 @@ module.exports = function (){
   passport.deserializeUser((user, done) => {
         done(null, user);
   });
-}
+
 

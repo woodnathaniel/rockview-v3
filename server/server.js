@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const  router  = require('./routes/getdata.route')
 const userRouter = require('./routes/users.route')
 const bookingrouter = require('./routes/booking.route')
+require("dotenv").config();
+const passport = require('passport')
+const cors = require('cors')
+const cookieSession = require('cookie-session');
+const authRouter = require('./routes/auth.route')
+
 
 
 // Proxy middleware configuration
@@ -22,6 +28,9 @@ const mongoUrl = 'mongodb+srv://rockviewHotel:rockviewHotelDB@rockviewcluster.vi
 //   methods: ['GET', 'POST'],
 //   allowedHeaders: ['Content-Type'],
 // };
+
+require('./auth.js')
+
 app.use(express.json())
 // app.use(cors(corsOptions));
 
@@ -34,16 +43,35 @@ app.use(express.json())
 //   // cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 day
 // }));
 
+app.use(
+  cookieSession({
+    name:"session",
+    keys:["rockview"],
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    maxAge: 24*60*60*100
+  })
+)
+
 // Initialize passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
+
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     methods: "GET, POST, PUT, DELETE",
+//     credentials: true
+//   })
+// )
 
 
-   
 
 app.use('/api/rooms', router)
 app.use('/api/users', userRouter)
 app.use('/api/bookings', bookingrouter) 
+app.use("/auth", authRouter)
 // app.use('/', googleAuthRouter) 
 // app.use('/api', bookingrouter)
 
