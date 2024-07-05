@@ -84,17 +84,27 @@ const booking = async (req, res) => {
           html: "<b>Thank for choosing us</b>", 
         };
 
-        const sendMail = async(transporter, mailOptions)=>{
-          console.log('email api hit');
-          try {
-            await transporter.sendMail(mailOptions)
-            console.log('mail sent succesfully');
-          } catch (error) {
-            console.log(error);
-          }
+        try {
+          await transporter.sendMail(mailOptions);
+          console.log('Mail sent successfully');
+          res.status(200).send("Booking registered successfully");
+        } catch (error) {
+          console.error('Error sending mail:', error);
+          res.status(500).send('Error sending email');
         }
+        
 
-        sendMail(transporter, mailOptions)
+        // const sendMail = async(transporter, mailOptions)=>{
+        //   console.log('email api hit');
+        //   try {
+        //     await transporter.sendMail(mailOptions)
+        //     console.log('mail sent succesfully');
+        //   } catch (error) {
+        //     console.log(error);
+        //   }
+        // }
+
+        // sendMail(transporter, mailOptions)
       
 
       console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
