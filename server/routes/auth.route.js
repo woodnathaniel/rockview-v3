@@ -2,10 +2,10 @@ const authRouter = require('express').Router();
 const passport = require('passport')
  
 
-authRouter.get("/google", passport.authenticate("google", ["email", "profile"]));
+authRouter.get("/google", passport.authenticate("google",{scope: ["email", "profile"]}));
 
 authRouter.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
   res.redirect('http://localhost:3000/'); // Redirect to React app
 });
 
@@ -22,6 +22,10 @@ authRouter.get("/login/success", (req, res)=>{
      message: "Not Authorized"
    })
   }
+ })
+
+ authRouter.get('/failed_authentication', (req, res)=>{
+  res.send('failed authentication')
  })
  
 

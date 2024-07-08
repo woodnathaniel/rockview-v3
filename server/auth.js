@@ -5,14 +5,16 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 
   passport.use(new GoogleStrategy({
-      clientID: '475901348280-7fmergkakj2rr08icbfu26c06n8fdsn4.apps.googleusercontent.com',
-      clientSecret: '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',
-      callbackURL: "https://rockviewhospitalities-api.vercel.app/auth/google/callback",
+      clientID: '737637812674-kapot1fba8nmf9qvjovv0o2hcr6asmu3.apps.googleusercontent.com',
+      clientSecret: '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',
+      callbackURL: "http://localhost:5000/auth/google/callback",
       scope: ["profile", "email"]
     },
      async (accessToken, refreshToken, profile, cb) => {
        console.log(profile);
-    }
+      //  cb(false, {strategy: 'google' , accessToken , refreshToken , ...profile})
+        return cb()
+      }
   ));
 
   passport.serializeUser((user, done) => {
