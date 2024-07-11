@@ -13,7 +13,15 @@ import LogIn from './pages/login/LogIn';
 
 function App() {
   return (
-    <div style={{width:'100vw', display: 'grid', placeItems: 'center'}}>
+    <div style={{ width:'100vw', 
+                  // display: 'grid',
+                  // placeItems: 'center', 
+                  position:'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column'
+                }}>
       <Routes>
         <Route exact path='/' element={<Home/>}/>
         <Route exact path='/facilities' element={<Facilities/>}/>
