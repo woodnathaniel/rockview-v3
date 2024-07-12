@@ -35,7 +35,7 @@ const booking = async (req, res) => {
   });
 
   try {
-    newBooking = new bookingModel({
+    const newBooking = new bookingModel({
       roomid: roomid,
       roomtype: roomtype,
       roomname: roomname,
@@ -48,84 +48,57 @@ const booking = async (req, res) => {
       fromdate: fromdate,
       todate: todate,
       totaldays: totaldays,
-      // totalamount: totalamount,
     });
 
-    console.log("room booked api");
+    console.log("Room booked API");
 
     const booking = await newBooking.save();
     
-    if(booking){
-      const roomtemp = await roomModel.findByIdAndUpdate(
-        { _id: roomid },
-        {
-          $set: {
-            currentbookings: {
-              bookingid: booking._id,
-              userid: userid,
-              fromdate: booking.fromdate,
-              todate: booking.todate,
-              status: booking.status,
-            },
-          },
-        },
-        { new: true }
-      );
-
-      
-        const mailOptions = {
-          from: {
-            name: "Nathaniel Wood 👻", 
-            address: 'nathanielwood002@gmail.com'
-          },
-          to: [{email}], 
-          subject: "Nodejs mailer ✔",
-          text: "Hello world?", 
-          html: "<b>Thank for choosing us</b>", 
-        };
-
-        try {
-          await transporter.sendMail(mailOptions);
-          console.log('Mail sent successfully');
-          res.status(200).send("Booking registered successfully");
-        } catch (error) {
-          console.error('Error sending mail:', error);
-          res.status(500).send('Error sending email');
-        }
-        
-
-        // const sendMail = async(transporter, mailOptions)=>{
-        //   console.log('email api hit');
-        //   try {
-        //     await transporter.sendMail(mailOptions)
-        //     console.log('mail sent succesfully');
-        //   } catch (error) {
-        //     console.log(error);
-        //   }
-        // }
-
-        // sendMail(transporter, mailOptions)
-      
-
-      console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
-      console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
-      console.log('successfuly saved booking to DB kdszjfkSFKJSFDKLjfsd');
-    }else{
-      console.log('failed to save booking to the DB');
+    if (!booking) {
+      console.log('Failed to save booking to the DB');
+      return res.status(500).send("Failed to save booking to the DB");
     }
 
+    const roomtemp = await roomModel.findByIdAndUpdate(
+      { _id: roomid },
+      {
+        $set: {
+          currentbookings: {
+            bookingid: booking._id,
+            userid: userid,
+            fromdate: booking.fromdate,
+            todate: booking.todate,
+            status: booking.status,
+          },
+        },
+      },
+      { new: true }
+    );
 
-    console.log(booking);
-    res.status(200).send("Registered successfully");
+    const mailOptions = {
+      from: {
+        name: "Nathaniel Wood 👻", 
+        address: 'nathanielwood002@gmail.com'
+      },
+      to: email, // Ensure `email` is correctly formatted if it's an array
+      subject: "Nodejs mailer ✔",
+      text: "Hello world?", 
+      html: "<b>Thank you for choosing us</b>", 
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log('Mail sent successfully');
+      return res.status(200).send("Booking registered successfully");
+    } catch (error) {
+      console.error('Error sending mail:', error);
+      return res.status(500).send('Error sending email');
+    }
+
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Failed to register user", details: error.message });
-    console.log(error);
-    console.log("falied booked api");
+    console.error('Failed to book API:', error);
+    return res.status(500).json({ error: "Failed to register user", details: error.message });
   }
-
-    
 };
 
 

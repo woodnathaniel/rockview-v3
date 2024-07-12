@@ -1,3 +1,24 @@
+.booking__main__container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border-top: solid 2px var(--opt-color); */
+}
+
+.alerts{
+  margin: 10px 10px;
+}
+
+/* .setShow{
+  display: none;
+} */
+
+.click__icon{
+  /* position: absolute; */
+}
+
 .booking__header_container{
   display: flex;
   width: 100vw;
@@ -16,6 +37,8 @@ form{
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  color: var(--opt-color);
+  padding: 20px 20px;
 }
 
 form button{
@@ -24,7 +47,10 @@ form button{
   color: white;
   font-size: 20px;
   border-radius: 10px;
+  background-image: linear-gradient(90deg, rgb(51, 81, 141) 0%,  rgb(20, 114, 151)  100%);
 }
+
+
 
 .form__first__section__container{
   display: grid;
@@ -40,6 +66,7 @@ form button{
   padding: 10px 20px;
   border: solid 2px var(--opt-color);
   border-radius: 10px;
+  margin: 0px 20px;
 }
 
 .form__field__container input{
@@ -47,33 +74,47 @@ form button{
 }
 
 .booking__inputdetails__container{
-  /* background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2Flogo.jpg?alt=media&token=c68e88d3-da3e-4b0e-95c0-8d87af382101'); */
-  /* width: 100vw; */
-  height: 80%;
+  height: 70vh; /* Fixed height for scrolling */
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(117, 92, 92, .2) rgba(219, 184, 184, .2) ;
+  height: 70vh; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Align items to the start */
   align-items: center;
-  position: relative;
   color: white;
-  background-color: rgba(179, 0, 0, .6);
+  background-image: linear-gradient(360deg, rgb(245, 191, 191) 0%, rgb(201, 175, 175) 100%);
   border-radius: 10px;
-  border: solid 1px rgb(20, 39, 74);
-  box-shadow: 5px 7px 10px rgba(231, 74, 74, 0.8);
+  border: solid 0.01rem rgb(20, 39, 74);
+  box-shadow: 2px 5px 20px rgb(109, 90, 90);
 }
 
+
 .form__wrapper{
-  /* width: 50vw; */
-  border: solid var(--opt-color) 2px;
   display: grid;
-  place-items: center;
-  margin:  50px;
-  padding: 20px;
+  place-items: center;   
+  padding: 0 20px;
+  position: relative;
 }
 
 .date__picker{
- margin-top: 50px; 
- margin: auto;
+  margin: 50px 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid var(--opt-color) 2px;
+  border-radius: 20px;
+  padding: 20px;
+  /* position: absolute; */
+  top: 0;
+}
+
+.date__picker h2{
+  font-family: "Courgette", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .success{
@@ -91,6 +132,32 @@ form button{
 
 
 /*----------------antd css design overwrite ----------------------*/
-.ant-picker{
+.ant-picker, .ant-space-item{
   width: 80%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-picker .ant-picker-input input{
+  color: black;
+  font-weight: 900;
+}
+
+.ant-picker .ant-picker-input input::placeholder{
+  color: black;
+  font-weight: 900;
+}
+
+
+.ant-space{
+  /* border: solid 2px red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-picker-range .ant-picker-active-bar {
+  height: 10px;
 }

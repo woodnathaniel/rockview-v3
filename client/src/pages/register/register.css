@@ -81,7 +81,7 @@
  border-radius: 50px;
  margin-top: 100px;
  width: 550px;
- height: 450px;
+ height: 500px;
  position: relative;
  display: flex;
  flex-direction: column;
@@ -141,6 +141,16 @@ input{
 input::placeholder{
   padding-left: 20px;
   color: white;
+  opacity: 0.5;
+  font-size: 15PX;
+  transition: var(--transitions-lg);
+}
+
+input:focus{
+  background-color: white;
+  color: black;
+  transition: var(--transitions-lg);
+  border: solid 1px rgb(1, 82, 114);
 }
 
 .email_div, .password_div{

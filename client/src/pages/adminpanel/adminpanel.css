@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+.profileCOnt{
+  margin: 50px;
+  width: 100vw;
+  /* box-shadow:  8px 6px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  border: solid rgb(197, 197, 197) 1px; */
+  /* position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%, -50%); */
+}
+
+/* .adminHeader{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%, -50%); 
+} */
+
+.adminHeader h1{
+  font-family: 'Poppins';
+  font-weight: 900;
+  font-size: 40px;
+  color: crimson;
+}
+

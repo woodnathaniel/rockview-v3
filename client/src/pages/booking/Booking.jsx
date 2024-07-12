@@ -5,6 +5,10 @@ import axios from "axios";
 import LinearProgress from "@mui/material/LinearProgress";
 import Success from '../../components/success/Success'
 import Error from '../../components/error/Error'
+import Loading from "../../components/Loading/Loading";
+import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+
 
 const { RangePicker } = DatePicker;
 
@@ -14,10 +18,12 @@ const { RangePicker } = DatePicker;
 export default function Booking({data}) {
 
   const [room, setRoom] = useState([]);
-  const [loading, setLoading] = useState();
-  const [success, setSucces] = useState();
-  const [error, setError] = useState();
-  const [login, setLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [success, setSucces] = useState(false);
+  const [error, setError] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [response, setResponse] = useState('');
+  const [show, setShow] = useState(false)
 
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
@@ -51,6 +57,11 @@ export default function Booking({data}) {
 
 
 console.log(typeof(data._id));
+
+  const closeClick = () => {
+    setShow(!show);
+  };
+  
 
   async function confirmBooking(e) {
 
@@ -110,13 +121,16 @@ console.log(typeof(data._id));
         }
       }
     } catch (error) {
+      setResponse(error.response.data.details)
       console.log(error);
+      console.log(error.response.data.details);
+      console.log(typeof(error.response.data.details));
       console.log("api did not hit");
       setLoading(false);
       setError(true);
       setTimeout(()=>{
         setError(false);
-      }, 6000)
+      }, 8000)
     }
 
     setEmail("");
@@ -168,47 +182,47 @@ console.log(typeof(data._id));
 
 
   return (
-    <div style={{height:'100%'}}>
-      {/* <section className='booking__header_container'>
-        <header>
-          <div style={{flexDirection:'column'}}>
-            <h3>Let our hotel be your gateway to unforgettable adventures amidst the stunning landscapes of our region. </h3>
-            <h3>Experience the perfect blend of relaxation and exploration with us.</h3>
-          </div>
-          <div>
-            <h3 style={{color:'red'}}><b>NB:</b>Payment will be made at arival</h3>
-          </div>
-        </header>
-
-      </section> */}
-
-      <section className="booking__inputdetails__container">
-      {loading && <LinearProgress sx={{ width: "95%" }} />}
-            {success && (
-              <div className='success'>
-                {" "}
-                <Success msg={"Booked Successfuly"} />{" "}
-              </div>
-            )}
+    <div  className="booking__main__container">
+      <div className="alerts">
+        {success && (
+            <div className='success'>
+              {" "}
+              <Success msg={"Booked Successfuly"} />{" "}
+            </div>
+          )
+        }
             {error && (
-              <Error
-                message={`Something Happend Couldn't Book; Call frontdesk or try again; it could be your network also`}
-              />
-            )}
-        <div className="date__picker">
-        <h2>chooce your CheckIn Date and CheckOut date</h2>
-        <Space direction="vertical" size={12} style={{ width: "800px" }}>
-          <RangePicker
-            format={"YYYY-MM-DD"}
-            // popupClassName={styles.calendar}
-            onChange={getAdapter}
-          />
-        </Space>
-        </div>
+                <Error
+                  message={`error: ${response}`}
+                />
+              )
+            }
+      </div>
+   
+
+      <div className={`booking__inputdetails__container ${show ? 'setShow' : ''}`}>
+         
+      {/* <div  className="close__icon" onClick={()=> closeClick()}>
+          <DisabledByDefaultIcon onClick={()=> closeClick()}/>
+          </div> */}
      
         <div className="form__wrapper">
 
+        <div className="date__picker">
+            <h2>Chooce CheckIn Date and CheckOut date here</h2>
+            <Space direction="vertical" size={12} style={{ width: "800px" }}>
+              <RangePicker
+                format={"YYYY-MM-DD"}
+                onChange={getAdapter}
+              />
+            </Space>
+          </div>
+          
           <form  action="">
+
+
+         
+
 
             <div className="form__first__section__container">
               <div className="form__field__container">
@@ -285,10 +299,14 @@ console.log(typeof(data._id));
               </div>
             </div>
 
-            <button onClick={(e) => confirmBooking(e)}>Confirm Booking</button>
+            <button onClick={(e) => confirmBooking(e)}>
+              {
+                loading ? <Loading /> : <span><EventAvailableIcon style={{fontSize:'35px'}}/>Confirm Booking</span>
+              }
+            </button>
           </form>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

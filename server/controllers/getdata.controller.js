@@ -12,7 +12,7 @@ const getData = async (req, res) =>{
     console.log('room api hitted kflaksfnlak');
     console.log('get rooms data ', getroomsInfo);
   }catch(error){
-    req.status(404).json({message: error})
+    res.status(404).json({message: error})
     console.log('get rooms data ', error);
   }
 }
