@@ -18,13 +18,27 @@ const authRouter = require('./routes/auth.route')
 //   target: 'http://localhost:6000', 
 //   changeOrigin: true 
 // }));
-app.use(
-  cors({
-    origin: ["https://rockviewhospitalities.vercel.app"],
-    methods: "GET, POST, PUT, DELETE",
-    credentials: true
-  })
-)
+
+// app.use(
+//   cors({
+//     origin: ["https://rockviewhospitalities.vercel.app"],
+//     methods: "GET, POST, PUT, DELETE",
+//     credentials: true
+//   })
+// )
+
+const allowedOrigins = ['http://localhost:3000', 'https://rockviewhospitalities.vercel.app', 'http://rockviewhospitalities-api.vercel.app/auth/google/callback'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 
 const port = 5000

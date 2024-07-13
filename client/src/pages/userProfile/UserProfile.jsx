@@ -68,7 +68,7 @@ export const Bookings = ({userid}) => {
     //Fetch user bookings, API.
     async function fetchData(){
       try {
-        const userBookings = await (await (axios.post('/api/bookings/getbookingbyid', {id: userid}))).data
+        const userBookings = await (await (axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/getbookingbyid', {id: userid}))).data
         setUserBookedRooms(userBookings)
         if(userBookings){
           setLoading(false)

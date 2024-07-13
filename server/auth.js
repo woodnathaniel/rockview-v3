@@ -7,7 +7,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
   passport.use(new GoogleStrategy({
       clientID: '737637812674-kapot1fba8nmf9qvjovv0o2hcr6asmu3.apps.googleusercontent.com',
       clientSecret: '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',
-      callbackURL: "https://localhost:5000/auth/google/callback",
+      callbackURL: "http://rockviewhospitalities-api.vercel.app/auth/google/callback",
       scope: ["profile", "email"]
     },
      async (accessToken, refreshToken, profile, cb) => {
@@ -25,4 +25,3 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
         done(null, user);
   });
 
-  

@@ -12,6 +12,10 @@
       { "src": "/api/users", "dest": "/server.js" },
       { "src": "/api/users/(.*)", "dest": "/server.js" },
       { "src": "/api/bookings", "dest": "/server.js" },
-      { "src": "/api/bookings/(.*)", "dest": "/server.js" }
+      { "src": "/api/bookings/(.*)", "dest": "/server.js" },
+      { "src": "/auth/google", "dest": "/server.js" },
+      { "src": "/auth/google/(.*)", "dest": "/server.js" },
+      { "src": "/auth/google/callback", "dest": "/server.js" },
+      { "src": "/auth/google/callback/(.*)", "dest": "/server.js" }
   ]
 }

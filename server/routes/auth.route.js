@@ -5,8 +5,8 @@ const passport = require('passport')
 authRouter.get("/google", passport.authenticate("google",{scope: ["email", "profile"]}));
 
 authRouter.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: 'http://localhost:3000/' }), (req, res) => {
-  res.redirect('http://localhost:3000/'); // Redirect to React app
+  passport.authenticate('google', { failureRedirect: 'https://rockviewhospitalities.vercel.app/' }), (req, res) => {
+  res.redirect('https://rockviewhospitalities.vercel.app/'); // Redirect to React app
 });
 
 authRouter.get("/login/success", (req, res)=>{

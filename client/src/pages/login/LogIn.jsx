@@ -22,7 +22,7 @@ export default function LogIn() {
 
  
   const googleAuth = () => {
-      window.open("http://localhost:5000/auth/google/callback", "_self");
+      window.open("http://rockviewhospitalities-api.vercel.app/auth/google/callback", "_self");
   };
 
   const submitLoginDetails = async (e) =>{
@@ -34,7 +34,7 @@ export default function LogIn() {
     } 
 
     try {
-      const loginPost = await (axios.post('/api/users/login', user))
+      const loginPost = await (axios.post('http://rockviewhospitalities-api.vercel.app/api/users/login', user))
       console.log(loginPost);
 
       
