@@ -38,10 +38,11 @@ export default function () {
   }, [show]);
 
   useEffect(() =>{
+    alert('getallrooms useEffect hit')
     axios.defaults.withCredentials = true
     const fetchData = async() =>{
       try {
-        const data = (await axios.get('https://rockviewhospitalities.vercel.app/api/rooms/getallrooms')).data
+        const data = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
         setRooms(data.getroomsInfo);
        
       } 

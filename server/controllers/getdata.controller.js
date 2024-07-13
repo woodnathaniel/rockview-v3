@@ -4,6 +4,7 @@ const roomModel = require("../db.model/rooms.model")
 
 //Retrieve Rooms available from DB API.
 const getData = async (req, res) =>{
+  console.log('first hit getallrooms');
   try{
     const getroomsInfo = await roomModel.find()
     res.status(200).json({getroomsInfo})
