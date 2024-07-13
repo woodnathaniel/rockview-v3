@@ -7,16 +7,20 @@ import TourIcon from "@mui/icons-material/Tour";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
+import Footer from '../../components/footer/Footer.jsx';
+
+
+
 
 const Home = () => {
   return (
     <div className='mainCont'>
       <section className="homeMain__container">
-          <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5721.JPG?alt=media&token=6c5fdc88-f406-4b8b-aa95-6f64eb256135'/>
+          <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5705.JPG?alt=media&token=cc370e9a-e2a1-45ce-92c6-8d83e31e9225'/>
           
       </section>
 
-{/* service icons section*/}
+      {/* service icons section*/}
       <section className='service'>
         <h1>Our Service Review</h1>
           <div className='service__icons'>
@@ -88,6 +92,7 @@ const Home = () => {
             <div className="pic"></div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 .main__container{
   width: 100vw;
-  height: 6rem;  
+  height: 4rem;  
   position: absolute;
   display: flex;
   z-index: 999;
@@ -24,8 +24,26 @@
   perspective: 400px;
 }
 
+.logo{
+  cursor: pointer;
+}
+
+img{
+  width: 80px;
+  height: 80px;
+  /* background-color: red; */
+  padding: 10px;
+  transition: var(--transitions-sm);
+}
+
+img:hover{
+scale: 1.1;
+}
+
+
 .active{
   border-bottom: #fff solid 2px;
+  scale: 1.1;
  }
 
 .nav__bar a{
@@ -89,7 +107,38 @@
   filter: (5px);
 }
 
+.ant-btn-primary.close_ant {
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
+.ant-drawer-right>.ant-drawer-content-wrapper{
+  border: red;
+  background-color: black;
+}
+
+.ant-drawer-body{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: larger;
+}
+
+.ant-drawer-body a{
+  display: flex;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: solid 1px var(--icons-colors);
+  transition: var(--transitions-sm);
+}
+.ant-drawer-body a:hover{
+  scale: 1.1;
+}
 
 @keyframes navAnimations{
   to{
@@ -101,7 +150,12 @@
 
 /* ========= medium screen ======= */
 @media screen and (max-width: 1024px) {
+  .main__container{
+    border-bottom: solid var(--icons-colors) 1px;
+  }
+
   .nav__bar{
+    display: none;
     position: absolute;
     flex-direction: column;
     top: 100%;
@@ -116,11 +170,35 @@
    .toggle__icon{
     display: inline-block;
    }
+
+   .ant-btn.close_ant{
+    display: block;
+   }
+   img{
+    width: 60px;
+    height: 60px;
+    /* background-color: red; */
+    padding: 10px;
+    transition: var(--transitions-sm);
+  }
 }
 
 /* ========= small screen ======= */
 @media screen and (max-width: 600px) {
+
+  .main__container{
+    border-bottom: solid var(--icons-colors) 1px;
+  }
+  
+  img{
+    width: 60px;
+    height: 60px;
+    /* background-color: red; */
+    padding: 10px;
+    transition: var(--transitions-sm);
+  }
   .nav__bar{
+    display: none;
     position: absolute;
     flex-direction: column;
     top: 44%;
@@ -128,6 +206,9 @@
    }
    .toggle__icon{
     display: inline-block;
+   }
+   .ant-btn.close_ant{
+    display: block;
    }
 
 }

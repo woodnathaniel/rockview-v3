@@ -3,6 +3,8 @@ import { Header } from '../../components/headerNav/Header';
 import '../rooms/rooms.css'
 import { Carousel } from 'antd';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Footer from '../../components/footer/Footer';
+
 
 const Rooms = () => {
 
@@ -103,6 +105,8 @@ const Rooms = () => {
             </div>
           </div>      
     </section>
+
+    <Footer />
 
     </div>
   );

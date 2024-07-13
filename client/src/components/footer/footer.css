@@ -1,9 +1,11 @@
 .footer__container{
-  /* margin-top: 200px; */
+  margin-top: 200px;
   width: 100vw;
   display: grid;
   place-items: center;
   background-color: var(--opt-color);
+  /* position: absolute;
+  bottom: 0; */
 }
 
 .footer__header{
@@ -44,4 +46,19 @@ span{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+@media screen and (max-width: 768px){
+  .footer__header{
+    gap: 0px;
+  }
+  
+}
+
+@media screen and (max-width: 1024px){
+  .footer__header{
+    gap: 0px;
+  }
+  
 }

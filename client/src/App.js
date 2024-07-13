@@ -11,7 +11,7 @@ import LogIn from './pages/login/LogIn';
 import Register from './pages/register/Register';
 import AdminPanel from './pages/adminpanel/AdminPanel';
 import {UsersBookingsCard} from './components/admincards/Admincards.jsx'
-
+import Profile from './pages/userProfile/UserProfile.jsx';
 
 
 
@@ -19,27 +19,35 @@ import {UsersBookingsCard} from './components/admincards/Admincards.jsx'
 function App() {
   return (
     <div style={{ width:'100vw', 
+                  // height: '100vh',
                   // display: 'grid',
                   // placeItems: 'center', 
-                  position:'relative',
+                  // position:'relative',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flexDirection: 'column'
+                  flexDirection: 'column',
+                  // backgroundImage:' linear-gradient(90deg, rgb(163, 5, 5) 0%, rgb(87, 42, 42) 100%)';
+
                 }}>
-      <Routes>
-        <Route exact path='/' element={<Home/>}/>
-        <Route exact path='/facilities' element={<Facilities/>}/>
-        <Route exact path='/rooms' element={<Rooms/>}/>
-        <Route exact path='/contact' element={<Contact/>}/>
-        <Route exact path='/booking' element={<BookingScreen/>}/>
-        <Route exact path="/booking/:roomID" element={<Booking />} />
-        <Route exact path="/login" element={<LogIn />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/adminpanel" element={<AdminPanel />} />
-        <Route exact path="/adminpcards" element={<UsersBookingsCard />} />
-      </Routes>
-      <Footer />
+
+        <Routes>
+          <Route exact path='/' element={<Home/>}/>
+          <Route exact path='/facilities' element={<Facilities/>}/>
+          <Route exact path='/rooms' element={<Rooms/>}/>
+          <Route exact path='/contact' element={<Contact/>}/>
+          <Route exact path='/booking' element={<BookingScreen/>}/>
+          <Route exact path="/booking/:roomID" element={<Booking />} />
+          <Route exact path="/login" element={<LogIn />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/adminpanel" element={<AdminPanel />} />
+          <Route exact path="/adminpcards" element={<UsersBookingsCard />} />
+          <Route exact path="/profile" element={<Profile />} />
+        </Routes>
+
+      {/* <div></div> */}
+      {/* <Footer /> */}
+      
     </div>
   );
 }

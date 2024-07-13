@@ -113,6 +113,7 @@
 
   .header__container{
     height: 60vh;
+    border-bottom: solid var(--icons-colors) 1px;
   }
   .header__container button{
     padding: 10px 15px;
@@ -131,6 +132,7 @@
 
   .header__container{
     height: 60vh;
+    border-bottom: solid var(--icons-colors) 2px;
   }
 }
 

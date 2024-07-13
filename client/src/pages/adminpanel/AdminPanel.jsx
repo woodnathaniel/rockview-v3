@@ -4,15 +4,17 @@ import  './adminpanel.css'
 import LinearProgress from '@mui/material/LinearProgress';
 import Error from '../../components/error/Error';
 import Success from '../../components/success/Success';
-import {AdminBookings, AdminUsers} from '../../components/adminpanel__component/AdminBookings';
-import { UsersBookingsCard } from '../../components/admincards/Admincards';
-import { AdminRooms } from '../../components/admincards/Admincards';
+// import {AdminBookings, AdminUsers} from '../../components/adminpanel__component/AdminBookings';
+import { UsersBookingsCard, AdminRooms, } from '../../components/admincards/Admincards';
+import { AdminUsers } from '../../components/admincards/Admincards';
+
+
 
 const {TabPane} = Tabs
 const AdminPanel = () => {
   return (
     <div>
-      <section className={'adminHeader'}>
+      <section className='adminHeader'>
         <h1 >Admin Panel</h1>
       </section>
       

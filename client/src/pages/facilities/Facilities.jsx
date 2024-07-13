@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Header } from '../../components/headerNav/Header';
 import '../facilities/facilities.css'
-
+import Footer from '../../components/footer/Footer';
 
 
 const Facilities = () => {
@@ -42,6 +42,8 @@ const Facilities = () => {
         <div className='facility__pic-indoorGames  facility__pic-responsive'>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

@@ -457,10 +457,11 @@ export const AdminUsers = () => {
   useEffect(()=>{
     async function fetchData(){
       try {
-        const getUsers = (await axios.get('/api/users/getallusers')).data
-        setUsers(getUsers)
+        const getUsers = (await axios.get('/api/users/getallusers'))
+        console.log(getUsers);
+        setUsers(getUsers.data)
         console.log(users);
-        if(users.status === 200){
+        if(getUsers.status === 200){
           setLoading(false)
           setSucces(true)
           setTimeout(()=>{
