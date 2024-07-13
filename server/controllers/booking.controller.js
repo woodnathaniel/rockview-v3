@@ -86,7 +86,7 @@ const booking = async (req, res) => {
       text: "Hello world?", 
       html: `
         <header>
-          <h2>Thank you for choosing Rockview Hopitalies</h2><h4>where you experience nature from home.</h4>
+          <h2>Thank you for choosing Rockview Hopitalies</h2><h4>...where you experience nature from home.</h4>
           <div>
             <h3>Here are  your Bookings Details</h3>
             <ul>
@@ -100,6 +100,10 @@ const booking = async (req, res) => {
               <li>Total Days: ${totaldays}</li>
               <li>Total Amount: ${totalamount}</li>
             </ul>
+            <div>
+             <h3>Please Take Note:</h3> <h4>currency of total amount is in Ghana Cedis</h4>
+            </div>
+           
           </div>
         </header>
       `, 
