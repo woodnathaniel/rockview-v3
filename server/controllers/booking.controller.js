@@ -53,6 +53,7 @@ const booking = async (req, res) => {
     console.log("Room booked API");
 
     const booking = await newBooking.save();
+    console.log(booking)
     
     if (!booking) {
       console.log('Failed to save booking to the DB');
@@ -77,13 +78,31 @@ const booking = async (req, res) => {
 
     const mailOptions = {
       from: {
-        name: "Nathaniel Wood 👻", 
+        name: "Rockview Hospitalities 👻", 
         address: 'nathanielwood002@gmail.com'
       },
       to: email, // Ensure `email` is correctly formatted if it's an array
-      subject: "Nodejs mailer ✔",
+      subject: "Rockview Hospitalities Booking Confirm message",
       text: "Hello world?", 
-      html: "<b>Thank you for choosing us</b>", 
+      html: `
+        <header>
+          <h2>Thank you for choosing Rockview Hopitalies</h2><h4>where you experience nature from home.</h4>
+          <div>
+            <h3>Here are  your Bookings Details</h3>
+            <ul>
+              <li>Room Type: ${roomtype}</li>
+              <li>Room Name: ${roomname}</li>
+              <li>Guest Name: ${guest}</li>
+              <li>Children: ${children}</li>
+              <li>Occasion: ${occassion}</li>
+              <li>Check-in Date: ${fromdate}</li>
+              <li>Check-out Date: ${todate}</li>
+              <li>Total Days: ${totaldays}</li>
+              <li>Total Amount: ${totalamount}</li>
+            </ul>
+          </div>
+        </header>
+      `, 
     };
 
     try {
