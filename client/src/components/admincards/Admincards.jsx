@@ -103,7 +103,7 @@ export const AdminRooms = () =>{
   useEffect(()=>{
     async function fetchData(){
       try {
-        const room = (await axios.get('/api/rooms/getallrooms')).data
+        const room = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
         setRooms(room.getroomsInfo)
         console.log(room);
         if(room.status === 200){
@@ -183,7 +183,7 @@ export const AdminUsers = () =>{
   useEffect(()=>{
     async function fetchData(){
       try {
-        const getUsers = (await axios.get('/api/users/getallusers'))
+        const getUsers = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/users/getallusers'))
         setUsers(getUsers.data)
         if(getUsers.status === 200){
           setLoading(false)
