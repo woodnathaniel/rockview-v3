@@ -24,10 +24,10 @@ export default function () {
   const [data, setData] = useState([])
 
 
-  const formattedAmountExecutive = new Intl.NumberFormat('en-GH', {
-    style: 'currency',
-    currency: 'GHS' // GHS is the currency code for Cedis
-  }).format(rooms[0]?.rentperday);
+  // const formattedAmountExecutive = new Intl.NumberFormat('en-GH', {
+  //   style: 'currency',
+  //   currency: 'GHS' // GHS is the currency code for Cedis
+  // }).format(rooms[0]?.rentperday);
   
   useEffect(() => {
       if (show) {
@@ -173,7 +173,7 @@ return (
             <Meta
               // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
               title={rooms[0]?.roomtype}
-              description={formattedAmountExecutive}
+              description={''}
               
             />
           </Card>
@@ -217,7 +217,7 @@ return (
             <Meta
               // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
               title={rooms[1]?.roomtype}
-              description={formattedAmountExecutive}
+              description={''}
               
             />
           </Card>
