@@ -18,7 +18,13 @@ const authRouter = require('./routes/auth.route')
 //   target: 'http://localhost:6000', 
 //   changeOrigin: true 
 // }));
-
+app.use(
+  cors({
+    origin: ["https://rockviewhospitalities.vercel.app"],
+    methods: "GET, POST, PUT, DELETE",
+    credentials: true
+  })
+)
 
 
 const port = 5000
@@ -58,13 +64,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(
-  cors({
-    origin: "https://rockviewhospitalities.vercel.app",
-    methods: "GET, POST, PUT, DELETE",
-    credentials: true
-  })
-)
+
 
 
 

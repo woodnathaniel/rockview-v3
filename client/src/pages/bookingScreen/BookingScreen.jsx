@@ -38,6 +38,7 @@ export default function () {
   }, [show]);
 
   useEffect(() =>{
+    axios.defaults.withCredentials = true
     const fetchData = async() =>{
       try {
         const data = (await axios.get('/api/rooms/getallrooms')).data
