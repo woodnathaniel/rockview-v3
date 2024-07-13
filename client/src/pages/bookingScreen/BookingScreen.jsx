@@ -75,13 +75,13 @@ return (
           <div  className="header__pic-carousel-container">
           <Carousel className='ant-booking-carousel' autoplay autoplaySpeed={6000} fade={true} speed={4000}>
             <div>
-              <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/bookingScreenCarousel%2F10%20Secrets%20to%20Score%20a%20Free%20Hotel%20Room%20Upgrade.jpeg?alt=media&token=2ac266d3-a51b-4cfe-9591-814186da2c04" alt="pictures of rooms" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/reception1.jpg?alt=media&token=d4007d5e-22a6-46d0-bf21-8d1e97323036" alt="pictures of rooms" />
             </div>
             <div>
-            <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/bookingScreenCarousel%2FTake%20control%20of%20your%20guests%20with%20the%20External%20Identities%20Policy.jpeg?alt=media&token=7d76b5e4-abd7-4f5a-aabb-4d606fe3322d" alt="pictures of rooms" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/check%20in3.jpg?alt=media&token=e26cbd8c-7e36-46ce-92aa-7016d386d598" alt="pictures of rooms" />
             </div>
             <div>
-            <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/bookingScreenCarousel%2FTravel%20tips%20and%20advice_%20Stupid%20things%20hotel%20guests%20do.jpeg?alt=media&token=f90166ce-ff03-4e1d-adf1-8493b6ff03ae" alt="pictures of rooms" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/check%20in1.jpg?alt=media&token=e6f75f0c-f8d8-4bef-b521-1fc306aeeb1e" alt="pictures of rooms" />
             </div>
             {/* <div>
             <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5742.JPG?alt=media&token=64d98fa2-f42a-42a9-80e6-a868b1ae58e8" alt="pictures of rooms" />

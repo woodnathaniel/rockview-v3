@@ -10,7 +10,6 @@
 }
 
 .bookingScreen__header-container{
-  border: solid blue 2px;
   display: grid;
   place-items: center;
   width: 100vw;
@@ -19,7 +18,7 @@
 
 .header__pic-carousel-container{
   position: relative;
-  border: solid 2px rgb(0, 0, 0);
+  /* border: solid 2px rgb(0, 0, 0); */
   height: 400px;
   width: 100vw;
 }

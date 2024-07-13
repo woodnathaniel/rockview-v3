@@ -36,7 +36,7 @@ img{
   transition: var(--transitions-sm);
 }
 
-img:hover{
+.logo img:hover{
 scale: 1.1;
 }
 

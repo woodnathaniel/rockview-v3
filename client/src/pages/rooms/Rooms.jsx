@@ -52,13 +52,13 @@ const Rooms = () => {
             <div className='room__type-pic'>
             <Carousel className='antd-room-carousel' autoplay arrows infinite={true}>
               <div>
-               <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5742.JPG?alt=media&token=64d98fa2-f42a-42a9-80e6-a868b1ae58e8" alt="pictures of rooms" />
+               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5742.JPG?alt=media&token=0198fd16-04b8-4629-ac84-d42a4fc688b6" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5749.JPG?alt=media&token=10cf03df-6bd4-401a-a831-de44e914eb1e" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5745.JPG?alt=media&token=562b5011-d2f3-4bfb-9b38-5cc1dfceeeae" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5746.JPG?alt=media&token=ad73413a-432c-40f8-88b9-c09999819b92" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5749.JPG?alt=media&token=c190c24a-1470-4898-b360-89d9b055799a" alt="pictures of rooms" />
               </div>
             </Carousel>
             </div>
@@ -81,13 +81,13 @@ const Rooms = () => {
             <div className='room__type-pic'>
             <Carousel className='antd-room-carousel' autoplay arrows infinite={true}>
               <div>
-               <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5742.JPG?alt=media&token=64d98fa2-f42a-42a9-80e6-a868b1ae58e8" alt="pictures of rooms" />
+               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5746.JPG?alt=media&token=10025961-c098-4512-bfb5-12aee2c0b45a" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5749.JPG?alt=media&token=10cf03df-6bd4-401a-a831-de44e914eb1e" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5749.JPG?alt=media&token=c190c24a-1470-4898-b360-89d9b055799a" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5746.JPG?alt=media&token=ad73413a-432c-40f8-88b9-c09999819b92" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5753.JPG?alt=media&token=682b02fa-caf2-4783-b8da-c39a1fed59eb" />
               </div>
             </Carousel>
             </div>

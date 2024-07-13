@@ -31,7 +31,7 @@
 }
 
 .facility__pic-conference{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/facilities%2Fconference%20room.jpg?alt=media&token=df4bfd90-6dd6-45af-a59f-dd36394dbe72');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/conference%20room.jpg?alt=media&token=9c4e48e2-26fc-49ca-917b-a11bd7cdb7a3');
   /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,7 +58,7 @@
 
 
 .facility__pic-restaurant{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/facilities%2Fres3.avif?alt=media&token=a81bd977-555a-418d-b4ac-bdc95ed6e107');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/res3.avif?alt=media&token=baec8df2-0ff5-4d14-9211-743be8dfc17a');
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: contain;
@@ -85,7 +85,7 @@
 }
 
 .facility__pic-miniMart{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5778.JPG?alt=media&token=e98629c8-4310-439a-b811-e671b016c12a');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5780.JPG?alt=media&token=2f534354-cb6d-46ef-ac02-908ad24a1c97');
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: contain;
@@ -112,7 +112,7 @@
 }
 
 .facility__pic-indoorGames{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/facilities%2Ftable%20tennis.jpg?alt=media&token=f4e6071e-b202-41e3-beea-fb29ea85c1a6');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/table%20tennis.jpg?alt=media&token=e9cb105b-20a9-4adf-ad72-8b438ae1b721');
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: contain;
