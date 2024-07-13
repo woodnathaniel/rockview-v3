@@ -27,7 +27,7 @@ const authRouter = require('./routes/auth.route')
 //   })
 // )
 
-const allowedOrigins = ['http://localhost:3000', 'https://rockviewhospitalities.vercel.app', 'http://rockviewhospitalities-api.vercel.app/auth/google/callback'];
+const allowedOrigins = ['http://localhost:3000', 'https://rockviewhospitalities.vercel.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
