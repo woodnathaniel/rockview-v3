@@ -90,6 +90,7 @@ const booking = async (req, res) => {
           <div>
             <h3>Here are  your Bookings Details</h3>
             <ul>
+              <li>Booking ID: ${booking._id}</li>
               <li>Room Type: ${roomtype}</li>
               <li>Room Name: ${roomname}</li>
               <li>Guest Name: ${guest}</li>
@@ -101,9 +102,10 @@ const booking = async (req, res) => {
               <li>Total Amount: ${totalamount}</li>
             </ul>
             <div>
-             <h3>Please Take Note:</h3> <h4>currency of total amount is in Ghana Cedis</h4>
+             <h3>Please Take Note:</h3>
+              <h4>currency of total amount is in Ghana Cedis</h4>
             </div>
-           
+            <p>We look forward to your stay!</p>
           </div>
         </header>
       `, 

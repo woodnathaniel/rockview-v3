@@ -1,0 +1,21 @@
+.ant-space-compact-block button{
+  margin: 0px;
+
+}
+
+.auth_navprofile{
+  /* position: absolute; */
+  right: 0;
+  gap: 15px;
+}
+
+.ant-btn-compact-item:not(.ant-btn-compact-last-item).ant-btn-compact-first-item{
+  margin: 0;
+  font-size: small;
+  padding: 20px 5px;
+}
+
+.ant-btn-compact-item:not(.ant-btn-compact-first-item).ant-btn-compact-last-item{
+  margin: 0;
+  padding: 20px 5px;
+}
