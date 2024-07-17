@@ -8,7 +8,10 @@ import LockIcon from '@mui/icons-material/Lock';
 import Error from '../../components/error/Error'
 import Success from '../../components/success/Success';
 import Loading from '../../components/Loading/Loading';
-import HomeIcon from '@mui/icons-material/Home';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+
+
+
 
 
 export default function LogIn() {
@@ -18,7 +21,7 @@ export default function LogIn() {
   const [loading, setLoading] = useState(false)
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
-  const [response, setResponse] = useState(false)
+  const [response, setResponse] = useState({})
 
  
   const googleAuth = () => {
@@ -49,9 +52,10 @@ export default function LogIn() {
         }, 2000)
       }
 
-    } catch (error) {
-      console.log(error.response.data);
-      setResponse(error.response.data)
+    }catch (error) {
+      console.log(error);
+      console.log(error.message);
+      setResponse([error?.response?.data, error.message])
       setError(true)
       setLoading(false)
       setTimeout(()=>{
@@ -63,7 +67,7 @@ export default function LogIn() {
   
   return (
     <div className="login_main_container">
-      <section className="click__home"><HomeIcon/><h4>Home</h4></section>
+      <section className="click__home"><HomeOutlinedIcon/><h4>Home</h4></section>
       <div className="container">
         <section className="icon_section"><PersonOutlineIcon/></section>
         <header className="details_section">

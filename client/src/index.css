@@ -38,6 +38,10 @@ img{
   overflow: hidden;
 }
 
+input{
+  padding: 10px;
+}
+
 :root{
   --scale: 1.2;
   --transitions-sm: 0.3s;

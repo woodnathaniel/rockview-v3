@@ -2,7 +2,7 @@
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   gap: 50px;
   margin: 20px;
@@ -11,7 +11,7 @@
 .card__header__container{
   background-color : white;
   width: 480px;
-  height: 350px;
+  height: 370px;
   /* border: solid red 2px; */
   border-radius: 10px;
   padding: 10px ;
@@ -81,4 +81,81 @@ span{
 
 .approved{
   color: rgb(78, 129, 0);
+}
+
+.Adminpanel__filter{
+  display: flex;
+  flex-wrap: wrap;
+  align-items:last baseline;
+  gap: 50px;
+  margin-bottom: 60px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  border-bottom: solid white 1px;
+  width: 90vw;
+}
+
+.search__bar__filter{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  gap: 20px;
+  border-radius: 0px 5px 5px 0;
+
+}
+
+.search__bar__filter:nth-child(1){
+  margin-right: 10px;
+}
+
+.search__bar__filter svg{
+  font-size: x-large;
+  color: white;
+
+}
+
+
+.search__bar__filter input{
+  background-color: white;
+  border: solid 1px var(--border-color);
+  /* border-left: 0; */
+  height: 40px;
+  width: 300px;
+  border-radius: 0px 5px 5px 0;
+  color: black;
+}
+
+.search__bar__filter input::placeholder{
+  color: black;
+  font-weight: 900;
+}
+
+.search__icon{
+  height: 40px;
+  border: solid 1px var(--border-color);
+  display: flex;
+  align-items: center;
+  background-color: rgb(199, 199, 199);
+  padding: 5px;
+}
+
+.totalNumOfBookings{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: solid 2px var(--border-color);
+  padding: 0 10px;
+  border-radius: 0 10px 0 10px;
+}
+
+.totalNumOfBookings h3{
+  font-size: xx-large;
+}
+
+.skeleton{
+  width: 400px;
+  padding: 0 20px;
+  border-radius: 10px;
 }

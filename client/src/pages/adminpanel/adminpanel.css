@@ -13,11 +13,11 @@
   transform: translateX(-50%, -50%); */
 }
 
-/* .adminHeader{
+.adminHeader{
   position: absolute;
   left: 50%;
   transform: translateX(-50%, -50%); 
-} */
+}
 
 .adminHeader h1{
   font-family: 'Poppins';

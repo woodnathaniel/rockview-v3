@@ -9,7 +9,7 @@ export default function Error({message}) {
   return (
     <div className='error'>
         <Alert icon={<CheckIcon fontSize="inherit" />} severity="error">
-          Error: {message}
+          {message}
         </Alert>
     </div>
     

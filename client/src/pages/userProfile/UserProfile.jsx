@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
-// import './profile.css';
+import './userprofile.css';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { FloatButton } from 'antd';
 // import './ant.css'
 // import './admincards.css'
 import axios from 'axios'
@@ -9,8 +11,8 @@ import Error from '../../components/error/Error';
 import Success from '../../components/success/Success';
 
 
-
 const {TabPane} = Tabs
+
 const Profile = () => {
   const [login, setLogin] = useState({})
   const [loading, setLoading] = useState(true)
@@ -19,12 +21,15 @@ const Profile = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('rockviewUser'));
     setLogin(user);
+    console.log(user._id);
     setLoading(false)
   }, []);
-  // useEffect(()=>{
-      
-    
-  // },[])
+
+  function floatUnclick(){
+    window.location.href = '/'
+  }
+
+
 
   return (
     <div>
@@ -46,12 +51,24 @@ const Profile = () => {
         </div>
       }
       
+      <FloatButton
+      icon={<HomeOutlinedIcon />}
+      description="Home"
+      shape="square"
+      onClick={floatUnclick}
+      style={{
+        right: 34,
+        width:  80,
+        height: 80,
+        borderRadius: 100
+        
+      }}
+    />
      
     </div>
     
   );
 }
-
 export default Profile;
 
 
