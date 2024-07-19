@@ -13,8 +13,8 @@ const bookingSchema = mongoose.Schema(
       required: true
     },
 
-    roomname: {
-     type: String,
+    country:{
+      type: String,
       required: true
     },
 
@@ -24,6 +24,11 @@ const bookingSchema = mongoose.Schema(
     },
 
     contact:{
+      type: Number,
+      required: true
+    },
+
+    numberRooms:{
       type: Number,
       required: true
     },
