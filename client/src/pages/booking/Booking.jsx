@@ -25,18 +25,18 @@ export default function Booking({data}) {
   const [login, setLogin] = useState(false);
   const [response, setResponse] = useState('');
   const [show, setShow] = useState(false)
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null)
 
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-  const [contact, setContact] = useState(Number);
-  const [guest, setGuest] = useState(Number);
-  const [numberRooms, setNumberRooms] = useState(Number);
-  const [children, setChildren] = useState(Number)
+  const [contact, setContact] = useState(0);
+  const [guest, setGuest] = useState(0);
+  const [numberRooms, setNumberRooms] = useState(0);
+  const [children, setChildren] = useState(0)
   const [occassion, setOccassion] = useState("");
   const [fromdate, setFromdate] = useState("");
   const [todate, setTodate] = useState("");
-  const [totaldays, setTotaldays] = useState(Number);
+  const [totaldays, setTotaldays] = useState(0);
   const [country, setCountry] = useState('')
 
 
@@ -75,8 +75,8 @@ console.log(typeof(data._id));
     //   `${guest}`,
 
     // ]
-
-
+    console.log((totaldays * data?.rentperday));
+    const totalamount = (totaldays * data?.rentperday)
 
     const bookingDetails = {
       roomid: data?._id,
@@ -84,8 +84,8 @@ console.log(typeof(data._id));
       roomname: data?.roomname,
       userid: `${user._id}`,
       contact: contact,
-      country: country,
-      numberRooms: numberRooms,
+      // country: country,
+      // numberRooms: numberRooms,
       email: email,
       guest: guest,
       children: children,
@@ -93,7 +93,7 @@ console.log(typeof(data._id));
       fromdate: fromdate,
       todate: todate,
       totaldays: totaldays,
-      totalamount: (totaldays * data?.rentperday),
+      totalamount: totalamount
     };
 
     try {
@@ -290,7 +290,7 @@ console.log(typeof(data._id));
                     required
                     min={0}
                     max={100}
-                    step={1}
+                    step={2}
                     value={guest}
                     defaultValue={0}
                     onChange={(value) => setGuest(value)}
@@ -307,7 +307,7 @@ console.log(typeof(data._id));
                     required
                     min={0}
                     max={100}
-                    step={1}
+                    step={3}
                     value={children}
                     defaultValue={0}
                     onChange={(value) => setChildren(value)}

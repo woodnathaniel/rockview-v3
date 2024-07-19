@@ -13,6 +13,8 @@ const booking = async (req, res) => {
     roomname,
     userid,
     contact,
+    country,
+    numberRooms,
     email,
     guest,
     children,
@@ -20,8 +22,15 @@ const booking = async (req, res) => {
     fromdate,
     todate,
     totaldays,
-    totalamount,
+    totalamount
   } = req.body;
+
+  // if (
+  //   !roomid || !roomtype || !userid || !contact || !country || !numberRooms ||
+  //   !email || !guest || !fromdate || !todate || !totaldays || totalamount === undefined
+  // ) {
+  //   return res.status(400).json({ error: "All required fields must be provided" });
+  // }
   
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -41,6 +50,8 @@ const booking = async (req, res) => {
       roomname: roomname,
       userid: userid,
       contact: contact,
+      // country: country,
+      // numberRooms: numberRooms,
       email: email,
       guest: guest,
       children: children,
@@ -48,6 +59,7 @@ const booking = async (req, res) => {
       fromdate: fromdate,
       todate: todate,
       totaldays: totaldays,
+      totalamount: totalamount
     });
 
     console.log("Room booked API");
@@ -91,6 +103,7 @@ const booking = async (req, res) => {
             <h3>Here are  your Bookings Details</h3>
             <ul>
               <li>Booking ID: ${booking._id}</li>
+              <li>User ID: ${userid}</li>
               <li>Room Type: ${roomtype}</li>
               <li>Room Name: ${roomname}</li>
               <li>Guest Name: ${guest}</li>
@@ -100,7 +113,7 @@ const booking = async (req, res) => {
               <li>Check-out Date: ${todate}</li>
               <li>Total Days: ${totaldays}</li>
               <li>Total Amount: ${totalamount}</li>
-            </ul>
+            </ul>S
             <div>
              <h3>Please Take Note:</h3>
               <h4>currency of total amount is in Ghana Cedis</h4>

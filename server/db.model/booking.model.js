@@ -13,11 +13,6 @@ const bookingSchema = mongoose.Schema(
       required: true
     },
 
-    country:{
-      type: String,
-      required: true
-    },
-
     userid:{
       type: String,
       required: true
@@ -28,10 +23,15 @@ const bookingSchema = mongoose.Schema(
       required: true
     },
 
-    numberRooms:{
-      type: Number,
-      required: true
-    },
+      // country:{
+    //   type: String,
+    //   required: true
+    // },
+
+    // numberRooms:{
+    //   type: Number,
+    //   required: true
+    // },
 
     email:{
       type: String,
