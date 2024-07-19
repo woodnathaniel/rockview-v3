@@ -12,9 +12,6 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import Booking from '../booking/Booking';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
-import TypographyDemo from '../../components/skeleton/Skeleton';
-import NavBar from '../../components/navbar/NavBar';
-import Footer from '../../components/footer/Footer'
 
 const { Meta } = Card;
 
@@ -25,8 +22,7 @@ export default function () {
   const [rooms, setRooms] = useState([]);
   const [show, setShow] = useState(false)
   const [data, setData] = useState([])
-  const [loading, setLoading] = useState(false)
- 
+
 
   // const formattedAmountExecutive = new Intl.NumberFormat('en-GH', {
   //   style: 'currency',
@@ -42,7 +38,7 @@ export default function () {
   }, [show]);
 
   useEffect(() =>{
-    setLoading(true)
+    alert('getallrooms useEffect hit')
     axios.defaults.withCredentials = true
     const fetchData = async() =>{
       try {
@@ -58,24 +54,24 @@ export default function () {
     }
     fetchData()
 
-    setLoading(false)
+
   },[])
 
   console.log(rooms);
 
-  const handelClick = (data)=>{
-    console.log(data);
-    setData(data)
-    setShow(!show)
-  }
-  const closeClick = () => {
-    setShow(!show);
-  };
+ const handelClick = (data)=>{
+  console.log(data);
+  setData(data)
+  setShow(!show)
+ }
+ const closeClick = () => {
+  setShow(!show);
+};
 
-    return (
-    <div style={{width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '0', margin: '0'}}>
-      <NavBar/>
-      <div className={`bookingScreen__container ${show ? 'deactive__background' : ''}`}>
+return (
+      <div>
+
+        <div className={`bookingScreen__container ${show ? 'deactive__background' : ''}`}>
            {/*-------------- Heaer Picture Carousel section ---------------*/}
         <section className='bookingScreen__header-container'>
           <div  className="header__pic-carousel-container">
@@ -98,21 +94,19 @@ export default function () {
 
 
         <section className="service__section">
-          <h1>Our Service Review</h1>
+        <h1>Our Service Review</h1>
           <div className='service__icons'>
-          <div className='icons'>
-            <SecurityIcon/>
-              <h3> 24/7 </h3>
-              <h3>security</h3>
-            </div>
-
             <div className='icons'>
             <LocalCarWashIcon/>
               <h3>Free </h3>
               <h3>Carwash</h3>
             </div>
 
-           
+            <div className='icons'>
+            <SecurityIcon/>
+              <h3> 24/7 </h3>
+              <h3>security</h3>
+            </div>
 
             <div className='icons'>
               <TourIcon/>
@@ -143,21 +137,16 @@ export default function () {
         <section className="avilable__rooms__section">
 
 
-            {/*----------------- Executive Suite Card section ------------------*/}
+{/*----------------- Executive Suite Card section ------------------*/}
 
-          <Card
-            // style={{
-            //   width: 650,
-            // }}
+            <Card
+            style={{
+              width: 650,
+            }}
             cover={
                 <div>
-                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
-
-                  {loading &&
-                    <div className='skeleton'>
-                      <TypographyDemo/>
-                    </div>
-                  }
+                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} >
+                  
                       {
                         
                         rooms[0]?.imageurls.map((url) =>{
@@ -192,22 +181,15 @@ export default function () {
 
 
 
-          {/*----------------- Standard suite Card section ------------------*/}
+{/*----------------- Standard suite Card section ------------------*/}
 
           <Card
-            // style={{
-            //   width: 650,
-            // }}
+            style={{
+              width: 650,
+            }}
             cover={
                 <div>
                   <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} >
-
-                  { loading &&
-                    <div className='skeleton'>
-                      <TypographyDemo/>
-                    </div>
-                  
-                  }
                   
                       {
                         
@@ -255,17 +237,15 @@ export default function () {
             })
           } */}
         </section>
-      </div>
+        </div>
  
 
         <div className={`booking_details ${show ? 'setShow' : 'removeShow'}`} >
-          <div  className="close__icon" >
-            <DisabledByDefaultIcon onClick={()=> closeClick()}/>
+        <div  className="close__icon" >
+          <DisabledByDefaultIcon onClick={()=> closeClick()}/>
           </div>
           <Booking  data={data}/>
         </div>
-     {/* <NavBar />    */}
-     <Footer/>
-    </div>
+      </div>
     )
 }

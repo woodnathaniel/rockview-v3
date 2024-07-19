@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  transition: filter 0.3s;
+ position: relative;
+ transition: filter 0.3s;
   overflow: visible;
 }
 

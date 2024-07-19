@@ -143,24 +143,6 @@ export const UsersBookingsCard = () =>{
     setLoading(false)
   },[])
 
-  function convertISOToLocalDate(isoString) {
-    console.log(typeof('isoString'));
-    console.log(isoString);
-    const date = new Date(isoString);
-    const localDate = date.toLocaleDateString();
-    console.log(localDate);
-    return localDate
-  }
-  convertISOToLocalDate()
-  
-  function convertISOToLocalTime(isoString) {
-    console.log(typeof('isoString'));
-    console.log(isoString);
-    const date = new Date(isoString);
-    const localTime = date.toLocaleTimeString();
-    return localTime ;
-  }
-  
 
   //// checkig the Number of roomtype in each filtered array search
   useEffect(()=>{
@@ -415,26 +397,20 @@ export const UsersBookingsCard = () =>{
                 </section>
                 <section className="user__details cards__sections">
                   <h4>{booking?.roomtype}</h4>
+                  <h4>{booking?.roomname}</h4>
                 </section>
                 <section className='cards__sections'>
                   <span><h5> Check In: </h5> <p>{booking?.fromdate}</p></span>
                   <span><h5>Check Out: </h5> <p>{booking?.todate}</p></span>
-                  <span><h5>Total Days: </h5> <p>{booking?.totaldays}</p></span>
-                  <span><h5>Total Amount: </h5> <p>{booking?.totalamount}</p></span>
                 </section>
-               
-                <section className='cards__sections' style={{display: 'flex',}}><div className={
+                <section className={
                   `status__section cards__sections 
                     ${
                       booking.status === 'rejected'||booking.status === 'cancelled' ? 'rejected' : booking.status === 'pending'?  'pending' :  booking.status === 'approved' ? 'approved' : ''
                     }
                     `
-                  }>{(booking?.status)?.toUpperCase()} @ </div> <div style={{display:'flex', justifyContent: 'center', alignItems: 'center', fontStyle: 'italic', color: 'rgb(182, 185, 187)'}}>{convertISOToLocalDate(`${booking?.updatedAt}`)}, {convertISOToLocalTime(`${booking?.updatedAt}`)}</div> </section>
+                  }>{(booking?.status)?.toUpperCase()}</section>
                 <section >
-                <section className='cards__sections'>
-                  <span>Date<h5 style={{fontStyle: 'italic', fontSize: '15px', color: 'rgb(182, 185, 187)'}}>{convertISOToLocalDate(`${booking?.createdAt}`)}</h5></span>
-                  <span>Time<h5 style={{fontStyle: 'italic', fontSize: '15px', color: 'rgb(182, 185, 187)'}}>{convertISOToLocalTime(`${booking?.createdAt}`)}</h5></span>
-                </section>
                   {
                     booking?.status === 'pending' ? 
                     <div className="review__section ">
