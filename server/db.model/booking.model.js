@@ -23,15 +23,15 @@ const bookingSchema = mongoose.Schema(
       required: true
     },
 
-      // country:{
-    //   type: String,
-    //   required: true
-    // },
+      country:{
+      type: String,
+      required: true
+    },
 
-    // numberRooms:{
-    //   type: Number,
-    //   required: true
-    // },
+    numberRooms:{
+      type: Number,
+      required: true
+    },
 
     email:{
       type: String,
