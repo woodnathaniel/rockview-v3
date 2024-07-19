@@ -23,17 +23,22 @@ export default function Booking({data}) {
   const [error, setError] = useState(false);
   const [login, setLogin] = useState(false);
   const [response, setResponse] = useState('');
+  const [confirmEmailError, setConfirmEmailError] = useState('')
   const [show, setShow] = useState(false)
+
 
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [contact, setContact] = useState(Number);
   const [guest, setGuest] = useState(Number);
+  const [number, setNumber] = useState(Number);
   const [children, setChildren] = useState(Number)
   const [occassion, setOccassion] = useState("");
   const [fromdate, setFromdate] = useState("");
   const [todate, setTodate] = useState("");
   const [totaldays, setTotaldays] = useState(Number);
+  const user = JSON.parse(localStorage.getItem('rockviewUser'));
+
 
   // useEffect(() => {
   //   console.log(data);
@@ -56,7 +61,11 @@ export default function Booking({data}) {
   // }, []);
 
 
-console.log(typeof(data._id));
+  useEffect(()=>{
+    if(!(email === confirmEmail)){
+      setConfirmEmailError('unmatched emails')
+    }
+  },[confirmEmail])
 
   const closeClick = () => {
     setShow(!show);
@@ -65,9 +74,11 @@ console.log(typeof(data._id));
 
   async function confirmBooking(e) {
 
+
     console.log(data);
     e.preventDefault();
     setLoading(true);
+  
 
     // const checkArray = [ `${room._id}`,
 
@@ -79,68 +90,82 @@ console.log(typeof(data._id));
     //   `${guest}`,
 
     // ]
-
-    const bookingDetails = {
-      roomid: data?._id,
-      roomtype: data?.roomtype,
-      roomname: data?.roomname,
-      // userid: `${login._id}`,
-      contact: contact,
-      email: email,
-      guest: guest,
-      children: children,
-      occassion: occassion,
-      fromdate: fromdate,
-      todate: todate,
-      totaldays: totaldays,
-      totalamount: totaldays * data?.rentperday,
-    };
-
-    try {
-      const confirmedBooked = await axios.post(
-        "http://rockviewhospitalities-api.vercel.app/api/bookings/bookroom",
-        bookingDetails
-      );
-      console.log(confirmedBooked);
-
-      if (confirmedBooked.status === 200) {
-        try {
-          // const updateAvailable = await axios.post(
-          //   "/api/rooms/updateroomavailabilitybyid",
-          //   { id: data?._id }
-          // );
-          setSucces(true);
-          setTimeout(() => {
+    if(email === confirmEmail){
+      const bookingDetails = {
+        roomid: data?._id,
+        roomtype: data?.roomtype,
+        roomname: data?.roomname,
+        userid: user._id,
+        contact: contact,
+        email: email,
+        guest: guest,
+        children: children,
+        numberRooms: number,
+        occassion: occassion,
+        fromdate: fromdate,
+        todate: todate,
+        totaldays: totaldays,
+        totalamount: totaldays * data?.rentperday,
+      };
+  
+      try {
+        const confirmedBooked = await axios.post(
+          "http://rockviewhospitalities-api.vercel.app/api/bookings/bookroom",
+          bookingDetails
+        );
+        console.log(confirmedBooked);
+  
+        if (confirmedBooked.status === 200) {
+          try {
+            // const updateAvailable = await axios.post(
+            //   "/api/rooms/updateroomavailabilitybyid",
+            //   { id: data?._id }
+            // );
+            setSucces(true);
+            setTimeout(() => {
+              setSucces(false);
+            }, 3000);
+          } catch (error) {
+            console.log(error);
             setSucces(false);
-          }, 3000);
-        } catch (error) {
-          console.log(error);
-          setSucces(false);
-          setLoading(false);
-          setError(true);
+            setLoading(false);
+            setError(true);
+          }
         }
+      } catch (error) {
+        setResponse(error.response.data.details)
+        console.log(error);
+        console.log(error.response.data.details);
+        console.log(typeof(error.response.data.details));
+        console.log("api did not hit");
+        setLoading(false);
+        setError(true);
+        setTimeout(()=>{
+          setError(false);
+        }, 8000)
       }
-    } catch (error) {
-      setResponse(error.response.data.details)
-      console.log(error);
-      console.log(error.response.data.details);
-      console.log(typeof(error.response.data.details));
-      console.log("api did not hit");
+  
+      setEmail("");
+      setContact(Number);
+      setGuest(Number);
+      setOccassion("");
+      setFromdate("");
+      setTodate("");
+  
       setLoading(false);
-      setError(true);
+  
+    }
+    else{
+      setLoading(false)
+      setResponse('unmatched emails')
+      setConfirmEmailError('unmatched emails')
+      setError(true)
       setTimeout(()=>{
         setError(false);
-      }, 8000)
+      }, 4000)
+
     }
 
-    setEmail("");
-    setContact(Number);
-    setGuest(Number);
-    setOccassion("");
-    setFromdate("");
-    setTodate("");
-
-    setLoading(false);
   }
 
 
@@ -208,103 +233,116 @@ console.log(typeof(data._id));
      
         <div className="form__wrapper">
 
-        <div className="date__picker">
-            <h2>Chooce CheckIn Date and CheckOut date here</h2>
-            <Space direction="vertical" size={12} style={{ width: "800px" }}>
-              <RangePicker
-                format={"YYYY-MM-DD"}
-                onChange={getAdapter}
-              />
-            </Space>
-          </div>
+          <div className="date__picker">
+              <h2>Chooce CheckIn Date and CheckOut date here</h2>
+              <Space direction="horizontal">
+                <RangePicker
+                  format={"YYYY-MM-DD"}
+                  onChange={getAdapter}
+                />
+              </Space>
+            </div>
+            
+            <form  action="">
+
+
           
-          <form  action="">
 
 
-         
+              <div className="form__first__section__container">
+                <div className="form__field__container">
+                    <label htmlFor="">Active Email</label>
+                    <input
 
+                      style={{cursor:'vertical-text'}}
+                        required
+                        type="email"
+                        value={email}
+                        placeholder="Active Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                </div>
+                <div className="form__field__container">
+                    <label htmlFor="">Confirm Email <h5 style={{color: 'red'}}>{email === confirmEmail ? '' : confirmEmailError}</h5></label>
+                    <input
 
-            <div className="form__first__section__container">
-              <div className="form__field__container">
-                  <label htmlFor="">Active Email</label>
-                  <input
-
-                    style={{cursor:'vertical-text'}}
+                      style={{cursor:'vertical-text'}}
+                        required
+                        type="email"
+                        value={confirmEmail}
+                        placeholder="Active Email"
+                        onChange={(e) => setConfirmEmail(e.target.value)}
+                      />
+                </div>
+                <div className="form__field__container">
+                    <label htmlFor="">Number of Guests</label>
+                    <InputNumber
                       required
-                      type="email"
-                      value={email}
-                      placeholder="Active Email"
-                      onChange={(e) => setEmail(e.target.value)}
+                      min={0}
+                      max={100}
+                      step={1}
+                      value={guest}
+                      defaultValue={0}
+                      onChange={(value) => setGuest(value)}
                     />
-              </div>
-              <div className="form__field__container">
-                  <label htmlFor="">Confirm Email</label>
-                  <input
-
-                    style={{cursor:'vertical-text'}}
+                </div>
+                <div className="form__field__container">
+                    <label htmlFor="">Number Rooms</label>
+                    <InputNumber
                       required
-                      type="email"
-                      value={confirmEmail}
-                      placeholder="Active Email"
-                      onChange={(e) => setConfirmEmail(e.target.value)}
+                      min={0}
+                      max={13}
+                      step={2}
+                      value={number}
+                      defaultValue={0}
+                      onChange={(value) => setNumber(value)}
                     />
+                </div>
+                {/* <div className="form__field__container">
+                    <label htmlFor="">Phone Contact</label>
+                    <input
+                      required
+                      type="text"
+                      value={contact}
+                      placeholder="Phone Contact"
+                      onChange={(e) => setContact(e.target.value)}
+                    />
+                </div> */}
+                
               </div>
-              <div className="form__field__container">
-                  <label htmlFor="">Number of Guests (max count is 2)</label>
-                  <InputNumber
-                    required
-                    min={0}
-                    max={2}
-                    step={1}
-                    value={guest}
-                    defaultValue={0}
-                    onChange={(value) => setGuest(value)}
-                  />
-              </div>
-              <div className="form__field__container">
-                  <label htmlFor="">Phone Contact</label>
-                  <input
-                    required
-                    type="text"
-                    value={contact}
-                    placeholder="Phone Contact"
-                    onChange={(e) => setContact(e.target.value)}
-                  />
-              </div>
-            </div>
 
-{/*------------------ second division of the details panel -----------------*/}
-            <div className="form__first__section__container"> 
-              <div className="form__field__container">
-                  <label htmlFor="">Number of children among the Guest (max count is 2)</label>
-                  <InputNumber
-                    required
-                    min={0}
-                    max={2}
-                    step={1}
-                    value={children}
-                    defaultValue={0}
-                    onChange={(value) => setChildren(value)}
-                  />
+               {/*------------------ second division of the details panel -----------------*/}
+              <div className="form__first__section__container"> 
+                <div className="form__field__container">
+                    <label htmlFor="">Number of children among the Guests</label>
+                    <InputNumber
+                      required
+                      min={0}
+                      max={100}
+                      step={3}
+                      value={children}
+                      defaultValue={0}
+                      onChange={(value) => setChildren(value)}
+                    />
+                </div>
+                <div className="form__field__container">
+                  <label htmlFor="">This field is Optional:? Special Occasions? </label>
+                    <input
+                      required
+                      type="text"
+                      value={occassion}
+                      placeholder="eg. on Tour, Vacations, Honeymoon, etc"
+                      onChange={(e) => setOccassion(e.target.value)}
+                    />
+                </div>
               </div>
-              <div className="form__field__container">
-                 <label htmlFor="">This field is Optional:? Special Occasions? </label>
-                  <input
-                    required
-                    type="text"
-                    value={occassion}
-                    placeholder="eg. on Tour, Honeymoon etc"
-                    onChange={(e) => setOccassion(e.target.value)}
-                  />
-              </div>
-            </div>
 
-            <button onClick={(e) => confirmBooking(e)}>
-              {
-                loading ? <Loading /> : <span><EventAvailableIcon style={{fontSize:'35px'}}/>Confirm Booking</span>
-              }
-            </button>
-          </form>
+              <button onClick={(e) => confirmBooking(e)}>
+                {
+                  loading ? <Loading /> : <span><EventAvailableIcon style={{fontSize:'35px'}}/>Confirm Booking</span>
+                }
+              </button>
+            </form>
         </div>
       </div>
     </div>

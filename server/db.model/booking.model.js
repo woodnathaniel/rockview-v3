@@ -33,6 +33,11 @@ const bookingSchema = mongoose.Schema(
       required: true
     },
 
+    numberRooms:{
+      type: Number,
+      required: true
+    },
+
     guest:{
       type: Number,
       required: true

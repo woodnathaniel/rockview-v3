@@ -22,10 +22,11 @@ export default function LogIn() {
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
   const [response, setResponse] = useState({})
+  const [numberRoom, setNumberRooms] = useState('')
 
  
   const googleAuth = () => {
-      window.open("http://rockviewhospitalities-api.vercel.app/auth/google/callback", "_self");
+    window.open("http://rockviewhospitalities-api.vercel.app/auth/google/callback", "_self");
   };
 
   const submitLoginDetails = async (e) =>{
@@ -48,7 +49,7 @@ export default function LogIn() {
 
         setTimeout(()=>{
           setSucces(false)
-          // window.location.href='/booking'
+          window.location.href='/'
         }, 2000)
       }
 
@@ -62,7 +63,6 @@ export default function LogIn() {
         setError(false)
       }, 7000)
     }
-    
   }
   
   return (

@@ -24,6 +24,9 @@ const NavBar = () => {
     setOpen(false);
     setIsNavShowing(!isNavShowing)
   };
+  const logoClick = () => {
+    window.location.href = '/'
+  };
 
 
 
@@ -41,7 +44,7 @@ const NavBar = () => {
         </div>
         
       </Drawer>
-      <div className='logo'>
+      <div className='logo' onClick={logoClick}>
         <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/cropped_image_logo.png?alt=media&token=5543b076-01dc-4263-9a3c-5ec16b48d13a" alt="" />
       </div>
       <nav className={`nav__bar ${isNavShowing? 'show__nav': 'hide__nav'}`}>

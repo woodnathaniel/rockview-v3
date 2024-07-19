@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* width: 50vw; */
   /* border-top: solid 2px var(--opt-color); */
 }
 
@@ -53,8 +54,8 @@ form button{
 
 
 .form__first__section__container{
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
   width: 100%;
 }
@@ -74,8 +75,9 @@ form button{
 }
 
 .booking__inputdetails__container{
-  height: 70vh; /* Fixed height for scrolling */
+  position: relative;
   overflow-y: scroll;
+  /* overflow-x: hidden; */
   scrollbar-width: thin;
   scrollbar-color: rgba(117, 92, 92, .2) rgba(219, 184, 184, .2) ;
   height: 70vh; 
@@ -100,7 +102,7 @@ form button{
 
 .date__picker{
   margin: 50px 0;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,13 +153,49 @@ form button{
 }
 
 
-.ant-space{
+.ant-space, .ant-space-item{
   /* border: solid 2px red; */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.ant-space-item{
+  width: 100%;
+}
+
+
 .ant-picker-range .ant-picker-active-bar {
   height: 10px;
+}
+
+@media screen and (max-width: 768px){
+  .booking__main__container{
+    width: 90vw;
+  }
+  /* .form__field__container input{
+    width: 90vw;
+  } */
+
+  .booking__inputdetails__container{
+    width: 90vw;
+  }
+/* 
+  .form__wrapper{
+    width: 100%;
+  } */
+}
+
+@media screen and (min-width: 766px) and (max-width: 1042px){
+  .booking__main__container{
+    width: 90vw;
+  }
+  /* .form__field__container input{
+    width: 90vw;
+  } */
+
+  .booking__inputdetails__container{
+    width: 90vw;
+  }
 }
