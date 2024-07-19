@@ -12,6 +12,9 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import Booking from '../booking/Booking';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import Footer from '../../components/footer/Footer';
+import NavBar from '../../components/navbar/NavBar';
+
 
 const { Meta } = Card;
 
@@ -38,12 +41,11 @@ export default function () {
   }, [show]);
 
   useEffect(() =>{
-    alert('getallrooms useEffect hit')
     axios.defaults.withCredentials = true
     const fetchData = async() =>{
       try {
         const data = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
-        setRooms(data.getroomsInfo);
+         setRooms(data.getroomsInfo);
        
       } 
       
@@ -70,6 +72,7 @@ export default function () {
 
 return (
       <div>
+        <NavBar/>
 
         <div className={`bookingScreen__container ${show ? 'deactive__background' : ''}`}>
            {/*-------------- Heaer Picture Carousel section ---------------*/}
@@ -140,12 +143,9 @@ return (
 {/*----------------- Executive Suite Card section ------------------*/}
 
             <Card
-            style={{
-              width: 650,
-            }}
             cover={
                 <div>
-                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} >
+                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
                   
                       {
                         
@@ -184,12 +184,10 @@ return (
 {/*----------------- Standard suite Card section ------------------*/}
 
           <Card
-            style={{
-              width: 650,
-            }}
+           
             cover={
                 <div>
-                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} >
+                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
                   
                       {
                         
@@ -238,6 +236,7 @@ return (
           } */}
         </section>
         </div>
+
  
 
         <div className={`booking_details ${show ? 'setShow' : 'removeShow'}`} >
@@ -246,6 +245,7 @@ return (
           </div>
           <Booking  data={data}/>
         </div>
+        <Footer/>
       </div>
     )
 }

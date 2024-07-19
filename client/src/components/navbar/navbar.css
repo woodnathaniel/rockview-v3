@@ -76,7 +76,7 @@ scale: 1.1;
 
 .toggle__icon{
   display: none;
-  color: var(--icons-colors);
+  color: white;
   position: absolute;
   right: 2rem;
   top: 1.5rem;

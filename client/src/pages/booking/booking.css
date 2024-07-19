@@ -170,6 +170,8 @@ form button{
   height: 10px;
 }
 
+
+
 @media screen and (max-width: 768px){
   .booking__main__container{
     width: 90vw;
@@ -180,6 +182,24 @@ form button{
 
   .booking__inputdetails__container{
     width: 90vw;
+  }
+
+  .ant-picker-panels{
+    width: 70vw;
+    flex-direction: column;
+  }
+
+  .ant-picker-dropdown .ant-picker-date-panel, :where(.css-dev-only-do-not-override-m4timi).ant-picker-dropdown .ant-picker-time-panel {
+    width: 100%
+  }
+
+  .form__field__container input{
+    width: 98%;
+  }
+
+  .ant-picker .ant-picker-input input::placeholder{
+    color: black;
+    font-weight: 400;
   }
 /* 
   .form__wrapper{
@@ -198,4 +218,17 @@ form button{
   .booking__inputdetails__container{
     width: 90vw;
   }
+
+  .form__field__container input{
+width: 60%;  }
+
+.ant-picker .ant-picker-input input::placeholder{
+  color: black;
+  font-weight: 700;
+}
+
+  /* .ant-picker-panels{
+    width: 100vw;
+    border: solid red 2px;
+  } */
 }

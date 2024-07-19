@@ -8,6 +8,7 @@ import Error from '../../components/error/Error'
 import Loading from "../../components/Loading/Loading";
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import ReactFlagsSelect from "react-flags-select-2";
 
 
 const { RangePicker } = DatePicker;
@@ -24,36 +25,31 @@ export default function Booking({data}) {
   const [login, setLogin] = useState(false);
   const [response, setResponse] = useState('');
   const [show, setShow] = useState(false)
+  const [user, setUser] = useState([])
 
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [contact, setContact] = useState(Number);
   const [guest, setGuest] = useState(Number);
+  const [numberRooms, setNumberRooms] = useState(Number);
   const [children, setChildren] = useState(Number)
   const [occassion, setOccassion] = useState("");
   const [fromdate, setFromdate] = useState("");
   const [todate, setTodate] = useState("");
   const [totaldays, setTotaldays] = useState(Number);
+  const [country, setCountry] = useState('')
 
-  // useEffect(() => {
-  //   console.log(data);
-  //   setRoom(data)
-  //   const fetchData = async () => {
-  //     try {
-  //       if (data) {
-  //         const bookrm = (
-  //           await axios.post("/api/rooms/getroombyid", { id: data._id })
-  //         ).data;
-  //         setRoom(bookrm);
-  //         setLoading(false);
-  //       } else {
-  //         setRoom(data);
-  //       }
-  //     } catch (error) {}
-  //   };
-  //   fetchData();
-  //   return () => {};
-  // }, []);
+
+
+  useEffect(() => {
+    
+    console.log(data);
+    const user = localStorage.getItem('rockviewUser')
+    setUser(JSON.parse(user))
+    console.log(user);
+    
+    return () => {};
+  }, []);
 
 
 console.log(typeof(data._id));
@@ -80,12 +76,16 @@ console.log(typeof(data._id));
 
     // ]
 
+
+
     const bookingDetails = {
       roomid: data?._id,
       roomtype: data?.roomtype,
       roomname: data?.roomname,
-      // userid: `${login._id}`,
+      userid: `${user._id}`,
       contact: contact,
+      country: country,
+      numberRooms: numberRooms,
       email: email,
       guest: guest,
       children: children,
@@ -93,7 +93,7 @@ console.log(typeof(data._id));
       fromdate: fromdate,
       todate: todate,
       totaldays: totaldays,
-      totalamount: totaldays * data?.rentperday,
+      totalamount: (totaldays * data?.rentperday),
     };
 
     try {
@@ -166,6 +166,8 @@ console.log(typeof(data._id));
     const differenceInDays = Math.floor(
       differenceInMilliseconds / (1000 * 60 * 60 * 24)
     );
+    console.log(differenceInDays);
+    console.log(typeof(differenceInDays));
     setTotaldays(differenceInDays);
   }
 
@@ -183,6 +185,7 @@ console.log(typeof(data._id));
 
   return (
     <div  className="booking__main__container">
+
       <div className="alerts">
         {success && (
             <div className='success'>
@@ -199,7 +202,7 @@ console.log(typeof(data._id));
             }
       </div>
    
-
+ 
       <div className={`booking__inputdetails__container ${show ? 'setShow' : ''}`}>
          
       {/* <div  className="close__icon" onClick={()=> closeClick()}>
@@ -210,7 +213,7 @@ console.log(typeof(data._id));
 
         <div className="date__picker">
             <h2>Chooce CheckIn Date and CheckOut date here</h2>
-            <Space direction="vertical" size={12} style={{ width: "800px" }}>
+            <Space direction="vertical" size={12}>
               <RangePicker
                 format={"YYYY-MM-DD"}
                 onChange={getAdapter}
@@ -250,18 +253,6 @@ console.log(typeof(data._id));
                     />
               </div>
               <div className="form__field__container">
-                  <label htmlFor="">Number of Guests (max count is 2)</label>
-                  <InputNumber
-                    required
-                    min={0}
-                    max={2}
-                    step={1}
-                    value={guest}
-                    defaultValue={0}
-                    onChange={(value) => setGuest(value)}
-                  />
-              </div>
-              <div className="form__field__container">
                   <label htmlFor="">Phone Contact</label>
                   <input
                     required
@@ -271,16 +262,51 @@ console.log(typeof(data._id));
                     onChange={(e) => setContact(e.target.value)}
                   />
               </div>
+              <div className="form__field__container">
+                  <label htmlFor="">Country</label>
+                  <ReactFlagsSelect
+                      searchable= {true}
+                      selected={country}
+                      onSelect={(code) => setCountry(code)}
+                      placeholder="Select your country"
+                      searchPlaceholder="Search countries"
+                  />
+              </div>
+              <div className="form__field__container">
+                  <label htmlFor="">Number of Rooms</label>
+                  <InputNumber
+                    required
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={numberRooms}
+                    defaultValue={0}
+                    onChange={(value) => setNumberRooms(value)}
+                  />
+              </div>
+              <div className="form__field__container">
+                  <label htmlFor="">Number of Guests </label>
+                  <InputNumber
+                    required
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={guest}
+                    defaultValue={0}
+                    onChange={(value) => setGuest(value)}
+                  />
+              </div>
+
             </div>
 
 {/*------------------ second division of the details panel -----------------*/}
             <div className="form__first__section__container"> 
               <div className="form__field__container">
-                  <label htmlFor="">Number of children among the Guest (max count is 2)</label>
+                  <label htmlFor="">Number of children among the Guests</label>
                   <InputNumber
                     required
                     min={0}
-                    max={2}
+                    max={100}
                     step={1}
                     value={children}
                     defaultValue={0}
