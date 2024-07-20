@@ -209,7 +209,7 @@ const cancelBooking = async (req, res) => {
           name: "Rockview Hospitalities 👻", 
           address: 'nathanielwood002@gmail.com'
         },
-        to: email, // Ensure `email` is correctly formatted if it's an array
+        to: cancel?.email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hospitalities Booking Request Review message",
         text: "Hello world?", 
         html: `
@@ -229,14 +229,14 @@ const cancelBooking = async (req, res) => {
 
                <h3>Booking Details</h3>
                 <ul>
-                  <li>Booking: ${confirm?._id}</li>
-                  <li>Userid: ${confirm?.userid}</li>
-                  <li>Room Type: ${confirm?.roomtype}</li>
-                  <li>Numer of Room Booked: ${confirm?.numberRooms}</li>
-                  <li>CheckIn Date: ${confirm?.fromdate}</li>
-                  <li>CheckOut Date: ${confirm?.todate}</li>
-                  <li>Total Days: ${confirm?.totaldays} Days</li>
-                  <li>Total Amount: ${confirm?.totalamount} Ghana Cedis</li>
+                  <li>Booking: ${cancel?._id}</li>
+                  <li>Userid: ${cancel?.userid}</li>
+                  <li>Room Type: ${cancel?.roomtype}</li>
+                  <li>Numer of Room Booked: ${cancel?.numberRooms}</li>
+                  <li>CheckIn Date: ${cancel?.fromdate}</li>
+                  <li>CheckOut Date: ${cancel?.todate}</li>
+                  <li>Total Days: ${cancel?.totaldays} Days</li>
+                  <li>Total Amount: ${cancel?.totalamount} Ghana Cedis</li>
                 </ul>
               </div>
               <p>We look forward to your stay!</p>
@@ -292,7 +292,7 @@ const confirm = async (req, res) => {
           name: "Rockview Hospitalities 👻", 
           address: 'nathanielwood002@gmail.com'
         },
-        to: email, // Ensure `email` is correctly formatted if it's an array
+        to: confirm?.email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hospitalities Booking Request Review message",
         text: "Hello world?", 
         html: `

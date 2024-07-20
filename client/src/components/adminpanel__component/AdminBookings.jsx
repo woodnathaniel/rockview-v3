@@ -6,6 +6,7 @@ import Error from '../../components/error/Error';
 import Success from '../../components/success/Success';
 import CircularProgress from '@mui/material/CircularProgress';
 import Loading from '../../components/Loading/Loading';
+import { Modal } from 'antd';
 
 
 

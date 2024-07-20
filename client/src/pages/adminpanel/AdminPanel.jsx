@@ -15,7 +15,7 @@ const AdminPanel = () => {
   return (
     <div>
       <section className='adminHeader'>
-        <h1 >Admin Panel</h1>
+        <h1 >Rock view Admin Panel</h1>
       </section>
       
       <div className={'profileCOnt'}>

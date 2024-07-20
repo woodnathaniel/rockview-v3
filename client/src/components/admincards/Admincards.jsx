@@ -220,9 +220,11 @@ export const UsersBookingsCard = () =>{
     }
     setLoading(false)
   }
+
+
+  
      // CONFIRM BOOKING
   async function confirm(e, index, bookid){
-    alert(bookid)
     e.preventDefault()
 
     try {
