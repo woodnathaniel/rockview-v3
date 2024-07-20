@@ -87,7 +87,7 @@ const booking = async (req, res) => {
             text: "Hello world?", 
             html: `
               <header>
-                <h2>Thank you for choosing Rockview Hopitalies</h2><h4>...where you experience nature from home.</h4>
+                <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
                 <div>
                   <p>
                     Thank you for your booking request with Rockview Hospitalities. We have received your request and are currently processing it.
@@ -214,7 +214,7 @@ const cancelBooking = async (req, res) => {
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hopitalies</h2><h4>...where you experience nature from home.</h4>
+            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
@@ -225,7 +225,7 @@ const cancelBooking = async (req, res) => {
 
                 Thank you for considering [Company/Property Name].
               </p>
-              <div style{{}}>
+              <div >
 
                <h3>Booking Details</h3>
                 <ul>
@@ -297,14 +297,14 @@ const confirm = async (req, res) => {
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hopitalies</h2><h4>...where you experience nature from home.</h4>
+            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
-               Thank you for your booking request with [Service/Property Name]. We are pleased to inform you that your request has been approved.
-                Your reservation is confirmed for [Date/Time] at [Location/Service]. We look forward to welcoming you and providing you with a great experience.
+               Thank you for your booking request with Rockview Hospitalities. We are pleased to inform you that your request has been approved.
+                Your reservation is confirmed for ${confirm.checkIn} at Rockview Hospitalities. We look forward to welcoming you and providing you with a great experience.
                 If you have any special requests or need further assistance, please let us know. We're here to help!
-                Thank you for choosing [Company/Property Name].
+                Thank you for choosing Rockview Hospitalities.
               </p>
               <div style{{}}>
 
@@ -379,7 +379,7 @@ const rejectbooking = async (req, res) => {
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hopitalies</h2><h4>...where you experience nature from home.</h4>
+            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
