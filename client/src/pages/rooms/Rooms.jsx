@@ -1,12 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import { Header } from '../../components/headerNav/Header';
 import '../rooms/rooms.css'
 import { Carousel } from 'antd';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Footer from '../../components/footer/Footer';
 
+import { Modal } from 'antd';
+
 
 const Rooms = () => {
+
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   const contentStyle = {
     height: '160px',
@@ -26,12 +33,40 @@ const Rooms = () => {
     currency: 'GHS' // GHS is the currency code for Cedis
   }).format(1500);
 
+  const showModal1 = () => {
+    setOpen1(true);
+  };
+  const showModal2 = () => {
+    setOpen2(true);
+  };
+
+  const handleOk1 = () => {
+    setLoading1(true);
+    setTimeout(() => {
+      setLoading1(false);
+      setOpen1(false);
+    }, 3000);
+  };
+  const handleOk2 = () => {
+    setLoading2(true);
+    setTimeout(() => {
+      setLoading2(false);
+      setOpen1(false);
+    }, 3000);
+  };
+
+  const handleCancel1 = () => {
+    setOpen1(false);
+  };
+  const handleCancel2 = () => {
+    setOpen2(false);
+  };
 
 
 
 
   return (
-    <div style={{ display: 'grid', placeItems: 'center',position: 'relative'}}>
+    <div className={`${open1 || open2 ? 'viewDetailsFilter' : ''}`} style={{ display: 'grid', placeItems: 'center',position: 'relative'}}>
       <section className="room__header">
         <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2Funsplash%201.png?alt=media&token=9b094d70-961d-4b99-89a2-56ec2aa0773d'/>
       </section>
@@ -70,7 +105,7 @@ const Rooms = () => {
 
 {/* ----------- room type name container --------------- */}
              <div className='room__type-datails'>
-                <div> <AddCircleIcon/> <h4>VIEW ROOM DETAILS</h4></div>
+                <div className='icons' onClick={showModal1}> <AddCircleIcon/> <h4>VIEW ROOM DETAILS</h4></div>
                 <div>  <h4> {formattedAmountExecutive}  Avg/night</h4></div>
             </div>
           </div>
@@ -100,11 +135,59 @@ const Rooms = () => {
 
 {/* ----------- room type name container --------------- */}
              <div className='room__type-datails'>
-                <div> <AddCircleIcon/> <h4>VIEW ROOM DETAILS</h4></div>
+                <div className='icons' onClick={showModal2}> <AddCircleIcon /> <h4>VIEW ROOM DETAILS</h4></div>
                 <div>  <h4> {formattedAmountStandard}  Avg/night</h4></div>
             </div>
           </div>      
     </section>
+
+
+      <Modal
+        open={open1}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}>Executive Room Details</h2>}
+        onOk={handleOk1}
+        onCancel={handleCancel1}
+        centered
+      >
+
+        <> 
+        <ul>
+          <li><h3>Spacious bed rooms with King Size Beds</h3></li> 
+          <li><h3>Fully Air-condition rooms with mini Fridges</h3></li>
+          <li><h3>Satellite &amp; Multi-TV system</h3></li>
+          <li><h3>Solar electricity Back-up system</h3></li>
+        </ul>
+          
+          
+          
+          
+        </>
+
+      </Modal>
+
+      <Modal
+        open={open2}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}>Standard Room Details</h2>}
+        onOk={handleOk2}
+        onCancel={handleCancel2}
+        centered
+      >
+
+        <>  
+        <ul>
+          <li><h3>Spacious bed rooms with Double Size Beds</h3></li>
+          <li><h3>Fully Air-condition rooms with mini Fridges</h3></li>
+          <li><h3>Satellite &amp; Multi-TV system</h3></li>
+          <li><h3>Solar electricity Back-up system</h3></li>
+        </ul>
+        </>
+
+      </Modal>
+
+      
+   
+
+
 
     <Footer />
 

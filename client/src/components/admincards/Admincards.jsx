@@ -6,15 +6,17 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Loading from '../../components/Loading/Loading';
 import './admincards.css'
 import { DownOutlined, SearchOutlined } from '@ant-design/icons';
-import { Dropdown, Space } from 'antd';
+import { Dropdown, Flex, message, Space } from 'antd';
 import SearchIcon from '@mui/icons-material/Search';
 import TypographyDemo from '../skeleton/Skeleton';
-
-
+import iso3166 from 'iso-3166-1';
+import { Modal } from 'antd';
 
 
 export const UsersBookingsCard = () =>{
-
+  const [open, setOpen] = useState(false)
+  const [reason, SetResason] =useState('')
+  const [rejectMail, SetRejectMail] =useState('')
   const [antLoadings, setAntLoadings] = useState([]);
   const [searchFilter, setSearchFilter] = useState('')
   const [searchFilterIdType, setSearchFilterIdType] = useState('')
@@ -36,12 +38,41 @@ export const UsersBookingsCard = () =>{
   
   const [bookings, setBookings] = useState([])
   const [filterBookigs, setFilterBookigs] = useState([])
+  const [bookingID, setBookingID] = useState('')
  
+
+  function getName(code) {
+    if (!(code === undefined)) {
+      const country = iso3166.whereAlpha2(code);
+      console.log(country);
+      return country ? country.country : "Unknown country code";
+    }else{
+      return "";
+    }
+   
+  }
+
+  const displayReason = (bookid, mail) =>{
+    setOpen(true)
+    setBookingID(bookid)
+    SetRejectMail(mail)
+  }
+  const handleOk2 = () => {
+    setOpen(false)
+    window.location.href = '/'
+  };
+
+  const handleCancel1 = () => {
+    setOpen(false)
+    window.location.href = '/login'
+  };
 
 
   function filterFuctionsAll () {
     setLoading(true)
     setFilterBookigs(bookings)
+    setSearchFilter('')
+    setSearchFilterIdType('')
     setLoading(false)
   }
 
@@ -72,6 +103,7 @@ export const UsersBookingsCard = () =>{
     setFilterBookigs(filterResult)
     setLoading(false)
   }
+
 
 
   const items = [
@@ -124,7 +156,7 @@ export const UsersBookingsCard = () =>{
         const bookingsResult = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings')).data
         setBookings(bookingsResult)
         setFilterBookigs(bookingsResult)
-        console.log(bookings);
+        console.log(bookingsResult);
         if(bookings.status === 200){
           setLoading(false)
           setSucces(true)
@@ -144,6 +176,24 @@ export const UsersBookingsCard = () =>{
   },[])
 
 
+  function convertISOToStringDate(isoString) {
+    const date = new Date(isoString);
+    
+    const optionsDate = { year: 'numeric', month: '2-digit', day: '2-digit' };    
+    const localDate = date.toLocaleDateString(undefined, optionsDate);
+  
+    return localDate;
+  }
+  function convertISOToStringTime(isoString) {
+    const date = new Date(isoString);
+    
+    const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const localTime = date.toLocaleTimeString(undefined, optionsTime);
+  
+    return localTime ;
+  }
+
+
   //// checkig the Number of roomtype in each filtered array search
   useEffect(()=>{
     const NumOfStnd = filterBookigs.filter(each => each.roomtype === 'Standard Suit')
@@ -157,18 +207,20 @@ export const UsersBookingsCard = () =>{
 
   const filterSearchBarFunctions = () =>{
     setLoading(true)
+    
     if(searchFilterIdType === 'user'){
     
      const searchResult = filterBookigs.filter((each) => each?.userid === searchFilter)
      setFilterBookigs(searchResult)
-    }else{
+    }
+    else if(searchFilterIdType === 'booking'){
       const searchResult = filterBookigs.filter((each) => each?._id === searchFilter)
       setFilterBookigs(searchResult)
+    }else{
+      message.error('ID Type is invalid or No Input made')
     }
     setLoading(false)
   }
-
-
      // CONFIRM BOOKING
   async function confirm(e, index, bookid){
     alert(bookid)
@@ -244,71 +296,50 @@ export const UsersBookingsCard = () =>{
 
 
     //REJECT BOOKING
-    async function Reject(e, index, bookid){
+    async function Reject(){
+
+      
 
       try {
-        // setCircle(true)
-        setRejectCircles((prevCircle) => {
-          const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-          updatedCircles[index] = true; // Set the loading state for the specific index to true
-          return updatedCircles;
-        });
+        // // setCircle(true)
+        // setRejectCircles((prevCircle) => {
+        //   const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
+        //   updatedCircles[index] = true; // Set the loading state for the specific index to true
+        //   return updatedCircles;
+        // });
+        setLoading(true)
   
-        const reject = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/rejectbooking', {bookid})
+        const reject = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/rejectbooking', {bookid: bookingID, reason: reason, email: rejectMail})
   
         !reject.status === 200
         ?
-        setRejectCancelErrors((prevErrors) => {
-          const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-          updatedErrors[index] = true; // Set the cancel error state for the specific index
-          return updatedErrors;
-        })
+        // setRejectCancelErrors((prevErrors) => {
+        //   const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
+        //   updatedErrors[index] = true; // Set the cancel error state for the specific index
+        //   return updatedErrors;
+        // })
+        setError(true)
   
         :
   
-        setRejectCancelSuccess((prevSuccess) => {
-          const updatedSuccess = [...prevSuccess]; // Copy the previous cancelErrors array
-          updatedSuccess[index] = true; // Set the cancel error state for the specific index
-          return updatedSuccess;
-        });
+          setSucces(true)
   
         setTimeout(() => {
-          setRejectCancelSuccess((prevSuccess) => {
-            const updatedSuccess = [...prevSuccess]; // Copy the previous cancelErrors array
-            updatedSuccess[index] = false; 
-            window.location.reload()
-            return updatedSuccess;
-          });
+          setSucces(false)
         }, 3000);
   
       } catch (error) {
-        setRejectCircles((prevCircle) => {
-            const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-            updatedCircles[index] = false; // Set the loading state for the specific index to true
-            return updatedCircles;
-          })
+        setLoading(false)
   
-          setRejectCancelErrors((prevErrors) => {
-            const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-            updatedErrors[index] = true; // Set the cancel error state for the specific index
-            return updatedErrors;
-          });
+          setError(true)
   
           setTimeout(() => {
             // Reset the cancel error after 3000 milliseconds
-            setRejectCancelErrors((prevErrors) => {
-              const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-              updatedErrors[index] = false; // Reset the cancel error state for the specific index
-              return updatedErrors;
-            });
+            setError(false)
           }, 3000);
       }
   
-      setRejectCircles((prevCircle) => {
-        const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-        updatedCircles[index] = false; // Set the loading state for the specific index to true
-        return updatedCircles;
-      })
+      setLoading(false)
   
     }
   
@@ -321,6 +352,12 @@ export const UsersBookingsCard = () =>{
 
   return(
     <div>
+      {
+        success && message.success('Booking Request Rejected Successfully')
+      }
+      {
+        error && message.error('Booking Request Rejected Unssuccessfully')
+      }
       <div className='Adminpanel__filter'>
         <div>
           <Dropdown.Button
@@ -349,41 +386,7 @@ export const UsersBookingsCard = () =>{
       </div>
    
       <div className='bookingscards__grid__container'>
-        { 
-          loading && 
-          <div className='skeleton'>
-            <TypographyDemo />
-          </div>
-        }
-
-         { 
-          loading && 
-          <div className='skeleton'>
-            <TypographyDemo />
-          </div>
-        }
-         { 
-          loading && 
-          <div className='skeleton'>
-            <TypographyDemo />
-          </div>
-        }
-         { 
-          loading && 
-          <div className='skeleton'>
-            <TypographyDemo />
-          </div>
-        }
-          
-          {/* {
-            loading && <SkeletonTypography/>
-          }
-          {
-            loading && <SkeletonTypography/>
-          }
-          {
-            loading && <SkeletonTypography/>
-          } */}
+      
 
 
         {
@@ -393,34 +396,61 @@ export const UsersBookingsCard = () =>{
                 <section className="id__section cards__sections">
                   <span><h5>Booking ID: </h5> <p>{booking?._id}</p></span>
                   <span><h5>User ID: </h5> <p>{booking?.userid}</p></span>
-                  <span><h5>Email: </h5> <p>{booking?.email}</p></span>
-                </section>
-                <section className="user__details cards__sections">
                   <h4>{booking?.roomtype}</h4>
-                  <h4>{booking?.roomname}</h4>
                 </section>
-                <section className='cards__sections'>
-                  <span><h5> Check In: </h5> <p>{booking?.fromdate}</p></span>
-                  <span><h5>Check Out: </h5> <p>{booking?.todate}</p></span>
+                
+                  <section className="id__section cards__sections">
+                      <span><p>{booking?.email}</p></span>
+                      <span><p>{booking?.contact}</p></span>
+                      <span><p>{getName(booking?.country)}</p></span>
+                    </section>
+                    <section className="user__details cards__sections">
+                      <span><h5>Number of Rooms: </h5><p>{booking?.numberRooms}</p></span> 
+                      <span><h5>Guests No.: </h5> <p>{booking?.guest}</p></span>
+                      <span><h5>Number of Childrens: </h5> <p>{booking?.children}</p></span> 
+                      <span><h5>Occassion: </h5> <p>{booking?.occassion}</p></span>
+                    </section>
+               
+                <section className='cards__sections check_section'>
+                  <div className='check_details'>
+                    <span><h5> Check In: </h5> <p>{booking?.fromdate}</p></span>
+                    <span><h5>Check Out: </h5> <p>{booking?.todate}</p></span>
+                  </div>
+                  <div className='check_dates'>
+                    <p>{convertISOToStringDate(booking?.createdAt)}</p>
+                    <p>{convertISOToStringTime(booking?.createdAt)}</p>
+                  </div>
                 </section>
-                <section className={
-                  `status__section cards__sections 
-                    ${
-                      booking.status === 'rejected'||booking.status === 'cancelled' ? 'rejected' : booking.status === 'pending'?  'pending' :  booking.status === 'approved' ? 'approved' : ''
-                    }
-                    `
-                  }>{(booking?.status)?.toUpperCase()}</section>
+                <section className='' >
+                  <div className={
+                    `status__section cards__sections 
+                      ${
+                        booking.status === 'rejected'||booking.status === 'cancelled' ? 'rejected' : booking.status === 'pending'?  'pending' :  booking.status === 'approved' ? 'approved' : ''
+                      }
+                      `
+                  }>
+                    {(booking?.status)?.toUpperCase()}
+                      <div>
+                        <p>{convertISOToStringDate(booking?.updatedAt)}</p>
+                        <p>{convertISOToStringTime(booking?.updatedAt)}</p>
+                      </div> 
+                  </div> 
+                    {/* <div className='cards__sections'>
+                      <p style={{fontStyle: 'italic', color:'rgb(161, 161, 161)'}}>{convertISOToStringDate(booking?.updatedAt)}</p>
+                      <p style={{fontStyle: 'italic', color:'rgb(161, 161, 161)'}}>{convertISOToStringTime(booking?.updatedAt)}</p>
+                    </div> */}
+                    </section>
                 <section >
                   {
                     booking?.status === 'pending' ? 
                     <div className="review__section ">
                   {/*------------- Confirm Button-------------*/}
-                      <button onClick={(e)=>confirm(e, index, booking._id)}>
+                      <button onClick={(e)=>confirm(e, index, booking?._id)}>
                         {confirmCancelErrors[index] && <Error style={{marginBottom: '20px'}} message={'Error'} />}
                         {  confirmCircles[index] ? <CircularProgress /> : confirmCancelSuccess[index] ? <Success msg={'confirmed successful'}/> : 'Confirm'}
                       </button>
                   {/*------------- Reject Button-------------*/}
-                      <button onClick={(e)=>Reject(e, index, booking._id)}>
+                      <button onClick={(e)=> displayReason(booking?._id, booking?.email)}>
                         {rejectCancelErrors[index] && <Error style={{marginBottom: '20px'}} message={'Error'} />}
                         {  rejectCircles[index] ? <CircularProgress /> : rejectCancelSuccess[index] ? <Success msg={'rejected successful'}/> : 'Reject'}
                       </button>
@@ -430,6 +460,7 @@ export const UsersBookingsCard = () =>{
                   }
                   
                 </section>
+                
               </div> 
             )
           })
@@ -439,6 +470,22 @@ export const UsersBookingsCard = () =>{
 
 
       </div>
+      <Modal
+        open={open}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}> Successfully Logged In</h2>}
+        onOk={Reject}
+        onCancel={''}
+        okText= {loading ? <Loading/> : 'Confirm Booking'}
+        cancelText = 'Cancel'
+        centered
+      >
+
+        {
+          <textarea id="large-input" class="large-input" rows="10" cols="50" placeholder="Briefly type the reason for rejecting the booking request" onChange={(e) => SetResason(e.target.value)}></textarea>
+        }
+
+      </Modal>
+
   </div>  
   )
 }
@@ -592,6 +639,8 @@ export const AdminUsers = () =>{
       })
        
     }
+
+    
   </div>
   )
 }

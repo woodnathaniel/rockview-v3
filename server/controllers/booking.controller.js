@@ -204,13 +204,58 @@ const confirm = async (req, res) => {
   }
 };
 
+
+// Rejecting booking requests API
+
 const rejectbooking = async (req, res) => {
-  const { bookid } = req.body;
+  const { bookid, reason, email} = req.body;
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // Use `true` for port 465, `false` for all other ports
+    auth: {
+      user: "nathanielwood002@gmail.com",
+      pass: "jlvc dxfh fppt xavj",
+    },
+  });
+
+  const mailOptions = {
+    from: {
+      name: "Rockview Hospitalities 👻", 
+      address: 'nathanielwood002@gmail.com'
+    },
+    to: email, // Ensure `email` is correctly formatted if it's an array
+    subject: "Rockview Hospitalities Booking Request Review message",
+    text: "Hello world?", 
+    html: `
+      <header>
+        <h2>Thank you for choosing Rockview Hopitalies</h2><h4>...where you experience nature from home.</h4>
+        <div>
+          <h3>Your Booking Request Review Result</h3>
+          <p>
+            Thank you for your interest in Rockview Hopitalities Services. We appreciate you considering us for your needs.
+            Unfortunately, we are unable to accommodate your booking request at this time due to <h3 style{{Color: 'red', fontSize: '15px'}}> <b> ${reason} <b/></h3>. We apologize for any inconvenience this may cause.
+            We hope to have the opportunity to serve you in the future. If you have any questions or would like assistance with alternative arrangements, please feel free to contact us.
+            Thank you for your understanding.
+          </p>
+          <div style{{}}>
+           <h3>Please Take Note:</h3>
+            <h4>currency of total amount is in Ghana Cedis</h4>
+          </div>
+          <p>We look forward to your stay!</p>
+        </div>
+      </header>
+    `, 
+  };
   try {
+    await transporter.sendMail(mailOptions);
     const reject = await bookingModel.findByIdAndUpdate(
       { _id: bookid },
       { status: "rejected" }
     );
+    console.log(reject)
     res.status(200).json(reject);
     console.log("successful rejected api");
   } catch (error) {

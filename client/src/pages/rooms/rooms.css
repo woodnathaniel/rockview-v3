@@ -9,6 +9,12 @@
   padding-bottom: 30px;
 }
 
+.viewDetailsFilter{
+  filter: blur(10px);
+  pointer-events: none;
+  overflow: hidden;
+}
+
 .room__header-text h1{
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
@@ -85,6 +91,10 @@
   gap: 100px;
 }
 
+.room__type-datails .icons:hover{
+  cursor: pointer;
+}
+
 .room__type-datails svg{
   color: var(--primary-color);
   font-size: 34px;
@@ -129,6 +139,10 @@
 .antd-room-carousel img{
   width: 100%;
   height: 100%;
+}
+
+.ant-modal-content{
+  color: var(--opt-color);
 }
 
 

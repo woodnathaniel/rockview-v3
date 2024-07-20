@@ -14,7 +14,8 @@ import Booking from '../booking/Booking';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import Footer from '../../components/footer/Footer';
 import NavBar from '../../components/navbar/NavBar';
-
+import { Modal } from 'antd';
+import Loading from '../../components/Loading/Loading';
 
 const { Meta } = Card;
 
@@ -24,6 +25,9 @@ export default function () {
 
   const [rooms, setRooms] = useState([]);
   const [show, setShow] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [loading1, setLoading1] = useState(false)
+  const [loading2, setLoading2] = useState(false)
   const [data, setData] = useState([])
 
 
@@ -62,16 +66,35 @@ export default function () {
   console.log(rooms);
 
  const handelClick = (data)=>{
-  console.log(data);
-  setData(data)
-  setShow(!show)
+  const user = localStorage.getItem('rockviewUser')
+  console.log(user)
+  if(user === null){
+    setOpen(true)
+  }else{
+    console.log(data);
+    setData(data)
+    setShow(!show)
+  }
  }
- const closeClick = () => {
-  setShow(!show);
-};
 
-return (
-      <div>
+  const handleOk2 = () => {
+    setLoading1(true)
+    window.location.href = '/login'
+    setOpen(false)
+  };
+
+  const handleCancel1 = () => {
+    setLoading2(true)
+    window.location.href = '/register'
+    setOpen(false)
+  };
+
+  const closeClick = () => {
+    setShow(!show);
+  };
+
+  return (
+      <div className={`${open ?'BookingScreenfilter': ''}`}>
         <NavBar/>
 
         <div className={`bookingScreen__container ${show ? 'deactive__background' : ''}`}>
@@ -140,7 +163,7 @@ return (
         <section className="avilable__rooms__section">
 
 
-{/*----------------- Executive Suite Card section ------------------*/}
+  {/*----------------- Executive Suite Card section ------------------*/}
 
             <Card
             cover={
@@ -181,7 +204,7 @@ return (
 
 
 
-{/*----------------- Standard suite Card section ------------------*/}
+    {/*----------------- Standard suite Card section ------------------*/}
 
           <Card
            
@@ -245,7 +268,26 @@ return (
           </div>
           <Booking  data={data}/>
         </div>
+
+        <Modal
+        open={open}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}>Oops!!! it seems you dont have account here</h2>}
+        onOk={handleOk2}
+        onCancel={handleCancel1}
+        okText= {<div>{loading1 && <Loading/>}<p style={{fontWeight: 'bolder'}}>LOGIN</p></div>}
+        cancelText = {<div>{loading2 && <Loading/>}<p style={{color: 'rgb(59, 108, 197)', fontWeight: 'bolder'}}>REGISTER</p></div>}
+        centered
+        maskClosable= {false}
+        closable = {false}
+      >
+
+          <>  
+          <h3 style={{color: ''}}>Click the Login if already having Accout here </h3>
+          <h3 style={{color: ''}}>Or the Register to have an account here</h3> 
+          </>
+
+      </Modal>
         <Footer/>
       </div>
-    )
+  )
 }

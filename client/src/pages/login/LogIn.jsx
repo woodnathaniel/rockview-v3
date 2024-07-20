@@ -9,6 +9,7 @@ import Error from '../../components/error/Error'
 import Success from '../../components/success/Success';
 import Loading from '../../components/Loading/Loading';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { Modal } from 'antd';
 
 
 
@@ -20,12 +21,23 @@ export default function LogIn() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSucces] = useState(false)
+  const [open, setOpen] = useState(false)
   const [error, setError] = useState(false)
   const [response, setResponse] = useState({})
 
  
   const googleAuth = () => {
       window.open("http://rockviewhospitalities-api.vercel.app/auth/google/callback", "_self");
+  };
+
+  const handleOk2 = () => {
+    setOpen(false)
+    window.location.href = '/'
+  };
+
+  const handleCancel1 = () => {
+    setOpen(false)
+    window.location.href = '/login'
   };
 
   const submitLoginDetails = async (e) =>{
@@ -44,8 +56,9 @@ export default function LogIn() {
       if(loginPost.status === 200){
         console.log(loginPost);
         localStorage.setItem('rockviewUser', JSON.stringify(loginPost.data))
+        setLoading(false)
         setSucces(true)
-
+        setOpen(true)
         setTimeout(()=>{
           setSucces(false)
           // window.location.href='/booking'
@@ -75,7 +88,7 @@ export default function LogIn() {
           <form action="">
             <div className="email_div">
               <div className='icon'><PersonIcon/></div>
-              <input type="text" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
+              <input type="email" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
             </div>
             <div className="password_div">
               <div className='icon'><LockIcon /></div>
@@ -108,7 +121,23 @@ export default function LogIn() {
           }
         </div>
       </div>
-      
+
+      <Modal
+        open={open}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}> Successfully Logged In</h2>}
+        onOk={handleOk2}
+        onCancel={handleCancel1}
+        okText= 'Home'
+        cancelText = 'BOOKING'
+        centered
+      >
+
+        <>  
+        Navigate Back To Home To Explore Or The Booking
+        </>
+
+      </Modal>
+
     </div>
   )
 }
