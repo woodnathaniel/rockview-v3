@@ -64,7 +64,6 @@ export const UsersBookingsCard = () =>{
 
   const handleCancel1 = () => {
     setOpen(false)
-    window.location.href = '/login'
   };
 
 
@@ -474,7 +473,7 @@ export const UsersBookingsCard = () =>{
         open={open}
         title={<h2 style={{color:'rgb(163, 5, 5)'}}> Successfully Logged In</h2>}
         onOk={Reject}
-        onCancel={''}
+        onCancel={handleCancel1}
         okText= {loading ? <Loading/> : 'Confirm Booking'}
         cancelText = 'Cancel'
         centered
