@@ -110,25 +110,25 @@
     gap: 10px;
   }
   .header__text h2 {
-    font-size: 80px;
-  }
-
-  .header__text h4{
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 50px;
   }
 
   .header__text h4{
     font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .header__text h4{
+    font-size: 15px;
   }
 
   .header__text p{
-    font-size: 15px;
+    font-size: 10px;
 
   }
 
   .header__container{
-    height: 40vh;
+    height: 50vh;
     border-bottom: solid var(--icons-colors) 1px;
     gap: 0;
   }
@@ -149,7 +149,7 @@
   }
 
   .header__container{
-    height: 60vh;
+    height: 70vh;
     border-bottom: solid var(--icons-colors) 2px;
   }
   
@@ -168,3 +168,4 @@
     font-size: 16vw; 
   }
 } */
+
