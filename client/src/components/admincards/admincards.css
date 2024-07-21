@@ -11,7 +11,7 @@
 .card__header__container{
   background-color : white;
   width: 500px;
-  height: 500px;
+  height: 550px;
   /* border: solid red 2px; */
   border-radius: 10px;
   padding: 10px ;
@@ -212,5 +212,19 @@ span{
   }
   .check_section{
     flex-direction: column;
+  }
+
+  .cards__sections p{
+    font-weight: 700;
+  }
+
+  .cards__sections h5{
+    font-size: medium;
+    
+  }
+
+  .card__header__container{
+    width: 550px;
+    height: 600px;
   }
 }
