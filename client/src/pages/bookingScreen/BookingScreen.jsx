@@ -189,14 +189,14 @@ export default function () {
               
             }
             actions={[
-              <div ><h4>Room Name</h4> <p>{rooms[0]?.roomname}</p></div>,
-              <h3>Max count: {rooms[0]?.maxcount}</h3>,
+              <div ><h4>Rent per day</h4> <p>{rooms[0]?.rentperday} Ghana Cedis</p></div>,
+              <h3>Maximun Guest per Room is {rooms[0]?.maxcount} if only they are couple.</h3>,
               <button className='bkcard__btn__booknow' onClick={ () => handelClick(rooms[0])}> Book Now</button>,
             ]}
           >
             <Meta
               // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
-              title={rooms[0]?.roomtype}
+              title={<h2>{rooms[0]?.roomtype}</h2>}
               description={''}
               
             />
@@ -231,14 +231,14 @@ export default function () {
               
             }
             actions={[
-              <div ><h4>Room Name</h4> <p>{rooms[1]?.roomname}</p></div>,
-              <h3>Max count: {rooms[1]?.maxcount}</h3>,
+              <div ><h4>Rent per day</h4> <p>{rooms[1]?.rentperday} Ghana Cedis</p></div>,
+              <h3>Maximun Guest per Room is {rooms[1]?.maxcount} if only they are couple.</h3>,
               <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}> Book Now</button>,
             ]}
           >
             <Meta
               // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
-              title={rooms[1]?.roomtype}
+              title={<h2>{rooms[1]?.roomtype}</h2>}
               description={''}
               
             />
@@ -282,8 +282,9 @@ export default function () {
       >
 
           <>  
-          <h3 style={{color: ''}}>Click the Login if already having Accout here </h3>
+          <h3 style={{color: ''}}>Click the Login if already having Accout here to login</h3>
           <h3 style={{color: ''}}>Or the Register to have an account here</h3> 
+          <h3 style={{color: ''}}>before booking request can made.</h3> 
           </>
 
       </Modal>

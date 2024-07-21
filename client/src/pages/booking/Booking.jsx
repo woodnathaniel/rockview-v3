@@ -9,9 +9,32 @@ import Loading from "../../components/Loading/Loading";
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import ReactFlagsSelect from "react-flags-select-2";
-
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 const { RangePicker } = DatePicker;
+
+
+dayjs.extend(customParseFormat);
+const range = (start, end) => {
+  const result = [];
+  for (let i = start; i < end; i++) {
+    result.push(i);
+  }
+  return result;
+};
+
+
+const disabledDate = (current) => {
+  // Can not select days before today and today
+  return current && current < dayjs().startOf('day');
+};
+const disabledDateTime = () => ({
+  disabledHours: () => range(0, 24).splice(4, 20),
+  disabledMinutes: () => range(30, 60),
+  disabledSeconds: () => [55, 56],
+});
+
 
 
 
@@ -20,6 +43,8 @@ export default function Booking({data}) {
 
   const [room, setRoom] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [mailError, setMailError] = useState(false);
+  const [roomError, setRoomError] = useState(false);
   const [success, setSucces] = useState(false);
   const [error, setError] = useState(false);
   const [login, setLogin] = useState(false);
@@ -40,6 +65,20 @@ export default function Booking({data}) {
   const [country, setCountry] = useState('')
 
 
+  useEffect(()=>{
+    if(email === confirmEmail){
+      setMailError(false)
+    }else{
+      setMailError(true)
+    }
+
+    if(numberRooms > guest){
+      setRoomError(true)
+    }else{
+      setRoomError(false)
+    }
+      return () => {};
+  }, [confirmEmail, guest, numberRooms])
 
   useEffect(() => {
     
@@ -121,26 +160,32 @@ console.log(typeof(data._id));
         }
       }
     } catch (error) {
+      setLoading(false);
       setResponse(error.response.data.details)
       console.log(error);
       console.log(error.response.data.details);
       console.log(typeof(error.response.data.details));
       console.log("api did not hit");
-      setLoading(false);
       setError(true);
       setTimeout(()=>{
         setError(false);
-      }, 8000)
+      }, 3000)
     }
 
     setEmail("");
-    setContact(Number);
-    setGuest(Number);
+    setContact('');
+    setGuest('');
     setOccassion("");
     setFromdate("");
     setTodate("");
 
     setLoading(false);
+    if(!error){
+      setTimeout(()=>{
+        window.location.href = '/booking'
+      }, 3000)
+
+    }
   }
 
 
@@ -215,6 +260,9 @@ console.log(typeof(data._id));
             <h2>Chooce CheckIn Date and CheckOut date here</h2>
             <Space direction="vertical" size={12}>
               <RangePicker
+                disabledDate={disabledDate}
+                disabledTime={disabledDateTime}
+                placeholder={['CheckIn Date', 'CheckOut Date']}
                 format={"YYYY-MM-DD"}
                 onChange={getAdapter}
               />
@@ -231,21 +279,23 @@ console.log(typeof(data._id));
               <div className="form__field__container">
                   <label htmlFor="">Active Email</label>
                   <input
-
                     style={{cursor:'vertical-text'}}
-                      required
+                      required={true}
                       type="email"
                       value={email}
                       placeholder="Active Email"
                       onChange={(e) => setEmail(e.target.value)}
-                    />
+                  />
               </div>
               <div className="form__field__container">
                   <label htmlFor="">Confirm Email</label>
+                  {
+                    mailError && <h3 style={{color: 'red'}}>Unmatched emails</h3>
+                  }
                   <input
 
                     style={{cursor:'vertical-text'}}
-                      required
+                      required={true}
                       type="email"
                       value={confirmEmail}
                       placeholder="Active Email"
@@ -255,7 +305,7 @@ console.log(typeof(data._id));
               <div className="form__field__container">
                   <label htmlFor="">Phone Contact</label>
                   <input
-                    required
+                    required={true}
                     type="text"
                     value={contact}
                     placeholder="Phone Contact"
@@ -275,7 +325,7 @@ console.log(typeof(data._id));
               <div className="form__field__container">
                   <label htmlFor="">Number of Rooms</label>
                   <InputNumber
-                    required
+                    required={true}
                     min={0}
                     max={100}
                     step={1}
@@ -286,11 +336,14 @@ console.log(typeof(data._id));
               </div>
               <div className="form__field__container">
                   <label htmlFor="">Number of Guests </label>
+                  {
+                    roomError && <h4 style={{color: 'red'}}>Number of rooms can't exceed numer of guests</h4>
+                  }
                   <InputNumber
-                    required
+                    required={true}
                     min={0}
                     max={100}
-                    step={2}
+                    step={1}
                     value={guest}
                     defaultValue={0}
                     onChange={(value) => setGuest(value)}
@@ -304,10 +357,10 @@ console.log(typeof(data._id));
               <div className="form__field__container">
                   <label htmlFor="">Number of children among the Guests</label>
                   <InputNumber
-                    required
+                    required={true}
                     min={0}
                     max={100}
-                    step={3}
+                    step={1}
                     value={children}
                     defaultValue={0}
                     onChange={(value) => setChildren(value)}

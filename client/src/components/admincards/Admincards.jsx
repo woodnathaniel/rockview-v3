@@ -33,8 +33,10 @@ export const UsersBookingsCard = () =>{
   const [rejectCancelErrors, setRejectCancelErrors] = useState([])
   const [rejectCancelSuccess, setRejectCancelSuccess] = useState([])
   
-  const [success, setSucces] = useState()
-  const [error, setError] = useState()
+  const [success, setSucces] = useState(false)
+  const [success1, setSucces1] = useState(false)
+  const [error, setError] = useState(false)
+  const [error1, setError1] = useState(false)
   
   const [bookings, setBookings] = useState([])
   const [filterBookigs, setFilterBookigs] = useState([])
@@ -98,7 +100,21 @@ export const UsersBookingsCard = () =>{
 
   function CancelledfilterFuctions () {
     setLoading(true)
-    const filterResult = bookings.filter((each) => each.status === 'cancelled')
+    const filterResult = bookings.filter((each) => each?.status === 'cancelled')
+    setFilterBookigs(filterResult)
+    setLoading(false)
+  }
+
+  function StandardfilterFuctions () {
+    setLoading(true)
+    const filterResult = bookings.filter((each) => each.roomtype === 'Standard Suit')
+    setFilterBookigs(filterResult)
+    setLoading(false)
+  }
+
+  function ExcutivefilterFuctions () {
+    setLoading(true)
+    const filterResult = bookings.filter((each) => each.roomtype === 'Executive Suit')
     setFilterBookigs(filterResult)
     setLoading(false)
   }
@@ -135,12 +151,12 @@ export const UsersBookingsCard = () =>{
     {
       label: `Standard ${numOfStnd}`,
       key: '6',
-      onClick: CancelledfilterFuctions
+      onClick: StandardfilterFuctions
     },
     {
       label: `Executive ${numOfExct}`,
       key: '7',
-      onClick: CancelledfilterFuctions
+      onClick: ExcutivefilterFuctions
     }
   ];
 
@@ -203,7 +219,6 @@ export const UsersBookingsCard = () =>{
 
 
   // Filter SearchBar Function(userid and BookingId)
-
   const filterSearchBarFunctions = () =>{
     setLoading(true)
     
@@ -222,8 +237,8 @@ export const UsersBookingsCard = () =>{
   }
 
 
-  
-     // CONFIRM BOOKING
+
+    // CONFIRM BOOKING
   async function confirm(e, index, bookid){
     e.preventDefault()
 
@@ -293,6 +308,10 @@ export const UsersBookingsCard = () =>{
       return updatedCircles;
     })
 
+    setTimeout(() => {
+      // Reset the cancel error after 3000 milliseconds
+     window.location.reload()
+    }, 3000);
   }
 
 
@@ -302,46 +321,40 @@ export const UsersBookingsCard = () =>{
       
 
       try {
-        // // setCircle(true)
-        // setRejectCircles((prevCircle) => {
-        //   const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-        //   updatedCircles[index] = true; // Set the loading state for the specific index to true
-        //   return updatedCircles;
-        // });
+     
         setLoading(true)
   
         const reject = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/rejectbooking', {bookid: bookingID, reason: reason, email: rejectMail})
-  
+        console.log(reject);
         !reject.status === 200
         ?
-        // setRejectCancelErrors((prevErrors) => {
-        //   const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-        //   updatedErrors[index] = true; // Set the cancel error state for the specific index
-        //   return updatedErrors;
-        // })
-        setError(true)
+        setError1(true)
   
         :
   
-          setSucces(true)
+          setSucces1(true)
   
         setTimeout(() => {
-          setSucces(false)
+          setSucces1(false)
         }, 3000);
   
       } catch (error) {
         setLoading(false)
   
-          setError(true)
+          setError1(true)
   
           setTimeout(() => {
             // Reset the cancel error after 3000 milliseconds
-            setError(false)
+            setError1(false)
           }, 3000);
       }
   
       setLoading(false)
-  
+      setOpen(false)
+      
+      setTimeout(() => {
+       window.location.reload()
+      }, 3000);
     }
   
 
@@ -354,10 +367,10 @@ export const UsersBookingsCard = () =>{
   return(
     <div>
       {
-        success && message.success('Booking Request Rejected Successfully')
+        success1 && message.success('Booking Request Rejected Successfully')
       }
       {
-        error && message.error('Booking Request Rejected Unssuccessfully')
+        error1 && message.error('Booking Request Rejected Unssuccessfully')
       }
       <div className='Adminpanel__filter'>
         <div>
@@ -476,7 +489,7 @@ export const UsersBookingsCard = () =>{
         title={<h2 style={{color:'rgb(163, 5, 5)'}}> Successfully Logged In</h2>}
         onOk={Reject}
         onCancel={handleCancel1}
-        okText= {loading ? <Loading/> : 'Confirm Booking'}
+        okText= {loading ? <Loading/> : 'Confirm Rejection'}
         cancelText = 'Cancel'
         centered
       >

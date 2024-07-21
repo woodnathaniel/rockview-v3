@@ -25,10 +25,6 @@ const AdminPanel = () => {
               <UsersBookingsCard />
             </TabPane>
             
-            <TabPane tab='Rooms' key='2'>
-              <AdminRooms />
-            </TabPane>
-
             <TabPane tab='Users' key='4'>
               <AdminUsers />
             </TabPane>
