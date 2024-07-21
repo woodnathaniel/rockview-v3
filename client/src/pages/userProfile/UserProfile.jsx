@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
-import './userprofile.css';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { FloatButton } from 'antd';
+import './userprofile.css'
 // import './ant.css'
 // import './admincards.css'
 import axios from 'axios'
@@ -25,10 +23,7 @@ const Profile = () => {
     setLoading(false)
   }, []);
 
-  function floatUnclick(){
-    window.location.href = '/'
-  }
-
+ 
 
 
   return (
@@ -41,7 +36,7 @@ const Profile = () => {
           <Tabs defaultActiveKey="1" >
             
             <TabPane tab='Profile' key='1'>
-                NAME: {login.name}
+                < Userprofile/>
 
             </TabPane>
             <TabPane className={'animation'} tab='Bookings' key='2'>
@@ -51,19 +46,7 @@ const Profile = () => {
         </div>
       }
       
-      <FloatButton
-      icon={<HomeOutlinedIcon />}
-      description="Home"
-      shape="square"
-      onClick={floatUnclick}
-      style={{
-        right: 34,
-        width:  80,
-        height: 80,
-        borderRadius: 100
-        
-      }}
-    />
+   
      
     </div>
     
@@ -96,38 +79,19 @@ export const Bookings = ({userid}) => {
     }
     fetchData()
     
-  },[])
+  },[userid])
 
   console.log(userBookedRooms);
 
 
   //Hitting the cancelling booking API.
-  async function cancelBooking(bookid, roomid){
+  async function cancelBooking(bookid){
+    setLoading(true)
 
     try {
-      setLoading(true)
-      const result = await axios.post('/api/bookings/cancelbooking', {bookid, roomid})
+      const result = await axios.post('/api/bookings/cancelbooking', {bookid})
       console.log('booking canceled successfuly');
-      if(result.status === 200){
-        try {
-          const updateAvailable = await axios.post('/api/rooms/updateroomavailabilitybyid', {id: roomid})
-          console.log('room status updated');
-
-          if(updateAvailable.status === 200){
-            setLoading(false)
-            setSucces(true)
-            setTimeout(()=>{
-              setSucces(false)
-              window.location.reload();
-            }, 3000)
-          }else{
-            setSucces(false)
-          }
-        } catch (error) {
-          console.log(error);
-          console.log('room status updat failed');
-        }
-      }
+      
       setSucces(true)
       setTimeout(()=>{
         setSucces(false)
@@ -153,19 +117,20 @@ export const Bookings = ({userid}) => {
             <div className='card__header__container'>
               <section className="id__section cards__sections">
                 <span><h5>Booking ID: </h5> <p>{book?._id}</p></span>
-                <span><h5>Room name: </h5> <p>{book?.roomname}</p></span>
+                <span><h5>Room Type: </h5> <p>{book?.roomtype}</p></span>
               </section>
-              <section className="user__details cards__sections">
-                <h4>{book?.roomtype}</h4>
-              </section>
+              
               <section className='cards__sections'>
                 <span><h5> Check In: </h5> <p>{book?.fromdate}</p></span>
                 <span><h5>Check Out: </h5> <p>{book?.todate}</p></span>
               </section>
               <section className='cards__sections'>
-                <span><h5> Check In: </h5> <p>{book?.totalamount}</p></span>
-                <span><h5>Check Out: </h5> 
-                  <p className={`
+                <span><h5> Total Days: </h5> <p>{book?.totaldays}</p></span>
+                <span><h5>Total Amount: </h5> <p>{book?.totalamount}</p></span>
+              </section>
+              <section className='cards__sections'>
+                <span style={{display: 'flex', color: 'red'}}>
+                  <h5>Booking Status: <p className={`
                                   ${
                                     book?.status === 'rejected' || book?.status === 'cancelled' ? 
                                     'rejected' :
@@ -174,25 +139,19 @@ export const Bookings = ({userid}) => {
                                     book?.status === 'approved' ?
                                     'approved' : ''
                                   }`
-                              }>{book?.status}</p>
-                  </span>
+                              }>{(book?.status).toUpperCase()}</p>
+                  </h5> 
+                </span>
               </section>
-              {/* <section className={
-                `status__section cards__sections 
-                  ${
-                    book.status === 'rejected'||book.status === 'cancelled' ? 'rejected' : book.status === 'pend'?  'pend' :  booking.status === 'approved' ? 'approved' : ''
-                  }
-                  `
-                }>{booking?.status}</section>
-              <section >
+              <section>
                 {
-                  booking?.status === 'pending' ? 
-                  <div className="review__section "><button>Confirm</button><button>Reject</button></div> : 
-                  booking?.status === 'cancelled'||'rejected' ?
+                  book?.status === 'pending' ? 
+                  <div className="review__section "><button onClick={() => cancelBooking(book?._id)}>Cancel</button></div> : 
+                  book?.status === 'cancelled'||'rejected' ?
                    '' : ''
                 }
                 
-              </section> */}
+              </section>
             </div> 
           )
           
@@ -204,4 +163,31 @@ export const Bookings = ({userid}) => {
   );
 }
 
+
+export const Userprofile = () =>{
+
+
+  const [loading, setLoading] = useState(true)
+  const [login, setLogin] = useState(true)
   
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('rockviewUser'));
+    setLogin(user);
+    console.log(user._id);
+    setLoading(false)
+  }, []);
+
+  return(
+    <div className='user_card__header__container'>
+      <section className="id__section user_cards__sections">
+        <span><h5>Name: </h5> <p>{login?.name}</p></span>
+        <span><h5>Email: </h5> <p>{login?.email}</p></span>
+      </section>
+      <section className='user_cards__sections'>
+        <span><h5> User ID: </h5> <p>{login?._id}</p></span>
+        <span><h5>isAdmin: </h5> <p>{login?.isAdmin}</p></span>
+      </section>
+    </div> 
+  )
+}

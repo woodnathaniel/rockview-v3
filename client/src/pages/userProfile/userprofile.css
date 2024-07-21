@@ -1,3 +1,15 @@
+span .rejected{
+  color: rgb(228, 14, 14);
+}
+
+span .pending{
+  color: rgb(1, 180, 180);
+}
+
+span .approved{
+  color: rgb(78, 129, 0);
+}
+
 .bookCont{
   display: flex;
   flex-wrap: wrap;
@@ -28,3 +40,13 @@
 .ant-float-btn-default .ant-float-btn-body:hover{
   scale: 1.1;
 }
+
+.user_card__header__container{
+  background-color : white;
+  width: 480px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 10px ;
+  gap: 5px;
+}
+

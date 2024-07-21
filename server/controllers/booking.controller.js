@@ -91,7 +91,7 @@ const booking = async (req, res) => {
                 <div>
                   <p>
                     Thank you for your booking request with Rockview Hospitalities. We have received your request and are currently processing it.
-                    You will receive a confirmation message <b>in less than 24hour</b> once your booking is approved at the mail your provied. If we need any additional information from you, we will contact you shortly.
+                    You will receive a confirmation message <b>in less than 24hour</b> once your booking is approved at the mail your provided. If we need any additional information from you, we will contact you shortly.
                     Thank you for choosing Rockview Hospitalities. We look forward to the opportunity to serve you.
                   </p> 
       
