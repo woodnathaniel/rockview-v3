@@ -14,8 +14,10 @@
 }
 
 .adminHeader{
+
+  /* width: 100vw; */
   position: absolute;
-  left: 50%;
+  left: 30%;
   transform: translateX(-50%, -50%); 
 }
 
@@ -31,3 +33,15 @@
   margin: 0;
 }
 
+@media screen and (max-width: 969px) {
+  .adminHeader h1{
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .adminHeader h1{
+    font-size: 15px;
+    text-align: center;
+  }
+}

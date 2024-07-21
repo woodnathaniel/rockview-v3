@@ -218,12 +218,10 @@ const cancelBooking = async (req, res) => {
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
-                Thank you for informing us about the cancellation of your booking request with [Service/Property Name]. We understand that plans can change, and we appreciate you letting us know.
+                Thank you for informing us about the cancellation of your booking request with Rockview Hospitalities. We understand that plans can change, and we appreciate you letting us know.
                 If there's anything we can do to assist you in the future, please don't hesitate to reach out. We hope to have the opportunity to serve you another time.
-
                 If this action was made unintentionally you can make the booking request again: <a href="https://rockviewhospitalities.vercel.app/booking">click Here To Make Booking Request</a>
-
-                Thank you for considering [Company/Property Name].
+                Thank you for considering Rockview Hospitalities.
               </p>
               <div >
 
@@ -301,17 +299,17 @@ const confirm = async (req, res) => {
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
-               Thank you for your booking request with Rockview Hospitalities. We are pleased to inform you that your request has been approved.
-                Your reservation is confirmed for ${confirm.checkIn} at Rockview Hospitalities. We look forward to welcoming you and providing you with a great experience.
+               Thank you for your booking request with Rockview Hospitalities. We are pleased to inform you that your request <b>has been APPROVED</b>.
+                Your reservation is confirmed for <b>${confirm?.fromdate}</b> at Rockview Hospitalities. We look forward to welcoming you and providing you with a great experience.
                 If you have any special requests or need further assistance, please let us know. We're here to help!
                 Thank you for choosing Rockview Hospitalities.
               </p>
-              <div style{{}}>
+              <div>
 
                <h3>Booking Details</h3>
                 <ul>
-                  <li>Booking: ${confirm?._id}</li>
-                  <li>Userid: ${confirm?.userid}</li>
+                  <li>Booking ID: ${confirm?._id}</li>
+                  <li>User ID: ${confirm?.userid}</li>
                   <li>Room Type: ${confirm?.roomtype}</li>
                   <li>Numer of Room Booked: ${confirm?.numberRooms}</li>
                   <li>CheckIn Date: ${confirm?.fromdate}</li>
@@ -384,11 +382,11 @@ const rejectbooking = async (req, res) => {
               <h3>Your Booking Request Review Result</h3>
               <p>
                 Thank you for your interest in Rockview Hopitalities Services. We appreciate you considering us for your needs.
-                Unfortunately, we are unable to accommodate your booking request at this time due to <h3 style{{Color: 'red', fontSize: '15px'}}> <b> ${reason} <b/></h3>. We apologize for any inconvenience this may cause.
+                Unfortunately, we are unable to accommodate your booking request at this time due to <h3 style{{color: 'red', fontSize: '15px'}}> <b> ${reason} <b/></h3>. We apologize for any inconvenience this may cause.
                 We hope to have the opportunity to serve you in the future. If you have any questions or would like assistance with alternative arrangements, please feel free to contact us.
                 Thank you for your understanding.
               </p>
-              <div style{{}}>
+              <div>
                <h3>Please Take Note:</h3>
                 <h4>currency of total amount is in Ghana Cedis</h4>
               </div>

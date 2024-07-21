@@ -200,3 +200,17 @@ span{
   padding: 0 20px;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 768px){
+  .check_dates{
+    position: relative;
+    top: 0;
+    
+  }
+  .check_dates p{
+    font-size: 12px;
+  }
+  .check_section{
+    flex-direction: column;
+  }
+}
