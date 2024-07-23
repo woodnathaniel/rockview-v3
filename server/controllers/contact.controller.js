@@ -35,7 +35,7 @@ const contact = async (req, res) => {
           name: name, 
           address: email
         },
-        to: 'rockviewhotel@yahoo.com', // Ensure `email` is correctly formatted if it's an array
+        to: 'nathanielwood002@gmail.com', // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hospitalities Client Contact Mail",
         text: "Hello world?", 
         html: `

@@ -15,7 +15,7 @@ const Contact = () => {
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
 
-  const submit = (e) =>{
+  const submit = async(e) =>{
     e.preventDefault()
     setLoading(true)
     const mail = {
@@ -24,7 +24,7 @@ const Contact = () => {
       message: mailMessage
     }
     try {
-      const sendMail = axios.post('http://rockviewhospitalities-api.vercel.app/api/user/contact', mail)
+      const sendMail = await axios.post('http://rockviewhospitalities-api.vercel.app/api/user/contact', mail)
       if(sendMail.status === 200){
         setLoading(false)
         setSucces(true)
@@ -32,6 +32,7 @@ const Contact = () => {
           setSucces(false)
         },300)
       }
+      console.log(sendMail);
 
     } catch (error) {
 
