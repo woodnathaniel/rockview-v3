@@ -10,7 +10,7 @@ const passport = require('passport')
 const cors = require('cors')
 const cookieSession = require('cookie-session');
 const authRouter = require('./routes/auth.route')
-
+const ContactRouter = require('./routes/contact.route.js')
 
 
 // Proxy middleware configuration
@@ -89,6 +89,7 @@ app.use('/api/rooms', router)
 app.use('/api/users', userRouter)
 app.use('/api/bookings', bookingrouter) 
 app.use("/auth", authRouter)
+app.use("/api/user", ContactRouter)
 // app.use('/', googleAuthRouter) 
 // app.use('/api', bookingrouter)
 
