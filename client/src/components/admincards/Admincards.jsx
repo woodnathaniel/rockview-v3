@@ -169,9 +169,9 @@ export const UsersBookingsCard = () =>{
     async function fetchData(){
       try {
         const bookingsResult = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings')).data
-        setBookings(bookingsResult)
-        setFilterBookigs(bookingsResult)
-        console.log(bookingsResult);
+        setBookings(bookingsResult.reverse())
+        setFilterBookigs(bookingsResult.reverse())
+        console.log(bookingsResult.reverse());
         if(bookings.status === 200){
           setLoading(false)
           setSucces(true)

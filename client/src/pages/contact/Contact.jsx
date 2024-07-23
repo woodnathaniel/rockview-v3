@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './contact.css'
 import NavBar from '../../components/navbar/NavBar';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
-import { message } from 'antd';
+import { message } from 'antd';import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 
 const Contact = () => {
+
+
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -14,6 +17,26 @@ const Contact = () => {
   const [loading, setLoading] = useState(false)
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
+
+  const [state, handleSubmit] = useForm("mrbzelyl");
+
+
+  useEffect(() => {
+    let timer;
+    if (state.succeeded) {
+      setSucces(true);
+      timer = setTimeout(() => {
+        setSucces(false);
+      }, 300);
+    } else{
+      // setError(true);
+      // timer = setTimeout(() => {
+      //   setError(false);
+      // }, 300);
+    }
+
+    return () => clearTimeout(timer);
+  }, [state.succeeded]);
 
   const submit = async(e) =>{
     e.preventDefault()
@@ -73,20 +96,47 @@ const Contact = () => {
 
         </div>
         <div className='contact_message'>
-          <form action="">
+          <form action="" onSubmit={handleSubmit}>
             <div className='message_details'>
               <label htmlFor="">Name</label>
-              <input type="text" onChange={(e)=> setName(e.target.value)}/>
+              <input  id="name"
+                type="text" 
+                name="name"                
+                onChange={(e)=> setName(e.target.value)}
+                />
+              <ValidationError 
+                prefix="Name" 
+                field="name"
+                errors={state.errors}
+              />
             </div>
             <div className='message_details'>
               <label htmlFor="">Email</label>
-              <input type="email" onChange={(e)=> setEmail(e.target.value)}/>
+              <input  id="email"
+                type="email" 
+                name="email"
+                onChange={(e)=> setEmail(e.target.value)}
+               />
+              <ValidationError 
+                prefix="Email" 
+                field="email"
+                errors={state.errors}
+              />
             </div>
             <div className='message_details'>
               <label htmlFor="">Message</label>
-              <textarea name="text" id="" rows="10" cols="50" onChange={(e)=> setMailMessage(e.target.value)}></textarea>
+              <textarea id="message"
+                name="message" 
+                rows="10" cols="50"
+                onChange={(e)=> setMailMessage(e.target.value)}
+              ></textarea>
+              <ValidationError 
+                prefix="Message" 
+                field="message"
+                errors={state.errors}
+              />
             </div>
-            <button type='submit' onClick={(e)=> submit(e)}>Submit</button>
+            <button type='submit' disabled={state.submitting}>Submit</button>
           </form>
         </div>
       </section>

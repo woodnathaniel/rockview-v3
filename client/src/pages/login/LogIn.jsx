@@ -37,7 +37,7 @@ export default function LogIn() {
 
   const handleCancel1 = () => {
     setOpen(false)
-    window.location.href = '/login'
+    window.location.href = '/booking'
   };
 
   const submitLoginDetails = async (e) =>{
@@ -80,10 +80,9 @@ export default function LogIn() {
   
   return (
     <div className="login_main_container">
-      <section className="click__home"><HomeOutlinedIcon/><h4>Home</h4></section>
-      <div className="container">
+      <div className="login_container">
         <section className="icon_section"><PersonOutlineIcon/></section>
-        <header className="details_section">
+        <header className="login_details_section">
           
           <form action="">
             <div className="email_div">
@@ -127,8 +126,8 @@ export default function LogIn() {
         title={<h2 style={{color:'rgb(163, 5, 5)'}}> Successfully Logged In</h2>}
         onOk={handleOk2}
         onCancel={handleCancel1}
-        okText= 'Home'
-        cancelText = 'BOOKING'
+        okText= 'Home Page'
+        cancelText = 'BOOKING PAGE'
         centered
       >
 

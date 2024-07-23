@@ -10,6 +10,7 @@ import Error from '../../components/error/Error'
 import Success from '../../components/success/Success';
 import Loading from '../../components/Loading/Loading';
 import HomeIcon from '@mui/icons-material/Home';
+import { Modal } from 'antd';
 
 
 export default function Register() {
@@ -21,6 +22,17 @@ export default function Register() {
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
   const [response, setResponse] = useState('')
+  const [open, setOpen] = useState(false)
+
+  const handleOk2 = () => {
+    setOpen(false)
+    window.location.href = '/'
+  };
+
+  const handleCancel1 = () => {
+    setOpen(false)
+    window.location.href = '/booking'
+  };
 
   const submitClick = async(e) =>{
     setLoading(true)
@@ -37,9 +49,18 @@ export default function Register() {
       console.log(registerResult);
       setSucces(true)
 
+      if(registerResult.status === 200){
+        // localStorage.setItem('rockviewUser', JSON.stringify(loginPost.data))
+        setLoading(false)
+        setSucces(true)
+        setOpen(true)
+        setTimeout(()=>{
+          setSucces(false)
+        }, 2000)
+      }
+
       setTimeout(()=>{
         setSucces(false)
-        // window.location.href='/booking'
       }, 2000)
     } catch (error) {
       setError(true)
@@ -57,10 +78,9 @@ export default function Register() {
 
   return (
     <div className="login_main_container">
-    <section className="click__home"><HomeIcon/><h4>Home</h4></section>
-    <div className="container">
+    <div className="register_container">
       <section className="icon_section"><PersonOutlineIcon/></section>
-      <header className="details_section">
+      <header className="register_details_section">
         
         <form action="">
           <div className="email_div">
@@ -69,15 +89,15 @@ export default function Register() {
           </div>
           <div className="email_div">
             <div className='icon'><PersonIcon/></div>
-            <input type="text" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="email" placeholder=' Active Email' onChange={(e)=>setEmail(e.target.value)}/>
           </div>
           <div className="email_div">
-            <div className='icon'><PersonIcon/></div>
-            <input type="text" placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
+            <div className='icon'><LockIcon/></div>
+            <input id='password' type="password" placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
           </div>
           <div className="password_div">
             <div className='icon'><LockIcon /></div>
-            <input type="text" placeholder='confirm password' onChange={(e)=>setConfirmPassword(e.target.value)}/>
+            <input type="password" placeholder='confirm password' onChange={(e)=>setConfirmPassword(e.target.value)}/>
           </div>
           <button type='submit' onClick={(e)=> submitClick(e)}>
             {
@@ -107,6 +127,22 @@ export default function Register() {
       </div>
     </div>
     
+    <Modal
+        open={open}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}>Great!! Successfully Registered</h2>}
+        onOk={handleOk2}
+        onCancel={handleCancel1}
+        okText= 'Home Page'
+        cancelText = 'BOOKING PAGE'
+        centered
+      >
+
+        <>  
+       <p> Navigate Back To Home To Explore</p>
+        <p>Or Navigate TO The Booking Page</p>
+        </>
+
+      </Modal>
   </div>
   )
 }
