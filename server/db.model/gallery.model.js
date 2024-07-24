@@ -79,7 +79,13 @@ const galleryComSchema = mongoose.Schema(
 
     picsUrls :{
       type: Array,
-      required: true
+      required: true,
+      default: [
+        "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/44023306_1781710075267390_515539566082392064_n.jpg?alt=media&token=92989a31-b42d-41a7-81eb-6fdc67ac2e79",
+        "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/44052541_1781710098600721_5230673891923329024_n.jpg?alt=media&token=d4603f4e-96ee-4d47-ae96-d1a42477aac0",
+        "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/Damba-Festival.webp?alt=media&token=249cebc7-d4c8-489f-8eac-ce570d041689",
+        "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/Social-Basket-Bags-.jpg?alt=media&token=2f7219bf-91c9-4416-8c02-0754f95dde7b"
+        ]
     },
 
 
@@ -92,9 +98,9 @@ const galleryComSchema = mongoose.Schema(
 
 
 
-const galleryFacilities = mongoose.model('gallery_facilities', galleryFacilitiesSchema)
-const galleryTour = mongoose.model('gallery_tour', galleryTourSchema)
-const galleryCommunity = mongoose.model('gallery_community', galleryComSchema)
+const galleryFacilities = mongoose.models.gallery_facilities || mongoose.model('gallery_facilities', galleryFacilitiesSchema);
+const galleryTour = mongoose.models.gallery_tour || mongoose.model('gallery_tour', galleryTourSchema);
+const galleryCommunity = mongoose.models.gallery_community || mongoose.model('gallery_community', galleryComSchema);
 
 
 module.exports = { galleryFacilities, galleryTour, galleryCommunity } 
