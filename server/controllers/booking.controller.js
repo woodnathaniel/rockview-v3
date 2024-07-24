@@ -24,13 +24,6 @@ const booking = async (req, res) => {
     totaldays,
     totalamount
   } = req.body;
-
-  // if (
-  //   !roomid || !roomtype || !userid || !contact || !country || !numberRooms ||
-  //   !email || !guest || !fromdate || !todate || !totaldays || totalamount === undefined
-  // ) {
-  //   return res.status(400).json({ error: "All required fields must be provided" });
-  // }
   
 
   try {
@@ -108,9 +101,8 @@ const booking = async (req, res) => {
                     <li>Check-in Date: ${fromdate}</li>
                     <li>Check-out Date: ${todate}</li>
                     <li>Total Days: ${totaldays}</li>
-                    <li>Total Amount: ${totalamount} Ghana cedis</li>
+                    <li>Total Amount: ${totalamount} USD Dollar</li>
                   </ul>
-      
                   <p>We look forward to your stay!</p>
                 </div>
               </header>
@@ -315,7 +307,7 @@ const confirm = async (req, res) => {
                   <li>CheckIn Date: ${confirm?.fromdate}</li>
                   <li>CheckOut Date: ${confirm?.todate}</li>
                   <li>Total Days: ${confirm?.totaldays} Days</li>
-                  <li>Total Amount: ${confirm?.totalamount} Ghana Cedis</li>
+                  <li>Total Amount: ${confirm?.totalamount} USD Dollar</li>
                 </ul>
               </div>
               <p>We look forward to your stay!</p>
@@ -386,12 +378,6 @@ const rejectbooking = async (req, res) => {
                 We hope to have the opportunity to serve you in the future. If you have any questions or would like assistance with alternative arrangements, please feel free to contact us.
                 Thank you for your understanding.
               </p>
-              <div>
-               <h3>Please Take Note:</h3>
-                <h4>currency of total amount is in Ghana Cedis</h4>
-              </div>
-              <p>We look forward to your stay!</p>
-            </div>
           </header>
         `, 
       };

@@ -23,15 +23,15 @@ const Rooms = () => {
     background: '#364d79',
   };
 
-  const formattedAmountExecutive = new Intl.NumberFormat('en-GH', {
+  const formattedAmountExecutive = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'GHS' // GHS is the currency code for Cedis
-  }).format(2000);
+    currency: 'USD' // GHS is the currency code for Cedis
+  }).format(20);
 
-  const formattedAmountStandard = new Intl.NumberFormat('en-GH', {
+  const formattedAmountStandard = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'GHS' // GHS is the currency code for Cedis
-  }).format(1500);
+    currency: 'USD' // GHS is the currency code for Cedis
+  }).format(15);
 
   const showModal1 = () => {
     setOpen1(true);
@@ -75,9 +75,9 @@ const Rooms = () => {
       <section className="room__header-text">
         <h1>ROOMS AND RATES</h1>
         <p>
-        Each of our bright, light-flooded rooms come with everything you could possibly need for a comfortable stay. And yes,
-        <br /> comfort isn’t our only objective, we also value good design, sleek contemporary furnishing complemented 
-        <br />by the rich tones of nature’s palette as visible from our rooms’ sea-view windows and terraces.
+        Each of our rooms is furnished with all the facilities ( Standard double beds, King Size beds, Air-condition,
+        <br /> Fan, modern light, study desk and visitor chair, mini fridge, Satellite TV, Washroom and room services)
+        <br /> to make you feel home away from home
         </p>
       </section>
 
@@ -152,8 +152,9 @@ const Rooms = () => {
 
         <> 
         <ul>
-          <li><h3>Spacious bed rooms with King Size Beds</h3></li> 
-          <li><h3>Fully Air-condition rooms with mini Fridges</h3></li>
+          <li><h3>Spacious bed rooms with King Size Beds</h3></li>
+          <li><h3>Fully Air-condition Rooms</h3></li>
+          <li><h3>Mini Fridges</h3></li>
           <li><h3>Satellite &amp; Multi-TV system</h3></li>
           <li><h3>Solar electricity Back-up system</h3></li>
         </ul>
@@ -175,8 +176,9 @@ const Rooms = () => {
 
         <>  
         <ul>
-          <li><h3>Spacious bed rooms with Double Size Beds</h3></li>
-          <li><h3>Fully Air-condition rooms with mini Fridges</h3></li>
+          <li><h3>Spacious bed rooms with Standard Double Size Beds</h3></li>
+          <li><h3>Fully Air-conditioned Rooms and Ceiling Fan</h3></li>
+          <li><h3>Mini Fridges</h3></li>
           <li><h3>Satellite &amp; Multi-TV system</h3></li>
           <li><h3>Solar electricity Back-up system</h3></li>
         </ul>

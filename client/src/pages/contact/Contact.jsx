@@ -18,7 +18,7 @@ const Contact = () => {
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
 
-  const [state, handleSubmit] = useForm("mrbzelyl");
+  const [state, handleSubmit] = useForm("xnnajzyz");
 
 
   useEffect(() => {
@@ -79,8 +79,8 @@ const Contact = () => {
       </header>
       <section className='contact_header_text_section'>
         <h3>WE ARE HERE FOR YOU</h3>
-        <p>At Rockview Hospitalities, we take our customers seriously. Do you have any enquiries, compaints or request,</p>
-        <p>please forward it to our support desk and we will get back to you as soon as possible</p>
+        <p>You are welcome to Rockview Hotel. We are much happy to welcome you home.</p> <p>Do you have any enquiry, complaint or request?</p>
+        <p>Please forward it to our support desk and we will get back to you as soon as possible</p> 
       </section>
       <section className='contact_details'>
         <div className='contact_info'>
@@ -91,6 +91,7 @@ const Contact = () => {
           </div>
           <div>
             <h3>Phone: +233 20 115 6150, +233 27 598 9534</h3>
+            <h3>GPS: UT-O2O6-2986</h3>
             <h3>Email: rockviewhotel@yahoo.com</h3>
           </div>
 
