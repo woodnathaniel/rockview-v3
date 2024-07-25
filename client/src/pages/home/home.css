@@ -229,6 +229,12 @@
     width: 95vw;
   }
 
+  .pic_second{
+    margin: 0;
+    width: 95vw;
+    height: 700px;
+  }
+
   
   .service__icons{
     display: flex;
@@ -286,6 +292,13 @@
       margin: 0;
       width: 85vw;
     }
+
+    .pic_second{
+      margin: 0;
+      width: 85vw;
+      height: 700px;
+    }
+  
 
     .service__icons{
       display: flex;
