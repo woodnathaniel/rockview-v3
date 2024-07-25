@@ -107,14 +107,14 @@ export const UsersBookingsCard = () =>{
 
   function StandardfilterFuctions () {
     setLoading(true)
-    const filterResult = bookings.filter((each) => each.roomtype === 'Standard Suit')
+    const filterResult = bookings.filter((each) => each.roomtype === 'Standard Suit' || each.roomtype === 'Standard Suite')
     setFilterBookigs(filterResult)
     setLoading(false)
   }
 
   function ExcutivefilterFuctions () {
     setLoading(true)
-    const filterResult = bookings.filter((each) => each.roomtype === 'Executive Suit')
+    const filterResult = bookings.filter((each) => each.roomtype === 'Executive Suit' || each.roomtype === 'Standard Suite')
     setFilterBookigs(filterResult)
     setLoading(false)
   }

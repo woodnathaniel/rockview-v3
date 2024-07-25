@@ -108,7 +108,55 @@ const booking = async (req, res) => {
               </header>
             `, 
           };
+
+          const transportertohotel = nodemailer.createTransport({
+            service: 'gmail',
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // Use `true` for port 465, `false` for all other ports
+            auth: {
+              user: "nathanielwood002@gmail.com",
+              pass: "jlvc dxfh fppt xavj",
+            },
+          });
+      
+          const mailOptionstohotel = {
+            from: {
+              name: booking?.name, 
+              address: booking.email
+            },
+            to: "rockviewhotel@yahoo.com", // Ensure `email` is correctly formatted if it's an array
+            subject: "Rockview Hospitalities Booking Confirm message",
+            text: "Hello world?", 
+            html: `
+              <header>
+                <div>
+                  <p>
+                    We have received a new booking request for Rockview Hospitalities. Please find the details below
+                  </p> 
+      
+      
+                  <h3>Here are  your Bookings Details</h3>
+                  <ul>
+                    <li>Booking ID: ${booking._id}</li>
+                    <li>User ID: ${userid}</li>
+                    <li>Room Type: ${roomtype}</li>
+                    <li>Room Name: ${roomname}</li>
+                    <li>Guest Name: ${guest}</li>
+                    <li>Children: ${children}</li>
+                    <li>Occasion: ${occassion}</li>
+                    <li>Check-in Date: ${fromdate}</li>
+                    <li>Check-out Date: ${todate}</li>
+                    <li>Total Days: ${totaldays}</li>
+                    <li>Total Amount: ${totalamount} USD Dollar</li>
+                  </ul>
+                  <p>Kindly review the booking request and proceed with the necessary steps for approval. Please let Guest know if any additional information is required.</p>
+                </div>
+              </header>
+            `, 
+          };
           const mail = await transporter.sendMail(mailOptions);
+          const mailtohotel = await transportertohotel.sendMail(mailOptionstohotel);
           res.status(200).json(mail)
           console.log('Mail sent successfully');
 
@@ -251,16 +299,15 @@ const cancelBooking = async (req, res) => {
           name: cancel?.name, 
           address: email
         },
-        to:' nathanielwood002@gmail.com', // Ensure `email` is correctly formatted if it's an array
+        to:'rockviewhotel@yahoo.com', // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hospitalities Booking Request Cancelled",
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Booking Request Cancelled</h3>
               <p>
-                I wanted to inform you that [Guest Name] has cancelled their booking request for [Service/Property Name]. The details of the booking were as follows:
+                I wanted to inform you that ${cancel?.name} has cancelled his or her booking request for Rockview Hospitalities. The details of the booking were as follows:
                 <ul>
                 <li>Bookin ID: ${cancel?._id}</li>
                 <li>Guest Name: ${cancel?.name}</li>
@@ -277,19 +324,6 @@ const cancelBooking = async (req, res) => {
               </p>
               <div>
 
-               <h3>Booking Details</h3>
-                <ul>
-                  <li>Booking ID: ${confirm?._id}</li>
-                  <li>User ID: ${confirm?.userid}</li>
-                  <li>Room Type: ${confirm?.roomtype}</li>
-                  <li>Numer of Room Booked: ${confirm?.numberRooms}</li>
-                  <li>CheckIn Date: ${confirm?.fromdate}</li>
-                  <li>CheckOut Date: ${confirm?.todate}</li>
-                  <li>Total Days: ${confirm?.totaldays} Days</li>
-                  <li>Total Amount: ${confirm?.totalamount} USD Dollar</li>
-                </ul>
-              </div>
-              <p>We look forward to your stay!</p>
             </div>
           </header>
         `, 
@@ -341,7 +375,7 @@ const confirm = async (req, res) => {
       const mailOptions = {
         from: {
           name: "Rockview Hospitalities 👻", 
-          address: 'nathanielwood002@gmail.com'
+          address: 'rockviewhotel@yahoo.com'
         },
         to: confirm?.email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hospitalities Booking Request Review message",

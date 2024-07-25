@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import './userprofile.css'
 // import './ant.css'
@@ -8,8 +8,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Error from '../../components/error/Error';
 import Success from '../../components/success/Success';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Dropdown, Flex, message, Space } from 'antd';
-import { duration } from '@mui/material';
+import { Modal } from 'antd';
+import Loading from '../../components/Loading/Loading';
 
 
 
@@ -18,7 +18,9 @@ const {TabPane} = Tabs
 const Profile = () => {
   const [login, setLogin] = useState({})
   const [loading, setLoading] = useState(true)
-  
+  const [open, setOpen] = useState(false)
+
+
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('rockviewUser'));
@@ -27,7 +29,10 @@ const Profile = () => {
     setLoading(false)
   }, []);
 
+
  
+
+
 
 
   return (
@@ -62,9 +67,14 @@ export default Profile;
 
 
 export const Bookings = ({userid}) => {
+  const [open, setOpen] = useState(false)
+  const [reason, SetResason] =useState('')
+  const [bookingID, setBookingID] = useState('')
+  const [rejectMail, SetRejectMail] =useState('')
 
   const [userBookedRooms, setUserBookedRooms]=useState([])
   const [loading, setLoading] = useState(true)
+  const [loading2, setLoading2] = useState(false)
   const [success, setSucces] = useState(false)
   const [error, setError] = useState(false)
   const [respose, setResponse] = useState(false)
@@ -92,96 +102,70 @@ export const Bookings = ({userid}) => {
     fetchData()
     
   },[userid])
-
   console.log(userBookedRooms);
 
+  const handleCancel1 = () => {
+    setOpen(false)
+  };
+
+  const displayReason = (bookid, mail) =>{
+    setOpen(true)
+    setBookingID(bookid)
+    SetRejectMail(mail)
+  }
 
   //Hitting the cancelling booking API.
-  async function cancelBooking(bookid, index){
-    setLoading(true)
+  async function cancelBooking({}){
+    setLoading2(true)
 
-    setconfirmCircles((prevCircle) => {
-      const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-      updatedCircles[index] = true; // Set the loading state for the specific index to true
-      return updatedCircles;
-    });
+    // setconfirmCircles((prevCircle) => {
+    //   const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
+    //   updatedCircles[index] = true; // Set the loading state for the specific index to true
+    //   return updatedCircles;
+    // });
 
     try {
-      const result = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/cancelbooking', {bookid})
+      const result = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/cancelbooking', {bookid: bookingID,  reason: reason, email: rejectMail})
       console.log('booking canceled successfuly');
       console.log(result);
 
-      !result.status === 20
+      !result.status === 200
       ?
-      setConfirmCancelErrors((prevErrors) => {
-        const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-        updatedErrors[index] = true; // Set the cancel error state for the specific index
-        return updatedErrors;
-      })
+      setError(true)
 
       :
 
-      setconfirmCancelSuccess((prevSuccess) => {
-        const updatedSuccess = [...prevSuccess]; // Copy the previous cancelErrors array
-        updatedSuccess[index] = true; // Set the cancel error state for the specific index
-        return updatedSuccess;
-      });
-
-
-      setTimeout(() => {
-        setconfirmCancelSuccess((prevSuccess) => {
-          const updatedSuccess = [...prevSuccess]; // Copy the previous cancelErrors array
-          updatedSuccess[index] = false;
-          window.location.reload()
-
-          // Set the cancel error state for the specific index
-          return updatedSuccess;
-        });
-      }, 3000);
-      setLoading(false)
+      setSucces(true)
+  
+          
+      setLoading2(false)
       setSucces(true)
       setTimeout(()=>{
         setSucces(false)
         window.location.reload();
       }, 3000)
+
     } catch (error) {
 
-      setconfirmCircles((prevCircle) => {
-        const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-        updatedCircles[index] = false; // Set the loading state for the specific index to true
-        return updatedCircles;
-      })
+      setLoading2(false)
+  
+          setError(true)
 
-      setConfirmCancelErrors((prevErrors) => {
-        const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-        updatedErrors[index] = true; // Set the cancel error state for the specific index
-        return updatedErrors;
-      });
-
-      setTimeout(() => {
-        // Reset the cancel error after 3000 milliseconds
-        setConfirmCancelErrors((prevErrors) => {
-          const updatedErrors = [...prevErrors]; // Copy the previous cancelErrors array
-          updatedErrors[index] = false; // Reset the cancel error state for the specific index
-          return updatedErrors;
-        });
-      }, 6000);
+          setTimeout(() => {
+            // Reset the cancel error after 3000 milliseconds
+            setError(false)
+          }, 3000);
 
       console.log(error);
       // setLoading(false)
       setError(true)
     }
-    setconfirmCircles((prevCircle) => {
-      const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-      updatedCircles[index] = false; // Set the loading state for the specific index to true
-      return updatedCircles;
-    })
-    setLoading(false)
-
+    setLoading2(false)
+    setOpen(false)
+    
     setTimeout(() => {
-      // Reset the cancel error after 3000 milliseconds
      window.location.reload()
-    }, 6000);
+    }, 3000);
   }
   
 
@@ -232,10 +216,10 @@ export const Bookings = ({userid}) => {
               {
               book?.status === 'pending' ? (
                 <div className="review__section">
-                  <button onClick={() => cancelBooking(book?._id, index)}>
-                    {confirmCancelErrors[index] && <Error style={{marginBottom: '20px'}} message={'Error'} />}
-                    {confirmCircles[index] ? <CircularProgress /> :
-                      confirmCancelSuccess[index] ? <Success msg={'Confirmation mail sent, booking request cancelled successfully'} /> : 
+                  <button onClick={() => displayReason(book?._id, index)}>
+                    {error && <Error style={{marginBottom: '20px'}} message={'Error'} />}
+                    {loading2 ? <CircularProgress /> :
+                      success ? <Success msg={'Confirmation mail sent, booking request cancelled successfully'} /> : 
                       'Cancel Booking'}
                   </button>
                 </div>
@@ -243,10 +227,10 @@ export const Bookings = ({userid}) => {
                 ''
               ) : book?.status === 'approved' ? (
                 <div className="review__section">
-                  <button onClick={() => cancelBooking(book?._id, index)}>
-                    {confirmCancelErrors[index] && <Error style={{marginBottom: '20px'}} message={'Error'} />}
-                    {confirmCircles[index] ? <CircularProgress /> :
-                      confirmCancelSuccess[index] ? <Success msg={'Confirmation mail sent, booking request cancelled successfully'} /> : 
+                  <button onClick={() => displayReason(book?._id, book?.email)}>
+                    {error && <Error style={{marginBottom: '20px'}} message={'Error'} />}
+                    {loading2 ? <CircularProgress /> :
+                      success ? <Success msg={'Confirmation mail sent, booking request cancelled successfully'} /> : 
                       'Cancel Booking'}
                   </button>
                 </div>
@@ -260,6 +244,22 @@ export const Bookings = ({userid}) => {
           
         })
       }
+
+      <Modal
+        open={open}
+        title={<h2 style={{color:'rgb(163, 5, 5)'}}>Please give reason for Cancelling. It serves as a feedback for us to improve</h2>}
+        onOk={cancelBooking}
+        onCancel={handleCancel1}
+        okText= {loading ? <Loading/> : 'Confirm Rejection'}
+        cancelText = 'Cancel'
+        centered
+      >
+
+        {
+          <textarea id="large-input" className="large-input" rows="10" cols="50" placeholder="Briefly type the reason for canceling the booking request" onChange={(e) => SetResason(e.target.value)}></textarea>
+        }
+
+      </Modal>
      
     </div>
   );

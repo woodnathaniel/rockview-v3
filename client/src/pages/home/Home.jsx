@@ -80,16 +80,16 @@ const Home = () => {
 
         <div className='picSection__first'>
           <header>
-              <h3>Luxury redefined</h3>
+              <h3>Book your stay and enjoy the eco-friendliness of our environment.</h3>
               <p> 
-                Our Rooms are designed to transport <br /> you into an
-                environment made for leisure. <br />
-                Take your mind off the day-to-day of home <br />
+              The hotel is located at the midst of <br />several local communities
+              who have co-existed <br />peacefully with a unique culture identity.
+              <br />Take your mind off the day-to-day of home
                 life and private paradise for yourself.
               </p>
               {/* <button>Explore</button> */}
             </header>
-            <div className="pic"></div>
+            <div className="pic_second"></div>
         </div>
       </section>
       <Footer />

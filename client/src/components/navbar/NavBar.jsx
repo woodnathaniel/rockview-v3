@@ -9,7 +9,7 @@ import KingBedIcon from '@mui/icons-material/KingBed';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import HomeIcon from '@mui/icons-material/Home';
 import NavProfile from '../nav_profile/NavProfile';
-
+import CollectionsIcon from '@mui/icons-material/Collections';
 
 
 const NavBar = () => {
@@ -35,6 +35,7 @@ const NavBar = () => {
         <NavLink to='/facilities' ><SpaceDashboardIcon/>Facilities</NavLink>
         <NavLink to='/rooms' ><KingBedIcon/>Rooms</NavLink>
         <NavLink to='/contact' ><ContactMailIcon/>Contacts</NavLink>
+        <NavLink to='/gallery' ><CollectionsIcon/>Gallery</NavLink>
         <h3>Profile</h3>
         <div style={{padding: '10px', borderTop: 'solid 2px black',  borderBottom: 'solid 2px  black',}}>
         <NavProfile />
@@ -49,6 +50,7 @@ const NavBar = () => {
         <NavLink to='/facilities' ><h4>Facilities</h4></NavLink>
         <NavLink to='/rooms' ><h4>Rooms</h4></NavLink>
         <NavLink to='/contact' ><h4>Contacts</h4></NavLink>
+        <NavLink to='/gallery' ><h4>Gallery</h4></NavLink>
         
         {/* <div className='credentials' href="">Login</div>
         <div className='credentials' href="">SingUp</div> */}

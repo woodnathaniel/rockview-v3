@@ -68,7 +68,7 @@ const Rooms = () => {
   return (
     <div className={`${open1 || open2 ? 'viewDetailsFilter' : ''}`} style={{ display: 'grid', placeItems: 'center',position: 'relative'}}>
       <section className="room__header">
-        <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2Funsplash%201.png?alt=media&token=9b094d70-961d-4b99-89a2-56ec2aa0773d'/>
+        <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6240.JPG?alt=media&token=31e636d5-e78a-4462-bbf4-77a95ba7d51d'/>
       </section>
 
       {/*--------------- room text -------------------*/}
@@ -87,13 +87,13 @@ const Rooms = () => {
             <div className='room__type-pic'>
             <Carousel className='antd-room-carousel' autoplay arrows infinite={true}>
               <div>
-               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5742.JPG?alt=media&token=0198fd16-04b8-4629-ac84-d42a4fc688b6" alt="pictures of rooms" />
+               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6321.JPG?alt=media&token=e71d064b-9d52-43de-857b-f3e5acc0fdc6" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5745.JPG?alt=media&token=562b5011-d2f3-4bfb-9b38-5cc1dfceeeae" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6331.JPG?alt=media&token=79d3ea5b-3b7b-4576-948d-a12e7e652af5" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5749.JPG?alt=media&token=c190c24a-1470-4898-b360-89d9b055799a" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6326.JPG?alt=media&token=da2d80f7-bc70-48ae-b251-38892f94e553" alt="pictures of rooms" />
               </div>
             </Carousel>
             </div>

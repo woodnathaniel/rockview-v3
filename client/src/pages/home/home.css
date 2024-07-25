@@ -64,7 +64,7 @@
 }
 
 .pic{
-  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5705.JPG?alt=media&token=cc370e9a-e2a1-45ce-92c6-8d83e31e9225');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6321.JPG?alt=media&token=e71d064b-9d52-43de-857b-f3e5acc0fdc6');
   background-size: cover;
   background-repeat: no-repeat;
   object-fit: cover;
@@ -80,7 +80,29 @@
   inset: 0;
   background-color: var(--filter-colors);
   z-index: -1;
+  opacity: 0.3;
 }
+
+.pic_second{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/43788701_1781709848600746_2146909608441020416_n.jpg?alt=media&token=38236767-4627-406f-8eed-0bfbee01cf0c');
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  overflow: hidden;
+  isolation: isolate;
+  position: relative;
+  height: 100%;
+}
+
+.pic_second::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--filter-colors);
+  z-index: -1;
+  opacity: 0.3;
+}
+
 
 .service{
   display: grid;

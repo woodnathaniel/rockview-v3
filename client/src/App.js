@@ -12,7 +12,7 @@ import Register from './pages/register/Register';
 import AdminPanel from './pages/adminpanel/AdminPanel';
 import {UsersBookingsCard} from './components/admincards/Admincards.jsx'
 import Profile from './pages/userProfile/UserProfile.jsx';
-
+import Gallery from './pages/gallery/Gallery.jsx';
 
 
 
@@ -43,6 +43,7 @@ function App() {
           <Route exact path="/adminpanel" element={<AdminPanel />} />
           <Route exact path="/adminpcards" element={<UsersBookingsCard />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/gallery" element={<Gallery />} />
         </Routes>
 
       {/* <div></div> */}
