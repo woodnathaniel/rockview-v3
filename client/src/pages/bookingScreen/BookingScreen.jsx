@@ -160,6 +160,12 @@ export default function () {
         </section>
 
 
+        <section className='note_ahead'>
+          <h2>You are almost there in making your bookig request.</h2>
+          <h3>Please chose your prefered room type <b>(EXECUTIVE SUITE and STANDARD SUITE)</b></h3>
+          <h1>Note: Payment is made on day of arrival at the hotel premises</h1>
+        </section>
+
         <section className="avilable__rooms__section">
 
 
@@ -284,7 +290,7 @@ export default function () {
           <>  
           <h3 style={{color: ''}}>Click the Login if already having Accout here to login</h3>
           <h3 style={{color: ''}}>Or the Register to have an account here</h3> 
-          <h3 style={{color: ''}}>before booking request can made.</h3> 
+          <h3 style={{color: ''}}>before booking request can be made.</h3> 
           </>
 
       </Modal>

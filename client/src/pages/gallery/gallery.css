@@ -13,10 +13,11 @@
 }
 
 .fac_text_header{
-  display:flex;
-  flex-direction: column; 
+  /* display:flex;
+  flex-direction: column;  */
   margin-left: 200px;
   background-color: red;
+  margin-top: 50px;
 }
 
 .fac_main_header_container h5{
@@ -123,6 +124,10 @@
 
 @media screen and (max-width: 768px) {
   .fac_main_header_container h3{
-    font-size: 50px;
+    font-size: 30px;
+  }
+
+  .fac_main_header_container h5{
+    font-size: 20px;
   }
 }

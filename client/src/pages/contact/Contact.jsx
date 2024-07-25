@@ -5,6 +5,7 @@ import Footer from '../../components/footer/Footer';
 import axios from 'axios';
 import { message } from 'antd';import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import { red } from '@mui/material/colors';
 
 
 const Contact = () => {
@@ -100,6 +101,7 @@ const Contact = () => {
           <form action="" onSubmit={handleSubmit}>
             <div className='message_details'>
               <label htmlFor="">Name</label>
+              <h3 style={{color: 'red'}}>{name === ''? 'require*': '' }</h3>
               <input  id="name"
                 type="text" 
                 name="name"                
@@ -113,6 +115,7 @@ const Contact = () => {
             </div>
             <div className='message_details'>
               <label htmlFor="">Email</label>
+              <h3 style={{color: 'red'}}>{email === ''? 'require*': '' }</h3>
               <input  id="email"
                 type="email" 
                 name="email"
@@ -125,7 +128,8 @@ const Contact = () => {
               />
             </div>
             <div className='message_details'>
-              <label htmlFor="">Message</label>
+              <label htmlFor="">Message</label> 
+              <h3 style={{color: 'red'}}>{mailMessage === ''? 'require*': '' }</h3>
               <textarea id="message"
                 name="message" 
                 rows="10" cols="50"

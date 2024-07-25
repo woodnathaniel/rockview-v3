@@ -11,6 +11,7 @@ import Success from '../../components/success/Success';
 import Loading from '../../components/Loading/Loading';
 import HomeIcon from '@mui/icons-material/Home';
 import { Modal } from 'antd';
+import Password from 'antd/es/input/Password';
 
 
 export default function Register() {
@@ -35,6 +36,13 @@ export default function Register() {
   };
 
   const submitClick = async(e) =>{
+    // if((name == ''|| email=== '' || password === '')){
+    //   setError(true)
+    //   setResponse('name, email and password are requires')
+    //   setTimeout(() =>{
+    //     setError(false)
+    //   }, 3000)
+    // }
     setLoading(true)
 
     e.preventDefault()
@@ -83,22 +91,42 @@ export default function Register() {
       <header className="register_details_section">
         
         <form action="">
+        <sub>
+          <h3 style={{color: 'red'}}>{name === ''? 'required*' : ''}</h3>
           <div className="email_div">
+            
             <div className='icon'><PersonIcon/></div>
             <input type="text" placeholder='Your full name' onChange={(e)=>setName(e.target.value)}/>
           </div>
-          <div className="email_div">
-            <div className='icon'><PersonIcon/></div>
-            <input type="email" placeholder=' Active Email' onChange={(e)=>setEmail(e.target.value)}/>
-          </div>
-          <div className="email_div">
-            <div className='icon'><LockIcon/></div>
-            <input id='password' type="password" placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
-          </div>
-          <div className="password_div">
-            <div className='icon'><LockIcon /></div>
-            <input type="password" placeholder='confirm password' onChange={(e)=>setConfirmPassword(e.target.value)}/>
-          </div>
+        </sub>
+          
+          <sub>
+            <h3 style={{color: 'red'}}>{email === ''? 'required*' : ''}</h3>
+            <div className="email_div">
+              <div className='icon'><PersonIcon/></div>
+              <input type="email" placeholder=' Active Email' onChange={(e)=>setEmail(e.target.value)}/>
+            </div>
+          </sub>
+
+        
+          <sub>
+            <h3 style={{color: 'red'}}>{password === ''? 'required*' : ''}</h3>
+            <div className="email_div">
+              <div className='icon'><LockIcon/></div>
+              <input id='password' type="password" placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
+            </div>
+          </sub>
+
+       
+          <sub>
+            <h3 style={{color: 'red'}}>{confirmPassword === ''? 'required*' : ''}</h3>
+            <div className="password_div">
+              <div className='icon'><LockIcon /></div>
+              <input type="password" placeholder='confirm password' onChange={(e)=>setConfirmPassword(e.target.value)}/>
+            </div>
+          </sub>
+
+         
           <button type='submit' onClick={(e)=> submitClick(e)}>
             {
               loading ? 

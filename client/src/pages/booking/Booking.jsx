@@ -169,7 +169,7 @@ console.log(typeof(data._id));
       setError(true);
       setTimeout(()=>{
         setError(false);
-      }, 3000)
+      }, 6000)
     }
 
     setEmail("");
@@ -183,7 +183,7 @@ console.log(typeof(data._id));
     if(!error){
       setTimeout(()=>{
         window.location.href = '/booking'
-      }, 3000)
+      }, 6000)
 
     }
   }

@@ -65,6 +65,7 @@
 }
 
 .icon{
+
   background-color: rgb(2, 22, 66);
   height: 50px;
   width: 50px;
@@ -72,6 +73,11 @@
   justify-content: center;
   align-items: center;
   margin-left: 20px;
+}
+
+.icon sub{
+  display: flex;
+  flex-direction: column;
 }
 
 .login_details_section form svg{

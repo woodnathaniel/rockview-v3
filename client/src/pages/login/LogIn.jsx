@@ -85,14 +85,22 @@ export default function LogIn() {
         <header className="login_details_section">
           
           <form action="">
-            <div className="email_div">
-              <div className='icon'><PersonIcon/></div>
-              <input type="email" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
+            <div>
+              <h3 style={{color: 'red' }}>{email === ''? 'required*' : ''}</h3>
+              <div className="email_div">
+                <div className='icon'><PersonIcon/></div>
+                <input type="email" placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
+              </div>
             </div>
-            <div className="password_div">
-              <div className='icon'><LockIcon /></div>
-              <input type="text" placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
+            
+            <div>
+               <h3 style={{color: 'red' }}>{password === ''? 'required*' : ''}</h3>
+              <div className="password_div">
+                <div className='icon'><LockIcon /></div>
+                <input type="text" placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
+              </div>
             </div>
+            
             <button type='submit' onClick={(e)=> submitLoginDetails(e)}>
               {
                 loading ? 
