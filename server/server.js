@@ -28,7 +28,7 @@ const galleryrouter = require('./routes/gallery.route.js')
 //   })
 // )
 
-const allowedOrigins = ['http://localhost:3000', 'https://rockviewhotel.vercel.app/'];
+const allowedOrigins = ['http://localhost:3000', 'https://rockviewhotel.vercel.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
