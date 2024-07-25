@@ -176,7 +176,7 @@ const getAllBookings = async (req, res) => {
 
 //User cancelling booking api
 const cancelBooking = async (req, res) => {
-  const { bookid } = req.body;
+  const { bookid, reason, email } = req.body;
 
   try {
     const cancel = await bookingModel.findByIdAndUpdate(
@@ -235,8 +235,69 @@ const cancelBooking = async (req, res) => {
         `, 
       };
 
+      const transportertohotel = nodemailer.createTransport({
+        service: 'gmail',
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false, // Use `true` for port 465, `false` for all other ports
+        auth: {
+          user: "nathanielwood002@gmail.com",
+          pass: "jlvc dxfh fppt xavj",
+        },
+      });
+    
+      const mailOptionstohotel = {
+        from: {
+          name: cancel?.name, 
+          address: email
+        },
+        to:' nathanielwood002@gmail.com', // Ensure `email` is correctly formatted if it's an array
+        subject: "Rockview Hospitalities Booking Request Cancelled",
+        text: "Hello world?", 
+        html: `
+          <header>
+            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
+            <div>
+              <h3>Booking Request Cancelled</h3>
+              <p>
+                I wanted to inform you that [Guest Name] has cancelled their booking request for [Service/Property Name]. The details of the booking were as follows:
+                <ul>
+                <li>Bookin ID: ${cancel?._id}</li>
+                <li>Guest Name: ${cancel?.name}</li>
+                <li>Contact Information: ${cancel?.email, cancel?.contact}</li>
+                <li>Reason for Cancellation: ${reason}</li>
+                
+                </ul>
+                  
+                  
+                  
+
+                Please update our records accordingly and take any necessary actions as per our cancellation policy.
+                Thank you.
+              </p>
+              <div>
+
+               <h3>Booking Details</h3>
+                <ul>
+                  <li>Booking ID: ${confirm?._id}</li>
+                  <li>User ID: ${confirm?.userid}</li>
+                  <li>Room Type: ${confirm?.roomtype}</li>
+                  <li>Numer of Room Booked: ${confirm?.numberRooms}</li>
+                  <li>CheckIn Date: ${confirm?.fromdate}</li>
+                  <li>CheckOut Date: ${confirm?.todate}</li>
+                  <li>Total Days: ${confirm?.totaldays} Days</li>
+                  <li>Total Amount: ${confirm?.totalamount} USD Dollar</li>
+                </ul>
+              </div>
+              <p>We look forward to your stay!</p>
+            </div>
+          </header>
+        `, 
+      };
+
       try {
         const mail = await transporter.sendMail(mailOptions);
+        const mailtohotel = await transportertohotel.sendMail(mailOptionstohotel);
         res.status(200).json(mail);
       } catch (error) {
         res.status(400).json(error);
@@ -255,7 +316,7 @@ const cancelBooking = async (req, res) => {
 //CONFIRM BOOKINGS API
 
 const confirm = async (req, res) => {
-  const { bookid } = req.body;
+  const { bookid} = req.body;
  
 
     
@@ -315,6 +376,10 @@ const confirm = async (req, res) => {
           </header>
         `, 
       };
+
+     
+
+
 
       try {
         const mail = await transporter.sendMail(mailOptions);
