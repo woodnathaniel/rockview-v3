@@ -191,7 +191,7 @@ export default function () {
             actions={[
               <div ><h4>Rent per day</h4> <p>{rooms[0]?.rentperday}.00 USD Dollars</p></div>,
               <h3>Maximun Guest per Room is {rooms[0]?.maxcount} if only they are couple.</h3>,
-              <button className='bkcard__btn__booknow' onClick={ () => handelClick(rooms[0])}> Book Now</button>,
+              <button className='bkcard__btn__booknow' onClick={ () => handelClick(rooms[0])}> {rooms? 'BOOK NOW ': ''}</button>
             ]}
           >
             <Meta
