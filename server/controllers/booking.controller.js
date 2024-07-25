@@ -277,7 +277,6 @@ const cancelBooking = async (req, res) => {
                   <li>Total Amount: ${cancel?.totalamount} Ghana Cedis</li>
                 </ul>
               </div>
-              <p>We look forward to your stay!</p>
             </div>
           </header>
         `, 
