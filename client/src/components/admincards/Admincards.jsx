@@ -165,10 +165,12 @@ export const UsersBookingsCard = () =>{
 
   useEffect(()=>{
     setLoading(true)
+    const AborrtController = new AbortController();
+    const signal = AborrtController.signal;
     
     async function fetchData(){
       try {
-        const bookingsResult = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings')).data
+        const bookingsResult = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings', {signal})).data
         setBookings(bookingsResult.reverse())
         setFilterBookigs(bookingsResult.reverse())
         console.log(bookingsResult.reverse());
@@ -180,14 +182,24 @@ export const UsersBookingsCard = () =>{
           }, 3000)
         }
       } catch (error) {
-        console.log(error);
-        setError(true)
-        setLoading(false)
+
+        if(axios.isCancel(error)){
+          console.log('Request canceled', error.message);
+        }else{
+          console.log(error);
+          setError(true)
+          setLoading(false)
+        }
+        
       }
 
     }
     fetchData()
     setLoading(false)
+
+    return()=>{
+      AborrtController.abort();
+    }
   },[])
 
 
@@ -216,6 +228,11 @@ export const UsersBookingsCard = () =>{
     const NumOfExct = filterBookigs.filter(each => each.roomtype === 'Executive Suit')
     setNumOfExct(NumOfExct.length)
   }, [filterBookigs])
+
+  const NumOfStnd = filterBookigs.filter(each => each.roomtype === 'Standard Suit')
+  setNumOfStnd(NumOfStnd.length)
+  const NumOfExct = filterBookigs.filter(each => each.roomtype === 'Standard Suit')
+  setNumOfExct(NumOfStnd.length)
 
 
   // Filter SearchBar Function(userid and BookingId)
@@ -513,9 +530,12 @@ export const AdminRooms = () =>{
   const [rooms, setRooms] = useState([])
 
   useEffect(()=>{
+
+    const abortCont = new AbortController
+
     async function fetchData(){
       try {
-        const room = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
+        const room = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms', {signal: abortCont.signal})).data
         setRooms(room.getroomsInfo)
         console.log(room);
         if(room.status === 200){
@@ -526,14 +546,22 @@ export const AdminRooms = () =>{
           }, 3000)
         }
       } catch (error) {
-        console.log(error);
-        setError(true)
-        setLoading(false)
-      }
 
+        if(!(axios.isCancel(error))){
+          console.log(error);
+          setError(true)
+          setLoading(false)
+        }
+      }
     }
+
     fetchData()
     setLoading(false)
+
+    //cleanup function
+    return ()=>{
+      abortCont.abort()
+    }
   },[])
 
 
@@ -593,9 +621,12 @@ export const AdminUsers = () =>{
   const [users, setUsers] = useState([])
 
   useEffect(()=>{
+
+    const abortCont = new AbortController
+    const signal = abortCont.signal
     async function fetchData(){
       try {
-        const getUsers = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/users/getallusers'))
+        const getUsers = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/users/getallusers', {signal}))
         setUsers(getUsers.data)
         if(getUsers.status === 200){
           setLoading(false)
@@ -605,14 +636,21 @@ export const AdminUsers = () =>{
           }, 3000)
         }
       } catch (error) {
-        console.log(error);
-        setError(true)
-        setLoading(false)
-      }
 
+        if(!(error.name === 'AbortError')){
+          console.log(error);
+          setError(true)
+          setLoading(false)
+        }
+      }
     }
+    
     fetchData()
     setLoading(false)
+
+    return ()=>{
+      abortCont.abort()
+    }
   },[])
     
 
