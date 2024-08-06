@@ -46,7 +46,6 @@ export const UsersBookingsCard = () =>{
   function getName(code) {
     if (!(code === undefined)) {
       const country = iso3166.whereAlpha2(code);
-      console.log(country);
       return country ? country.country : "Unknown country code";
     }else{
       return "";
@@ -79,16 +78,16 @@ export const UsersBookingsCard = () =>{
 
   function PeningfilterFuctions() {
     setLoading(true)
-   const filterResult = bookings.filter((each) => each.status === 'pending')
-   setFilterBookigs(filterResult)
-   setLoading(false)
+    const filterResult = bookings.filter((each) => each.status === 'pending')
+    setFilterBookigs(filterResult)
+    setLoading(false)
   }
 
   function ApprovedfilterFuctions () {
     setLoading(true)
-   const filterResult = bookings.filter((each) => each.status === 'approved')
-   setFilterBookigs(filterResult)
-   setLoading(false)
+    const filterResult = bookings.filter((each) => each.status === 'approved')
+    setFilterBookigs(filterResult)
+    setLoading(false)
   }
 
   function RejectedfilterFuctions () {
@@ -173,14 +172,12 @@ export const UsersBookingsCard = () =>{
         const bookingsResult = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings', {signal})).data
         setBookings(bookingsResult.reverse())
         setFilterBookigs(bookingsResult.reverse())
-        console.log(bookingsResult.reverse());
-        if(bookings.status === 200){
-          setLoading(false)
-          setSucces(true)
-          setTimeout(()=>{
-            setSucces(false)
-          }, 3000)
-        }
+        setLoading(false)
+        setSucces(true)
+        setTimeout(()=>{
+          setSucces(false)
+        }, 3000)
+        
       } catch (error) {
 
         if(axios.isCancel(error)){
@@ -198,6 +195,8 @@ export const UsersBookingsCard = () =>{
     setLoading(false)
 
     return()=>{
+      console.log('aborted');
+      
       AborrtController.abort();
     }
   },[])
@@ -228,11 +227,6 @@ export const UsersBookingsCard = () =>{
     const NumOfExct = filterBookigs.filter(each => each.roomtype === 'Executive Suit')
     setNumOfExct(NumOfExct.length)
   }, [filterBookigs])
-
-  const NumOfStnd = filterBookigs.filter(each => each.roomtype === 'Standard Suit')
-  setNumOfStnd(NumOfStnd.length)
-  const NumOfExct = filterBookigs.filter(each => each.roomtype === 'Standard Suit')
-  setNumOfExct(NumOfStnd.length)
 
 
   // Filter SearchBar Function(userid and BookingId)
@@ -340,9 +334,7 @@ export const UsersBookingsCard = () =>{
       try {
      
         setLoading(true)
-  
         const reject = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/rejectbooking', {bookid: bookingID, reason: reason, email: rejectMail})
-        console.log(reject);
         !reject.status === 200
         ?
         setError1(true)
@@ -423,7 +415,7 @@ export const UsersBookingsCard = () =>{
         {
           filterBookigs.map((booking, index) =>{
             return(
-              <div className='card__header__container'>
+              <div key={index} className='card__header__container'>
                 <section className="id__section cards__sections">
                   <span><h5>Booking ID: </h5> <p>{booking?._id}</p></span>
                   <span><h5>User ID: </h5> <p>{booking?.userid}</p></span>
@@ -537,7 +529,6 @@ export const AdminRooms = () =>{
       try {
         const room = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms', {signal: abortCont.signal})).data
         setRooms(room.getroomsInfo)
-        console.log(room);
         if(room.status === 200){
           setLoading(false)
           setSucces(true)
@@ -572,9 +563,9 @@ export const AdminRooms = () =>{
 
           <div className='bookingscards__grid__container'>
       {
-        rooms.map((booking) =>{
+        rooms.map((booking, index) =>{
           return(
-            <div className='card__header__container'>
+            <div key={index} className='card__header__container'>
               <section className="id__section cards__sections">
                 <span><h5>Booking ID: </h5> <p>{booking?._id}</p></span>
                 <span><h5>User ID: </h5> <p>{booking?.roomname}</p></span>
@@ -657,9 +648,9 @@ export const AdminUsers = () =>{
   return(
     <div className='bookingscards__grid__container'>
     {
-      users.map((booking) =>{
+      users.map((booking, index) =>{
         return(
-          <div className='card__header__container'>
+          <div key={index} className='card__header__container'>
             <section className="id__section cards__sections">
               <span><h5>User ID: </h5><p>{booking?._id}</p></span>
               <span><h5>User Name: </h5><p>{booking?.name}</p></span>
