@@ -90,10 +90,10 @@ const Gallery = () => {
     "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4929.jpg?alt=media&token=4c3098c2-159d-40ae-9980-1a1215d17e12",
     "  https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/paga-crocodiles-46.jpg?alt=media&token=31032bf2-2c24-4ef8-86e4-c43c65d36f61",
     "  https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/tongo-whistling-rocks.jpg?alt=media&token=2a59d155-af02-439d-b34c-607de53e88fd",
-    "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4953.jpg?alt=media&token=9ef6c858-7d92-481d-a5c4-0b5c91610901",
     "  https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/villaggio.jpg?alt=media&token=4ea87da3-1790-4c91-89e2-53c2e83fca99",
     "  https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/tourist.jpg?alt=media&token=fbd19fd5-8c6d-42b0-899f-83aa2e646631",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/4171_Naa-gbewaa-shrine.jpg?alt=media&token=79a9449e-f147-4df5-bd32-20519f0c3e3f",
+      "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4953.jpg?alt=media&token=9ef6c858-7d92-481d-a5c4-0b5c91610901",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4955.jpg?alt=media&token=c5cb9e1b-6712-4ece-bc6a-d732dfefbfbc",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/images.jpg?alt=media&token=84b6eac3-fd6f-46ef-8f15-1b0964f60ed4",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/8230621e52984c0dae4cb627a8063fc0.jpg?alt=media&token=fcf13324-e9f2-4322-aa3a-3b7350572f7a",
@@ -105,15 +105,13 @@ const Gallery = () => {
       const galleryCommunity = [
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/48383711_2630051160353238_537302564803182592_n.jpg?alt=media&token=00466e28-b993-49ae-bcfc-fb5fb21f897e",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/download.jpeg?alt=media&token=61204056-172f-4c4c-82a9-30887ee2005e",
-      "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/Fqera6lXwAcBsX8.jpeg?alt=media&token=6ab385e2-45b0-45bd-9771-ef4f74661001",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/Social-Basket-Bags-.jpg?alt=media&token=2f7219bf-91c9-4416-8c02-0754f95dde7b",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/images.jpg?alt=media&token=84b6eac3-fd6f-46ef-8f15-1b0964f60ed4",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/Fqera6mX0AE1mTh.jpeg?alt=media&token=b30866b8-3184-4868-a2ff-68569cab259f",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/8230621e52984c0dae4cb627a8063fc0.jpg?alt=media&token=fcf13324-e9f2-4322-aa3a-3b7350572f7a",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/basketseller-upper-east-region.jpg?alt=media&token=4bc0ce08-f84d-44db-ace0-52d38edddde2",
       "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/FqfYPG7XgAIXmWB.jpeg?alt=media&token=3506fe61-a4dd-4a95-bada-103803155ce8",
-      "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4755.webp?alt=media&token=5f6ea3de-0055-4af7-9d16-dde49cf81576",
-      "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4819.webp?alt=media&token=68cf4bb9-6597-4146-b173-845f47512b36"
+      "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4755.webp?alt=media&token=5f6ea3de-0055-4af7-9d16-dde49cf81576"
       ]
 
 
