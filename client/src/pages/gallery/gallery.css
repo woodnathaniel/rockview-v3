@@ -7,14 +7,11 @@
   background-color: var(--opt-color);
 }
 .fac_main_header_container h3{
-  /* margin-left: 200px; */
   color: white;
   font-size: 70px;
 }
 
 .fac_text_header{
-  /* display:flex;
-  flex-direction: column;  */
   margin-left: 200px;
   background-color: red;
   margin-top: 50px;
@@ -47,15 +44,6 @@
   color: white;
   font-family: 'Poppins', sans-serif;
 }
-
-/* .facility_gallery_header::after{
-  content: '';
-  inset: 0;
-  position: absolute;
-  background-image: linear-gradient(45deg, rgb(53, 52, 52) 0%, rgb(102, 102, 102) 100%);
-  z-index: 2;
-  opacity: 0.5;
-} */
 
 
 .facility_gallery_header img{
@@ -109,13 +97,12 @@
   display: block;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: var(--transitions-lg) linear;
+  transition: var(--transitions-sm) linear;
 }
 
-.masonry-item:hover{
-  scale: 1.2;
-  transition: var(--transitions-lg) linear;
-  border: solid 1px var(--opt-color);
+.masonry-item img:hover{
+  scale: 1.03;
+  transition: var(--transitions-sm) linear;
   border-radius: 15px;
 }
 
