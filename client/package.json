@@ -23,6 +23,7 @@
     "react-masonry-css": "^1.0.16",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+    "rockview-v3": "file:",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
