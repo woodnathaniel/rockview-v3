@@ -66,11 +66,11 @@ const Gallery = () => {
         "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4755.webp?alt=media&token=5f6ea3de-0055-4af7-9d16-dde49cf81576"
       ]
 
-      
+
 
 
   return (
-    <div>
+    <div >
       <NavBar/>
       <header className='fac_main_header_container'>
         <div className='.fac_text_header'>
@@ -78,9 +78,12 @@ const Gallery = () => {
           <h5>A photo gallery featuring the hotel and its surroundings</h5>
         </div>
       </header>
+      
       <header className='facility_gallery_header'>
         <h4>HOTEL  GALLERY  TOUR</h4>
       </header>
+
+      <div style={{margin: '0px 40px 0px 30px'}}>
       <section className='facility_gallery_section'>
       <Masonry
                  breakpointCols={{
@@ -105,10 +108,13 @@ const Gallery = () => {
        </Masonry>
         
       </section>
+      </div>
 
+ 
       <header className='facility_gallery_header'>
         <h4>TOURISM SITES IN THE COMMUNITIES</h4>
       </header>
+    <div style={{margin: '0px 40px 0px 30px'}}>
       <section className='facility_gallery_section'>
       <Masonry
                  breakpointCols={{
@@ -133,10 +139,12 @@ const Gallery = () => {
        </Masonry>
         
       </section>
-      
+    </div>
+
       <header className='facility_gallery_header'>
         <h4>THE COMMUNITY AND IT'S CULTURAL HERITAGES</h4>
       </header>
+    <div style={{margin: '0px 40px 0px 30px'}}>
       <section className='facility_gallery_section'>
       <Masonry
                  breakpointCols={{
@@ -161,6 +169,7 @@ const Gallery = () => {
        </Masonry>
         
       </section>
+    </div> 
     </div>
   );
 }
