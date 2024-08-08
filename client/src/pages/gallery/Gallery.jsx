@@ -66,13 +66,7 @@ const Gallery = () => {
         "https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/img_4755.webp?alt=media&token=5f6ea3de-0055-4af7-9d16-dde49cf81576"
       ]
 
-      const getcrypto = new Crypto
       
-      console.log(getcrypto.getRandomValues([1, 5]));
-      
-
-
-
 
 
   return (
