@@ -37,15 +37,6 @@ authRouter.get("/login/failed", (req, res)=>{
 })
 
 
-
-// authRouter.get("/google/callback",
-//   passport.authenticate("google", {
-//     successRedirect: "/",
-//     failureRedirect: "/login/failed"
-//   })
-// );
-
-
 authRouter.get("/logout", (req, res)=>{
   req.logout();
   res.redirect('/')

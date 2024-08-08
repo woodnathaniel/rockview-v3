@@ -11,7 +11,6 @@ export const Header = ({imgUrl}) =>{
 
   const bookingPageNavigate = useNavigate();
   const handleClick = () => {
-    // Navigate to the desired route on button click
     bookingPageNavigate("/booking");
   };
 

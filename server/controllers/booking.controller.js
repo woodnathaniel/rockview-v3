@@ -84,7 +84,7 @@ const booking = async (req, res) => {
                 <div>
                   <p>
                     Thank you for your booking request with Rockview Hospitalities. We have received your request and are currently processing it.
-                    You will receive a confirmation message <b>in less than 24hour</b> once your booking is approved at the mail your provided. If we need any additional information from you, we will contact you shortly.
+                    You will receive a confirmation message <b>in less than 24hour</b> once your booking request is reviewed at the mail you provided. If we need any additional information from you, we will contact you shortly.
                     Thank you for choosing Rockview Hospitalities. We look forward to the opportunity to serve you.
                   </p> 
       
@@ -150,7 +150,7 @@ const booking = async (req, res) => {
                     <li>Total Days: ${totaldays}</li>
                     <li>Total Amount: ${totalamount} USD Dollar</li>
                   </ul>
-                  <p>Kindly review the booking request and proceed with the necessary steps for approval. Please let Guest know if any additional information is required.</p>
+                  <p><b>Kindly review the booking request and proceed with the necessary steps for approval. Please let Guest know if any additional information is required.</b></p>
                 </div>
               </header>
             `, 
@@ -167,24 +167,6 @@ const booking = async (req, res) => {
       }
 
       res.status(200).send("Booking registered successfully")
-
-    // const roomtemp = await roomModel.findByIdAndUpdate(
-    //   { _id: roomid },
-    //   {
-    //     $set: {
-    //       currentbookings: {
-    //         bookingid: booking._id,
-    //         userid: userid,
-    //         fromdate: booking.fromdate,
-    //         todate: booking.todate,
-    //         status: booking.status,
-    //       },
-    //     },
-    //   },
-    //   { new: true }
-    // );
-   
-  
     
   } catch (error) {
     console.error('Failed to book API:', error);
@@ -260,13 +242,14 @@ const cancelBooking = async (req, res) => {
               <p>
                 Thank you for informing us about the cancellation of your booking request with Rockview Hospitalities. We understand that plans can change, and we appreciate you letting us know.
                 If there's anything we can do to assist you in the future, please don't hesitate to reach out. We hope to have the opportunity to serve you another time.
-                If this action was made unintentionally you can make the booking request again: <a href="https://rockviewhospitalities.vercel.app/booking">click Here To Make Booking Request</a>
+                If this action was made unintentionally you can make the booking request again: <a href="https://rockviewhotel.vercel.app/booking">click Here To Make Booking Request</a>
                 Thank you for considering Rockview Hospitalities.
               </p>
               <div >
 
                <h3>Booking Details</h3>
                 <ul>
+                  <li><b>Booking Status: ${cancel?.status}</b></li>
                   <li>Booking: ${cancel?._id}</li>
                   <li>Userid: ${cancel?.userid}</li>
                   <li>Room Type: ${cancel?.roomtype}</li>
@@ -314,10 +297,6 @@ const cancelBooking = async (req, res) => {
                 <li>Reason for Cancellation: ${reason}</li>
                 
                 </ul>
-                  
-                  
-                  
-
                 Please update our records accordingly and take any necessary actions as per our cancellation policy.
                 Thank you.
               </p>
@@ -387,7 +366,7 @@ const confirm = async (req, res) => {
               <h3>Your Booking Request Review Result</h3>
               <p>
                Thank you for your booking request with Rockview Hospitalities. We are pleased to inform you that your request <b>has been APPROVED</b>.
-                Your reservation is confirmed for <b>${confirm?.fromdate}</b> at Rockview Hospitalities. We look forward to welcoming you and providing you with a great experience.
+                Your reservation is confirmed for the <b>Check In date:${confirm?.fromdate}</b> at Rockview Hospitalities. We look forward to welcoming you and providing you with a great experience.
                 If you have any special requests or need further assistance, please let us know. We're here to help!
                 Thank you for choosing Rockview Hospitalities.
               </p>
@@ -398,7 +377,7 @@ const confirm = async (req, res) => {
                   <li>Booking ID: ${confirm?._id}</li>
                   <li>User ID: ${confirm?.userid}</li>
                   <li>Room Type: ${confirm?.roomtype}</li>
-                  <li>Numer of Room Booked: ${confirm?.numberRooms}</li>
+                  <li>Number of Rooms Booked: ${confirm?.numberRooms}</li>
                   <li>CheckIn Date: ${confirm?.fromdate}</li>
                   <li>CheckOut Date: ${confirm?.todate}</li>
                   <li>Total Days: ${confirm?.totaldays} Days</li>
@@ -473,7 +452,7 @@ const rejectbooking = async (req, res) => {
               <h3>Your Booking Request Review Result</h3>
               <p>
                 Thank you for your interest in Rockview Hopitalities Services. We appreciate you considering us for your needs.
-                Unfortunately, we are unable to accommodate your booking request at this time due to <h3 style{{color: 'red', fontSize: '15px'}}> <b> ${reason} <b/></h3>. We apologize for any inconvenience this may cause.
+                Unfortunately, we are unable to accommodate your booking request at this time due to <h3 style{color: 'red', fontSize: '15px'}> <b> ${reason} <b/></h3>. We apologize for any inconvenience this may caused.
                 We hope to have the opportunity to serve you in the future. If you have any questions or would like assistance with alternative arrangements, please feel free to contact us.
                 Thank you for your understanding.
               </p>

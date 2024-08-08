@@ -118,12 +118,6 @@ export const Bookings = ({userid}) => {
   async function cancelBooking({}){
     setLoading2(true)
 
-    // setconfirmCircles((prevCircle) => {
-    //   const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-    //   updatedCircles[index] = true; // Set the loading state for the specific index to true
-    //   return updatedCircles;
-    // });
-
     try {
       const result = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/cancelbooking', {bookid: bookingID,  reason: reason, email: rejectMail})
       console.log('booking canceled successfuly');

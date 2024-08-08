@@ -30,11 +30,6 @@ export default function () {
   const [loading2, setLoading2] = useState(false)
   const [data, setData] = useState([])
 
-
-  // const formattedAmountExecutive = new Intl.NumberFormat('en-GH', {
-  //   style: 'currency',
-  //   currency: 'GHS' // GHS is the currency code for Cedis
-  // }).format(rooms[0]?.rentperday);
   
   useEffect(() => {
       if (show) {
@@ -93,6 +88,8 @@ export default function () {
     setShow(!show);
   };
 
+
+
   return (
       <div className={`${open ?'BookingScreenfilter': ''}`}>
         <NavBar/>
@@ -111,9 +108,7 @@ export default function () {
             <div>
               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/check%20in1.jpg?alt=media&token=e6f75f0c-f8d8-4bef-b521-1fc306aeeb1e" alt="pictures of rooms" />
             </div>
-            {/* <div>
-            <img src="https://firebasestorage.googleapis.com/v0/b/rockviewhotel-752a8.appspot.com/o/rooms%2FIMG_5742.JPG?alt=media&token=64d98fa2-f42a-42a9-80e6-a868b1ae58e8" alt="pictures of rooms" />
-            </div> */}
+            
           </Carousel>
           </div>
         </section>
@@ -161,8 +156,8 @@ export default function () {
 
 
         <section className='note_ahead'>
-          <h2>You are almost there in making your bookig request.</h2>
-          <h3>Please chose your prefered room type <b>(EXECUTIVE SUITE and STANDARD SUITE)</b></h3>
+          <h2>You are almost there in making your booking request.</h2>
+          <h3>Please choose your prefered room type <b>(EXECUTIVE SUITE and STANDARD SUITE)</b></h3>
           <h1>Note: Payment is made on day of arrival at the hotel premises</h1>
         </section>
 
@@ -187,10 +182,6 @@ export default function () {
                       }
                   </Carousel>
 
-                {/* <img
-                  alt="example"
-                  src={imgurl}
-                /> */}
               </div>
               
             }
@@ -201,7 +192,7 @@ export default function () {
             ]}
           >
             <Meta
-              // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
+              avatar={''}
               title={<h2>{rooms[0]?.roomtype}</h2>}
               description={''}
               
@@ -228,12 +219,7 @@ export default function () {
                         })
                       }
                   </Carousel>
-
-                {/* <img
-                  alt="example"
-                  src={imgurl}
-                /> */}
-              </div>
+                </div>
               
             }
             actions={[
@@ -243,26 +229,14 @@ export default function () {
             ]}
           >
             <Meta
-              // avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />}
+              avatar={''}
               title={<h2>{rooms[1]?.roomtype}</h2>}
               description={''}
               
             />
           </Card>
           
-          {/* {
-            rooms.map((room)=>{
-             return <BookingCard 
-             data={room}
-                key={room.id}
-                imgurl={room?.imageurls[0]} 
-                roomname={room?.roomname} 
-                roomtype={room?.roomtype}
-                maxcount={room?.maxcount}
-                rentperday={room?.rentperday}
-              />
-            })
-          } */}
+          
         </section>
         </div>
 
@@ -289,7 +263,7 @@ export default function () {
 
           <>  
           <h3 style={{color: ''}}>Click the Login if already having Accout here to login</h3>
-          <h3 style={{color: ''}}>Or the Register to have an account here</h3> 
+          <h3 style={{color: ''}}>Or the Register button to have an account here</h3> 
           <h3 style={{color: ''}}>before booking request can be made.</h3> 
           </>
 
