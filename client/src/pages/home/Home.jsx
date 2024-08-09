@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div className='mainCont'>
       <section className="homeMain__container">
-          <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5705.JPG?alt=media&token=cc370e9a-e2a1-45ce-92c6-8d83e31e9225'/>
+          <Header  imgUrl= 'https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5705.JPG?alt=media&token=e744cdd1-f678-4e85-8b15-3b617bc6f1b7'/>
           
       </section>
 
