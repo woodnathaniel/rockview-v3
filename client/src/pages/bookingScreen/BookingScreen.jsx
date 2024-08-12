@@ -28,6 +28,7 @@ export default function () {
   const [open, setOpen] = useState(false)
   const [loading1, setLoading1] = useState(false)
   const [loading2, setLoading2] = useState(false)
+  const [allow, setAllow] = useState(false)
   const [data, setData] = useState([])
 
   
@@ -45,6 +46,7 @@ export default function () {
       try {
         const data = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
          setRooms(data.getroomsInfo);
+          setAllow(true)
        
       } 
       
@@ -186,10 +188,15 @@ export default function () {
               
             }
             actions={[
-              <div ><h4>Rent per day</h4> <p>{rooms[0]?.rentperday}.00 USD Dollars</p></div>,
-              <h3>Maximun Guest per Room is {rooms[0]?.maxcount} if only they are couple.</h3>,
-              <button className='bkcard__btn__booknow' onClick={ () => handelClick(rooms[0])}> {rooms? 'BOOK NOW ': ''}</button>
-            ]}
+                <div ><h4>Rent per day</h4> <p>{rooms[0]?.rentperday}.00 USD Dollars</p></div>,
+                <h3>Maximun Guest per Room is {rooms[0]?.maxcount} if only they are couple.</h3>,
+
+                <div>
+                  {
+                    allow?  <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}>{allow? 'BOOK NOW ': ''}</button>: ''
+                  }
+                </div>          
+              ]}
           >
             <Meta
               avatar={''}
@@ -225,7 +232,12 @@ export default function () {
             actions={[
               <div ><h4>Rent per day</h4> <p>{rooms[1]?.rentperday}.00 USD Dollars</p></div>,
               <h3>Maximun Guest per Room is {rooms[1]?.maxcount} if only they are couple.</h3>,
-              <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}> Book Now</button>,
+              <div>
+                {
+                   allow?  <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}>{allow? 'BOOK NOW ': ''}</button>: ''
+                }
+              </div>
+
             ]}
           >
             <Meta
