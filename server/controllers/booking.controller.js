@@ -72,20 +72,20 @@ const booking = async (req, res) => {
       
           const mailOptions = {
             from: {
-              name: "Rockview Hospitalities 👻", 
-              address: 'nathanielwood002@gmail.com'
+              name: "Rockview Hospitality 👻", 
+              address: 'rockviewhotel@yahoo.com'
             },
             to: email, // Ensure `email` is correctly formatted if it's an array
-            subject: "Rockview Hospitalities Booking Confirm message",
+            subject: "Rockview Hospitality Booking Confirm message",
             text: "Hello world?", 
             html: `
               <header>
-                <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
+                <h2>Thank you for choosing Rockview Hospitality</h2><h4>...where you experience nature from home.</h4>
                 <div>
                   <p>
-                    Thank you for your booking request with Rockview Hospitalities. We have received your request and are currently processing it.
+                    Thank you for your booking request with Rockview Hospitality. We have received your request and are currently processing it.
                     You will receive a confirmation message <b>in less than 24hour</b> once your booking request is reviewed at the mail you provided. If we need any additional information from you, we will contact you shortly.
-                    Thank you for choosing Rockview Hospitalities. We look forward to the opportunity to serve you.
+                    Thank you for choosing Rockview Hospitality. We look forward to the opportunity to serve you.
                   </p> 
       
       
@@ -123,7 +123,7 @@ const booking = async (req, res) => {
           const mailOptionstohotel = {
             from: {
               name: booking?.name, 
-              address: booking.email
+              address: email
             },
             to: "rockviewhotel@yahoo.com", // Ensure `email` is correctly formatted if it's an array
             subject: "Rockview Hotel Booking Request Message",
@@ -132,7 +132,7 @@ const booking = async (req, res) => {
               <header>
                 <div>
                   <p>
-                    You have received a new booking request for Rockview Hospitalities. Please find the details below
+                    You have received a new booking request for Rockview Hospitality. Please find the details below
                   </p> 
       
       
@@ -228,7 +228,7 @@ const cancelBooking = async (req, res) => {
     
       const mailOptions = {
         from: {
-          name: "Rockview Hospitalities 👻", 
+          name: "Rockview Hospitality 👻", 
           address: 'rockviewhotel@yahoo.com'
         },
         to: cancel?.email, // Ensure `email` is correctly formatted if it's an array
@@ -236,14 +236,14 @@ const cancelBooking = async (req, res) => {
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
+            <h2>Thank you for choosing Rockview Hospitality</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
-                Thank you for informing us about the cancellation of your booking request with Rockview Hospitalities. We understand that plans can change, and we appreciate you letting us know.
+                Thank you for informing us about the cancellation of your booking request with Rockview Hospitality. We understand that plans can change, and we appreciate you letting us know.
                 If there's anything we can do to assist you in the future, please don't hesitate to reach out. We hope to have the opportunity to serve you another time.
                 If this action was made unintentionally you can make the booking request again: <a href="https://rockviewhotel.vercel.app/booking">click Here To Make Booking Request</a>
-                Thank you for considering Rockview Hospitalities.
+                Thank you for considering Rockview Hospitality.
               </p>
               <div >
 
@@ -289,7 +289,7 @@ const cancelBooking = async (req, res) => {
             <div>
               <h3>Booking Request Cancelled</h3>
               <p>
-                I wanted to inform you that ${cancel?.name} has cancelled his or her booking request for Rockview Hospitalities. The details of the booking were as follows:
+                I wanted to inform you that booking request whose is: ${cancel?._id}, has been  has cancelled by the quest. The details of the booking were as follows:
                 <ul>
                 <li>Bookin ID: ${cancel?._id}</li>
                 <li>Guest Name: ${cancel?.name}</li>
@@ -297,7 +297,7 @@ const cancelBooking = async (req, res) => {
                 <li>Reason for Cancellation: ${reason}</li>
                 
                 </ul>
-                Please update our records accordingly and take any necessary actions as per our cancellation policy.
+                Please update our records accordingly and take any necessary actions as per our cancellation policies.
                 Thank you.
               </p>
               <div>
@@ -351,7 +351,7 @@ const confirm = async (req, res) => {
     
       const mailOptions = {
         from: {
-          name: "Rockview Hospitalities 👻", 
+          name: "Rockview Hospitality 👻", 
           address: 'rockviewhotel@yahoo.com'
         },
         to: confirm?.email, // Ensure `email` is correctly formatted if it's an array
@@ -359,14 +359,14 @@ const confirm = async (req, res) => {
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
+            <h2>Thank you for choosing Rockview Hospitality</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
-               Thank you for your booking request with Rockview Hospitalities. We are pleased to inform you that your request <b>has been APPROVED</b>.
-                Your reservation is confirmed for the <b>Check In date:${confirm?.fromdate}</b> at Rockview Hospitalities. We look forward to welcoming you and providing you with a great experience.
+               Thank you for your booking request with Rockview Hospitality. We are pleased to inform you that your request <b>has been APPROVED</b>.
+                Your reservation is confirmed for the <b>Check In date:${confirm?.fromdate}</b> at Rockview Hospitality. We look forward to welcoming you and providing you with a great experience.
                 If you have any special requests or need further assistance, please let us know. We're here to help!
-                Thank you for choosing Rockview Hospitalities.
+                Thank you for choosing Rockview Hospitality.
               </p>
               <div>
 
@@ -437,21 +437,21 @@ const rejectbooking = async (req, res) => {
     
       const mailOptions = {
         from: {
-          name: "Rockview Hospitalities 👻", 
-          address: 'nathanielwood002@gmail.com'
+          name: "Rockview Hospitality 👻", 
+          address: 'rockviewhotel@yahoo.com'
         },
         to: email, // Ensure `email` is correctly formatted if it's an array
-        subject: "Rockview Hospitalities Booking Request Review message",
+        subject: "Rockview Hospitality Booking Request Review message",
         text: "Hello world?", 
         html: `
           <header>
-            <h2>Thank you for choosing Rockview Hospitalities</h2><h4>...where you experience nature from home.</h4>
+            <h2>Thank you for choosing Rockview Hospitality</h2><h4>...where you experience nature from home.</h4>
             <div>
               <h3>Your Booking Request Review Result</h3>
               <p>
-                Thank you for your interest in Rockview Hopitalities Services. We appreciate you considering us for your needs.
+                Thank you for your interest in Rockview Hopitality's services. We appreciate you considering us for your needs.
                 Unfortunately, we are unable to accommodate your booking request at this time due to <h3 style{color: 'red', fontSize: '15px'}> <b> ${reason} <b/></h3>. We apologize for any inconvenience this may caused.
-                We hope to have the opportunity to serve you in the future. If you have any questions or would like assistance with alternative arrangements, please feel free to contact us.
+                We hope to have the opportunity to serve you in the future. If you have any question or would like assistance with alternative arrangements, please feel free to contact us.
                 Thank you for your understanding.
               </p>
           </header>

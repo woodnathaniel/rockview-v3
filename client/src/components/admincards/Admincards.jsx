@@ -504,7 +504,7 @@ export const UsersBookingsCard = () =>{
       >
 
         {
-          <textarea id="large-input" class="large-input" rows="10" cols="50" placeholder="Briefly type the reason for rejecting the booking request" onChange={(e) => SetResason(e.target.value)}></textarea>
+          <textarea id="large-input" class="large-input" rows="10" cols="45" placeholder="Briefly type the reason for rejecting the booking request" onChange={(e) => SetResason(e.target.value)}></textarea>
         }
 
       </Modal>
