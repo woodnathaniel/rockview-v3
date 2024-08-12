@@ -126,13 +126,13 @@ const booking = async (req, res) => {
               address: booking.email
             },
             to: "rockviewhotel@yahoo.com", // Ensure `email` is correctly formatted if it's an array
-            subject: "Rockview Hospitalities Booking Confirm message",
+            subject: "Rockview Hotel Booking Request Message",
             text: "Hello world?", 
             html: `
               <header>
                 <div>
                   <p>
-                    We have received a new booking request for Rockview Hospitalities. Please find the details below
+                    You have received a new booking request for Rockview Hospitalities. Please find the details below
                   </p> 
       
       
@@ -232,7 +232,7 @@ const cancelBooking = async (req, res) => {
           address: 'rockviewhotel@yahoo.com'
         },
         to: cancel?.email, // Ensure `email` is correctly formatted if it's an array
-        subject: "Rockview Hospitalities Booking Request Review message",
+        subject: "Rockview Hotel Booking Request Review message",
         text: "Hello world?", 
         html: `
           <header>
@@ -282,7 +282,7 @@ const cancelBooking = async (req, res) => {
           address: email
         },
         to:'rockviewhotel@yahoo.com', // Ensure `email` is correctly formatted if it's an array
-        subject: "Rockview Hospitalities Booking Request Cancelled",
+        subject: "Rockview Hotel Booking Request Cancelled",
         text: "Hello world?", 
         html: `
           <header>
@@ -330,8 +330,6 @@ const cancelBooking = async (req, res) => {
 
 const confirm = async (req, res) => {
   const { bookid} = req.body;
- 
-
     
   try {
 
@@ -357,7 +355,7 @@ const confirm = async (req, res) => {
           address: 'rockviewhotel@yahoo.com'
         },
         to: confirm?.email, // Ensure `email` is correctly formatted if it's an array
-        subject: "Rockview Hospitalities Booking Request Review message",
+        subject: "Rockview Hotel Booking Request Alerting Message",
         text: "Hello world?", 
         html: `
           <header>

@@ -78,8 +78,8 @@ form button{
   position: relative;
   overflow-y: scroll;
   /* overflow-x: hidden; */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(117, 92, 92, .2) rgba(219, 184, 184, .2) ;
+  scrollbar-width:thin;
+  scrollbar-color: rgba(20, 39, 74, 0.7) rgba(255, 255, 255, 0.2) ;
   height: 70vh; 
   display: flex;
   flex-direction: column;

@@ -20,9 +20,8 @@ export default function Footer() {
         </div>
         <div className="footer__contacts">
           <span>Contact</span>
-          <span><a href="/contacts">About Us</a></span>
-          <span><PhoneIcon/> Tel: </span>
-          <span> <EmailIcon />Email:</span>
+          <span><PhoneIcon/> Tel: 0201156150 & 0274989534</span>
+          <span> <EmailIcon />Email: rockviewhotel@yahoo.com</span>
           <span></span>
         </div>
         <div className="footer__socials ">
