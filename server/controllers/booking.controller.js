@@ -60,13 +60,11 @@ const booking = async (req, res) => {
         try {
       
           const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            host: "smtp.gmail.com",
-            port: 587,
+            service: 'yahoo',
             secure: false, // Use `true` for port 465, `false` for all other ports
             auth: {
-              user: "nathanielwood002@gmail.com",
-              pass: "jlvc dxfh fppt xavj",
+              user: "rockviewhotel@yahoo.com",
+              pass: "ielk qfmp joov yrtn",
             },
           });
       
@@ -110,13 +108,11 @@ const booking = async (req, res) => {
           };
 
           const transportertohotel = nodemailer.createTransport({
-            service: 'gmail',
-            host: "smtp.gmail.com",
-            port: 587,
+            service: 'yahoo',
             secure: false, // Use `true` for port 465, `false` for all other ports
             auth: {
-              user: "nathanielwood002@gmail.com",
-              pass: "jlvc dxfh fppt xavj",
+              user: "rockviewhotel@yahoo.com",
+              pass: "ielk qfmp joov yrtn",
             },
           });
       
@@ -216,13 +212,11 @@ const cancelBooking = async (req, res) => {
 
     if(cancel){
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
+        service: 'yahoo',
         secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
-          user: "nathanielwood002@gmail.com",
-          pass: "jlvc dxfh fppt xavj",
+          user: "rockviewhotel@yahoo.com",
+          pass: "ielk qfmp joov yrtn",
         },
       });
     
@@ -266,13 +260,11 @@ const cancelBooking = async (req, res) => {
       };
 
       const transportertohotel = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
+        service: 'yahoo',
         secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
-          user: "nathanielwood002@gmail.com",
-          pass: "jlvc dxfh fppt xavj",
+          user: "rockviewhotel@yahoo.com",
+          pass: "ielk qfmp joov yrtn",
         },
       });
     
@@ -339,13 +331,11 @@ const confirm = async (req, res) => {
     );
     if(confirm){
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
+        service: 'yahoo',
         secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
-          user: "nathanielwood002@gmail.com",
-          pass: "jlvc dxfh fppt xavj",
+          user: "rockviewhotel@yahoo.com",
+          pass: "ielk qfmp joov yrtn",
         },
       });
     
@@ -425,13 +415,11 @@ const rejectbooking = async (req, res) => {
     );
     if(reject){
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 587,
+        service: 'yahoo',
         secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
-          user: "nathanielwood002@gmail.com",
-          pass: "jlvc dxfh fppt xavj",
+          user: "rockviewhotel@yahoo.com",
+          pass: "ielk qfmp joov yrtn",
         },
       });
     
