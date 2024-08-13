@@ -267,10 +267,7 @@ const cancelBooking = async (req, res) => {
       });
     
       const mailOptionstohotel = {
-        from: {
-          name: cancel?.name, 
-          address: email
-        },
+        from: "rockviewhotel@yahoo.com",
         to:'rockviewhotel@yahoo.com', // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hotel Booking Request Cancelled",
         text: "Hello world?", 
