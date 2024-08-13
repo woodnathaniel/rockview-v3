@@ -155,6 +155,7 @@ const booking = async (req, res) => {
           const mailtohotel = await transportertohotel.sendMail(mailOptionstohotel);
           res.status(200).json(mail)
           console.log('Mail sent successfully');
+          console.log(mailOptions);
 
         } catch (error) {
           console.error('Error sending mail:', error);
