@@ -61,7 +61,6 @@ const booking = async (req, res) => {
       
           const transporter = nodemailer.createTransport({
             service: 'yahoo',
-            // secure: false, // Use `true` for port 465, `false` for all other ports
             auth: {
               user: "rockviewhotel@yahoo.com",
               pass: "ielk qfmp joov yrtn",
@@ -109,7 +108,6 @@ const booking = async (req, res) => {
 
           const transportertohotel = nodemailer.createTransport({
             service: 'yahoo',
-            // secure: false, // Use `true` for port 465, `false` for all other ports
             auth: {
               user: "rockviewhotel@yahoo.com",
               pass: "ielk qfmp joov yrtn",
@@ -119,7 +117,7 @@ const booking = async (req, res) => {
           const mailOptionstohotel = {
             from: {
               name: booking?.name, 
-              address: email
+              address: 'rockviewhotel@yahoo.com'
             },
             to: "rockviewhotel@yahoo.com", // Ensure `email` is correctly formatted if it's an array
             subject: "Rockview Hotel Booking Request Message",
@@ -160,6 +158,7 @@ const booking = async (req, res) => {
         } catch (error) {
           console.error('Error sending mail:', error);
           return res.status(500).send('Error sending email');
+          
         }
       }
 
@@ -214,7 +213,6 @@ const cancelBooking = async (req, res) => {
     if(cancel){
       const transporter = nodemailer.createTransport({
         service: 'yahoo',
-        secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
           user: "rockviewhotel@yahoo.com",
           pass: "ielk qfmp joov yrtn",
@@ -262,7 +260,6 @@ const cancelBooking = async (req, res) => {
 
       const transportertohotel = nodemailer.createTransport({
         service: 'yahoo',
-        secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
           user: "rockviewhotel@yahoo.com",
           pass: "ielk qfmp joov yrtn",
@@ -333,7 +330,6 @@ const confirm = async (req, res) => {
     if(confirm){
       const transporter = nodemailer.createTransport({
         service: 'yahoo',
-        secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
           user: "rockviewhotel@yahoo.com",
           pass: "ielk qfmp joov yrtn",
@@ -341,10 +337,7 @@ const confirm = async (req, res) => {
       });
     
       const mailOptions = {
-        from: {
-          name: "Rockview Hospitality 👻", 
-          address: 'rockviewhotel@yahoo.com'
-        },
+        from:  'rockviewhotel@yahoo.com',
         to: confirm?.email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hotel Booking Request Alerting Message",
         text: "Hello world?", 
