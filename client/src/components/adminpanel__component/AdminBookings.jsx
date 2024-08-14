@@ -27,7 +27,7 @@ export const AdminBookings = () => {
     
     async function fetchData(){
       try {
-        const bookings = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings')).data
+        const bookings = await (axios.get(`${process.env.REACT_APP_BASE_URL}/api/bookings/getallbookings`)).data
         setBookings(bookings)
         console.log(bookings);
         if(bookings.status === 200){
@@ -46,6 +46,7 @@ export const AdminBookings = () => {
     }
     fetchData()
     setLoading(false)
+    
   },[])
   
 
@@ -59,7 +60,7 @@ export const AdminBookings = () => {
     });
 
     try {
-      const cancel = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/cancelbooking', {bookid})
+      const cancel = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/cancelbooking`, {bookid})
       console.log(cancel);
      { 
       !cancel.status === 200
@@ -137,7 +138,7 @@ async function confirm(index, bookid){
       return updatedCircles;
     });
 
-    const confirm = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/confirmbooking', {bookid})
+    const confirm = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/confirmbooking`, {bookid})
 
     !confirm.status === 200
     ?
@@ -210,7 +211,7 @@ async function Reject(index, bookid){
       return updatedCircles;
     });
 
-    const reject = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/rejectbooking', {bookid})
+    const reject = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/rejectbooking`, {bookid})
 
     !reject.status === 200
     ?
@@ -377,7 +378,7 @@ export const AdminRooms = () => {
   useEffect(()=>{
     async function fetchData(){
       try {
-        const room = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
+        const room = (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/rooms/getallrooms`)).data
         setRooms(room.getroomsInfo)
         console.log(room);
         if(room.status === 200){
@@ -458,7 +459,7 @@ export const AdminUsers = () => {
   useEffect(()=>{
     async function fetchData(){
       try {
-        const getUsers = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/users/getallusers'))
+        const getUsers = (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/users/getallusers`))
         console.log(getUsers);
         setUsers(getUsers.data)
         console.log(users);

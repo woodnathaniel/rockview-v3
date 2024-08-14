@@ -1,8 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import './userprofile.css'
-// import './ant.css'
-// import './admincards.css'
 import axios from 'axios'
 import LinearProgress from '@mui/material/LinearProgress';
 import Error from '../../components/error/Error';
@@ -20,18 +18,12 @@ const Profile = () => {
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
 
-
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('rockviewUser'));
     setLogin(user);
     console.log(user._id);
     setLoading(false)
   }, []);
-
-
- 
-
 
 
 
@@ -85,12 +77,11 @@ export const Bookings = ({userid}) => {
 
 
 
-
   useEffect( ()=>{
     //Fetch user bookings, API.
     async function fetchData(){
       try {
-        const userBookings = await (await (axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/getbookingbyid', {id: userid}))).data
+        const userBookings = await (await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/getbookingbyid`, {id: userid}))).data
         setUserBookedRooms(userBookings)
         if(userBookings){
           setLoading(false)
@@ -119,7 +110,7 @@ export const Bookings = ({userid}) => {
     setLoading2(true)
 
     try {
-      const result = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/cancelbooking', {bookid: bookingID,  reason: reason, email: rejectMail})
+      const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/cancelbooking`, {bookid: bookingID,  reason: reason, email: rejectMail})
       console.log('booking canceled successfuly');
       console.log(result);
 

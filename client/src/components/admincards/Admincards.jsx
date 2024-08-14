@@ -169,7 +169,7 @@ export const UsersBookingsCard = () =>{
     
     async function fetchData(){
       try {
-        const bookingsResult = await (await axios.get('http://rockviewhospitalities-api.vercel.app/api/bookings/getallbookings', {signal})).data
+        const bookingsResult =  (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/bookings/getallbookings`, {signal})).data
         setBookings(bookingsResult.reverse())
         setFilterBookigs(bookingsResult.reverse())
         setLoading(false)
@@ -193,6 +193,9 @@ export const UsersBookingsCard = () =>{
     }
     fetchData()
     setLoading(false)
+
+
+
 
     return()=>{
       console.log('aborted');
@@ -256,12 +259,12 @@ export const UsersBookingsCard = () =>{
     try {
       // setCircle(true)
       setconfirmCircles((prevCircle) => {
-        const updatedCircles = [...prevCircle]; // Copy the previous cancelErrors array
-        updatedCircles[index] = true; // Set the loading state for the specific index to true
+        const updatedCircles = [...prevCircle]; 
+        updatedCircles[index] = true;
         return updatedCircles;
       });
 
-      const confirm = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/confirmbooking', {bookid})
+      const confirm = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/confirmbooking`, {bookid})
 
       !confirm.status === 200
       ?
@@ -334,7 +337,7 @@ export const UsersBookingsCard = () =>{
       try {
      
         setLoading(true)
-        const reject = await axios.post('http://rockviewhospitalities-api.vercel.app/api/bookings/rejectbooking', {bookid: bookingID, reason: reason, email: rejectMail})
+        const reject = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/rejectbooking`, {bookid: bookingID, reason: reason, email: rejectMail})
         !reject.status === 200
         ?
         setError1(true)
@@ -527,7 +530,7 @@ export const AdminRooms = () =>{
 
     async function fetchData(){
       try {
-        const room = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms', {signal: abortCont.signal})).data
+        const room = (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/rooms/getallrooms`, {signal: abortCont.signal})).data
         setRooms(room.getroomsInfo)
         if(room.status === 200){
           setLoading(false)

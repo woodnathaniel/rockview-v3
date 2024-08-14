@@ -4,8 +4,9 @@ import '../rooms/rooms.css'
 import { Carousel } from 'antd';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Footer from '../../components/footer/Footer';
-
 import { Modal } from 'antd';
+
+
 
 
 const Rooms = () => {

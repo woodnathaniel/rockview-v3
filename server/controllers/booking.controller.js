@@ -1,8 +1,20 @@
 const bookingModel = require("../db.model/booking.model");
 const roomModel = require("../db.model/rooms.model");
 const nodemailer = require("nodemailer");
+require('dotenv').config
 
 
+
+const NODEMAILER_PASS = process.env.NODEMAILER_PASS
+const NODEMAILER_USER = process.env.NODEMAILER_USER
+
+const transporter = nodemailer.createTransport({
+  service: 'yahoo',
+  auth: {
+    user: NODEMAILER_USER,
+    pass: NODEMAILER_PASS,
+  },
+});
 
 
 //Users making bookings api
@@ -59,18 +71,10 @@ const booking = async (req, res) => {
 
         try {
       
-          const transporter = nodemailer.createTransport({
-            service: 'yahoo',
-            auth: {
-              user: "rockviewhotel@yahoo.com",
-              pass: "ielk qfmp joov yrtn",
-            },
-          });
-      
           const mailOptions = {
             from: {
               name: "Rockview Hospitality 👻", 
-              address: 'rockviewhotel@yahoo.com'
+              address: NODEMAILER_USER
             },
             to: email, // Ensure `email` is correctly formatted if it's an array
             subject: "Rockview Hospitality Booking Confirm message",
@@ -105,21 +109,13 @@ const booking = async (req, res) => {
               </header>
             `, 
           };
-
-          const transportertohotel = nodemailer.createTransport({
-            service: 'yahoo',
-            auth: {
-              user: "rockviewhotel@yahoo.com",
-              pass: "ielk qfmp joov yrtn",
-            },
-          });
       
           const mailOptionstohotel = {
             from: {
               name: booking?.name, 
-              address: 'rockviewhotel@yahoo.com'
+              address: NODEMAILER_USER
             },
-            to: "rockviewhotel@yahoo.com", // Ensure `email` is correctly formatted if it's an array
+            to: NODEMAILER_USER, 
             subject: "Rockview Hotel Booking Request Message",
             text: "Hello world?", 
             html: `
@@ -150,10 +146,9 @@ const booking = async (req, res) => {
             `, 
           };
           const mail = await transporter.sendMail(mailOptions);
-          const mailtohotel = await transportertohotel.sendMail(mailOptionstohotel);
+          const mailtohotel = await transporter.sendMail(mailOptionstohotel);
           res.status(200).json(mail)
           console.log('Mail sent successfully');
-          console.log(mailOptions);
 
         } catch (error) {
           console.error('Error sending mail:', error);
@@ -211,18 +206,11 @@ const cancelBooking = async (req, res) => {
     );
 
     if(cancel){
-      const transporter = nodemailer.createTransport({
-        service: 'yahoo',
-        auth: {
-          user: "rockviewhotel@yahoo.com",
-          pass: "ielk qfmp joov yrtn",
-        },
-      });
-    
+
       const mailOptions = {
         from: {
           name: "Rockview Hospitality 👻", 
-          address: 'rockviewhotel@yahoo.com'
+          address: NODEMAILER_USER
         },
         to: cancel?.email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hotel Booking Request Review message",
@@ -257,18 +245,10 @@ const cancelBooking = async (req, res) => {
           </header>
         `, 
       };
-
-      const transportertohotel = nodemailer.createTransport({
-        service: 'yahoo',
-        auth: {
-          user: "rockviewhotel@yahoo.com",
-          pass: "ielk qfmp joov yrtn",
-        },
-      });
     
       const mailOptionstohotel = {
         from: "rockviewhotel@yahoo.com",
-        to:'rockviewhotel@yahoo.com', // Ensure `email` is correctly formatted if it's an array
+        to: NODEMAILER_USER, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hotel Booking Request Cancelled",
         text: "Hello world?", 
         html: `
@@ -296,7 +276,7 @@ const cancelBooking = async (req, res) => {
 
       try {
         const mail = await transporter.sendMail(mailOptions);
-        const mailtohotel = await transportertohotel.sendMail(mailOptionstohotel);
+        const mailtohotel = await transporter.sendMail(mailOptionstohotel);
         res.status(200).json(mail);
       } catch (error) {
         res.status(400).json(error);
@@ -325,16 +305,9 @@ const confirm = async (req, res) => {
       { status: "approved" }
     );
     if(confirm){
-      const transporter = nodemailer.createTransport({
-        service: 'yahoo',
-        auth: {
-          user: "rockviewhotel@yahoo.com",
-          pass: "ielk qfmp joov yrtn",
-        },
-      });
-    
+  
       const mailOptions = {
-        from:  'rockviewhotel@yahoo.com',
+        from:  NODEMAILER_USER,
         to: confirm?.email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hotel Booking Request Alerting Message",
         text: "Hello world?", 
@@ -367,11 +340,8 @@ const confirm = async (req, res) => {
             </div>
           </header>
         `, 
-      };
-
-     
-
-
+      };  
+      
 
       try {
         const mail = await transporter.sendMail(mailOptions);
@@ -405,19 +375,11 @@ const rejectbooking = async (req, res) => {
       { status: "rejected" }
     );
     if(reject){
-      const transporter = nodemailer.createTransport({
-        service: 'yahoo',
-        secure: false, // Use `true` for port 465, `false` for all other ports
-        auth: {
-          user: "rockviewhotel@yahoo.com",
-          pass: "ielk qfmp joov yrtn",
-        },
-      });
     
       const mailOptions = {
         from: {
           name: "Rockview Hospitality 👻", 
-          address: 'rockviewhotel@yahoo.com'
+          address: NODEMAILER_USER
         },
         to: email, // Ensure `email` is correctly formatted if it's an array
         subject: "Rockview Hospitality Booking Request Review message",

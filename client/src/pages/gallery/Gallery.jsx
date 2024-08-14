@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './gallery.css'
-import { Header } from '../../components/headerNav/Header';
 import NavBar from '../../components/navbar/NavBar';
 import Masonry from 'react-masonry-css';
 

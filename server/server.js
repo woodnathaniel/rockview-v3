@@ -12,7 +12,12 @@ const authRouter = require('./routes/auth.route')
 const ContactRouter = require('./routes/contact.route.js')
 const galleryrouter = require('./routes/gallery.route.js')
 
-const allowedOrigins = ['http://localhost:3000', 'https://rockviewhotel.vercel.app'];
+
+const MONGO_URL = process.env.MONGO_URL
+const PORT = process.env.PORT;
+const FRONTEND_URL = process.env.FRONTEND_URL
+const localhost = process.env.localhost
+const allowedOrigins = [localhost, FRONTEND_URL];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -29,8 +34,6 @@ app.use(cors({
 }));
 
 
-const port = 5000
-const mongoUrl = 'mongodb+srv://rockviewHotel:rockviewHotelDB@rockviewcluster.vid064j.mongodb.net/rockviewDB'
 
 
 require('./auth.js')
@@ -64,10 +67,10 @@ app.get('/', (req, res) => res.send('hello there'));
 
   
 //connect to db
-  mongoose.connect(mongoUrl)
+  mongoose.connect(MONGO_URL)
   .then(()=>{
     console.log('mongodb connected successfully');
-    app.listen(port, () => console.log(`Server listening on port ${port}!`))
+    app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`))
   })
   .catch((err)=>{
     console.log(err)

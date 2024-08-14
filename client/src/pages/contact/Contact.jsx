@@ -5,7 +5,6 @@ import Footer from '../../components/footer/Footer';
 import axios from 'axios';
 import { message } from 'antd';import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import { red } from '@mui/material/colors';
 
 
 const Contact = () => {
@@ -48,7 +47,7 @@ const Contact = () => {
       message: mailMessage
     }
     try {
-      const sendMail = await axios.post('http://rockviewhospitalities-api.vercel.app/api/user/contact', mail)
+      const sendMail = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/contact`, mail)
       if(sendMail.status === 200){
         setLoading(false)
         setSucces(true)

@@ -53,7 +53,7 @@ export default function Register() {
     }
 
     try {
-      const registerResult = await (axios.post('http://rockviewhospitalities-api.vercel.app/api/users/register', details))
+      const registerResult = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/register`, details))
       console.log(registerResult);
       setSucces(true)
 

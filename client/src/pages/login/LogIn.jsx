@@ -8,7 +8,6 @@ import LockIcon from '@mui/icons-material/Lock';
 import Error from '../../components/error/Error'
 import Success from '../../components/success/Success';
 import Loading from '../../components/Loading/Loading';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { Modal } from 'antd';
 
 
@@ -26,9 +25,7 @@ export default function LogIn() {
   const [response, setResponse] = useState({})
 
  
-  const googleAuth = () => {
-      window.open("http://rockviewhospitalities-api.vercel.app/auth/google/callback", "_self");
-  };
+
 
   const handleOk2 = () => {
     setOpen(false)
@@ -49,7 +46,7 @@ export default function LogIn() {
     } 
 
     try {
-      const loginPost = await (axios.post('http://rockviewhospitalities-api.vercel.app/api/users/login', user))
+      const loginPost = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/login`, user))
       console.log(loginPost);
 
       

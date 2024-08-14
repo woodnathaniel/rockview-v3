@@ -1,0 +1,30 @@
+# Node.js modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build directories
+dist/
+build/
+
+# Temporary files
+tmp/
+*.tmp
+*.swp
+
+# IDE or Editor-specific files
+.vscode/
+.idea/
+
+# Ignore specific config files (example)
+config/*.json
+!config/default.json # Do not ignore this specific file

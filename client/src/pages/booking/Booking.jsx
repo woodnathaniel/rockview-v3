@@ -137,7 +137,7 @@ console.log(typeof(data._id));
 
     try {
       const confirmedBooked = await axios.post(
-        "http://rockviewhospitalities-api.vercel.app/api/bookings/bookroom",
+        `${process.env.REACT_APP_BASE_URL}/api/bookings/bookroom`,
         bookingDetails
       );
       console.log(confirmedBooked);

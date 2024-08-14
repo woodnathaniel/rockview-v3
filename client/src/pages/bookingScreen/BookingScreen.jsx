@@ -44,7 +44,7 @@ export default function () {
     axios.defaults.withCredentials = true
     const fetchData = async() =>{
       try {
-        const data = (await axios.get('http://rockviewhospitalities-api.vercel.app/api/rooms/getallrooms')).data
+        const data = (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/rooms/getallrooms`)).data
          setRooms(data.getroomsInfo);
           setAllow(true)
        
