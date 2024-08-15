@@ -13,7 +13,7 @@ const ContactRouter = require('./routes/contact.route.js')
 const galleryrouter = require('./routes/gallery.route.js')
 
 
-const MONGO_URL = process.env.MONGO_URL
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://rockviewHotel:rockviewHotelDB@rockviewcluster.vid064j.mongodb.net/rockviewDB'
 const PORT = process.env.PORT || 5000;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://rockviewhotel.vercel.app'
 const localhost = process.env.localhost || 'http://localhost:3000'
