@@ -17,7 +17,12 @@ const MONGO_URL = process.env.MONGO_URL
 const PORT = process.env.PORT || 5000;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://rockviewhotel.vercel.app'
 const localhost = process.env.localhost || 'http://localhost:3000'
-const allowedOrigins = [localhost, FRONTEND_URL];
+const allowedOrigins = [localhost,`http://localhost:3000`, `https://rockviewhotel.vercel.app`, FRONTEND_URL];
+console.log(MONGO_URL);
+console.log(PORT);
+console.log(FRONTEND_URL);
+console.log(localhost);
+
 
 app.use(cors({
   origin: function (origin, callback) {

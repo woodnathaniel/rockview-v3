@@ -7,6 +7,9 @@ require('dotenv').config
 
 const NODEMAILER_PASS = process.env.NODEMAILER_PASS
 const NODEMAILER_USER = process.env.NODEMAILER_USER
+console.log(NODEMAILER_USER);
+console.log(NODEMAILER_PASS);
+
 
 const transporter = nodemailer.createTransport({
   service: 'yahoo',
