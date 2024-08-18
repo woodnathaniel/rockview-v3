@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Header } from '../../components/headerNav/Header';
 import '../rooms/rooms.css'
 import { Carousel } from 'antd';
@@ -15,6 +15,39 @@ const Rooms = () => {
   const [loading2, setLoading2] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+
+
+
+  const roomsRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: [0.1, 0.5, 1],
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        } else {
+          entry.target.classList.remove('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    const { current: serviceElement } = roomsRef;
+    if (serviceElement) {
+      observer.observe(serviceElement);
+    }
+
+    return () => {
+      if (serviceElement) {
+        observer.unobserve(serviceElement);
+      }
+    };
+  }, []);
+
 
   const contentStyle = {
     height: '160px',
@@ -73,7 +106,7 @@ const Rooms = () => {
       </section>
 
       {/*--------------- room text -------------------*/}
-      <section className="room__header-text">
+      <section className="room__header-text rooms__animation" ref={roomsRef}>
         <h1>ROOMS AND RATES</h1>
         <p>
         Each of our rooms is furnished with all the facilities ( Standard double beds, King Size beds, Air-condition,

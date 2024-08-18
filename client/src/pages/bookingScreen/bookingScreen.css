@@ -152,6 +152,16 @@ img{
   font-weight: 200;
 }
 
+.booking__animation{
+  transform: scale(0.4);
+  opacity: 0;
+  transition: transform 0.3s linear, opacity .7s linear;
+}
+
+.booking__animation.fade-in {
+  transform: scale(1);
+  opacity: 1;
+}
 
 @media screen and (max-width: 768px){
 

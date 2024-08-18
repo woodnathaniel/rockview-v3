@@ -16,16 +16,20 @@ export const Header = ({imgUrl}) =>{
 
   return (
     <div className='header__container' style={{
-      backgroundImage:  `url(${imgUrl})`,
+      // backgroundImage:  `url(${imgUrl})`,
       }}>
+        <img className='header__image' src={imgUrl} alt="Header Picture" />
       <NavBar />
-      <section className='header__text'>
-        <h5>WELCOME TO</h5>
-        <h2>ROCKVIEW</h2>
-        <h4>HOTEL</h4>
-        <p>Book your stay and enjoy Luxury, <br /> redifined at one of the most affordable rates</p>
-      </section>
-      <button onClick={()=>{handleClick()}}> <PermContactCalendarIcon/> BOOK NOW</button>
+      <div className='sub-title'>
+        <section className='header__text'>
+          <h5>WELCOME TO</h5>
+          <h2>ROCKVIEW</h2>
+          <h4>HOTEL</h4>
+          <p>Book your stay and enjoy Luxury, <br /> redifined at one of the most affordable rates</p>
+        </section>
+        <button onClick={()=>{handleClick()}}> <PermContactCalendarIcon/> BOOK NOW</button>
+      </div>
+      
     </div>
   )
 

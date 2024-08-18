@@ -25,6 +25,11 @@
   perspective: 400px;
 }
 
+/* .nav__bar h4{
+  color: rgb(88, 198, 241);
+} */
+
+
 .logo{
   cursor: pointer;
 }

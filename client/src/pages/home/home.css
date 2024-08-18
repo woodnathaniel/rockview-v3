@@ -112,6 +112,17 @@
   gap: 20px;
 }
 
+.service__animation{
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform 0.3s linear, opacity .7s linear;
+}
+
+.service.fade-in {
+  transform: scale(1);
+  opacity: 1;
+}
+
 .service h1{
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
@@ -156,11 +167,11 @@
 @media (prefers-reduced-motion: no-preference){
     
   .service{
-    scale: .4;
+    /* scale: .4;
     opacity: 0;
     animation: fade-in linear forwards;
     animation-timeline: view();
-    animation-range: 100px 300px;
+    animation-range: 100px 300px; */
   }
 
   /* .picSection__first{

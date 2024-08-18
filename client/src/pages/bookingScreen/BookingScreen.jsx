@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Carousel } from 'antd'
 import { Card } from 'antd';
 import '../bookingScreen/bookingScreen.css'
@@ -30,6 +30,36 @@ export default function () {
   const [loading2, setLoading2] = useState(false)
   const [allow, setAllow] = useState(false)
   const [data, setData] = useState([])
+
+  const bookingRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: [0.1, 0.5, 1],
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        } else {
+          entry.target.classList.remove('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    const { current: serviceElement } = bookingRef;
+    if (serviceElement) {
+      observer.observe(serviceElement);
+    }
+
+    return () => {
+      if (serviceElement) {
+        observer.unobserve(serviceElement);
+      }
+    };
+  }, []);
 
   
   useEffect(() => {
@@ -116,7 +146,7 @@ export default function () {
         </section>
 
 
-        <section className="service__section">
+        <section className="service__section booking__animation" ref={bookingRef}>
         <h1>Our Service Review</h1>
           <div className='service__icons'>
             <div className='icons'>
@@ -172,6 +202,10 @@ export default function () {
             cover={
                 <div>
                   <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
+
+                    {
+
+                    }
                   
                       {
                         

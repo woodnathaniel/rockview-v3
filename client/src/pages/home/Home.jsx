@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../home/home.css'
 import {Header} from '../../components/headerNav/Header.jsx';
 import LocalCarWashIcon from "@mui/icons-material/LocalCarWash";
@@ -13,6 +13,40 @@ import Footer from '../../components/footer/Footer.jsx';
 
 
 const Home = () => {
+
+  const serviceRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: [0.1, 0.5, 1],
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        } else {
+          entry.target.classList.remove('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    const { current: serviceElement } = serviceRef;
+    if (serviceElement) {
+      observer.observe(serviceElement);
+    }
+
+    return () => {
+      if (serviceElement) {
+        observer.unobserve(serviceElement);
+      }
+    };
+  }, []);
+
+
+
+
   return (
     <div className='mainCont'>
       <section className="homeMain__container">
@@ -21,7 +55,7 @@ const Home = () => {
       </section>
 
       {/* service icons section*/}
-      <section className='service'>
+      <section className='service service__animation' ref={serviceRef}>
         <h1>Our Service Review</h1>
           <div className='service__icons'>
             <div className='icons'>
