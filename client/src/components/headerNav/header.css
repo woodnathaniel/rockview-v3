@@ -14,8 +14,8 @@
 }
 
 .header__container .header__image{
-  width: 100vw;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   object-fit: cover;
@@ -152,7 +152,7 @@
   }
 
   .header__container{
-    height: 50vh;
+    height: 40vh;
     border-bottom: solid var(--icons-colors) 1px;
     gap: 0;
   }
