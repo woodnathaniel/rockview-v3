@@ -163,7 +163,16 @@ img{
   opacity: 1;
 }
 
+.MuiBox-root .css-jzvoqe-MuiSkeleton-root{
+
+  background-color:  rgb(173, 173, 173);
+}
+
 @media screen and (max-width: 768px){
+
+  .MuiBox-root .css-jzvoqe-MuiSkeleton-root{
+    width: 90vw;
+  }
 
   .ant-booking-carousel
   img{

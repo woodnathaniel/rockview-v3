@@ -16,6 +16,8 @@ import Footer from '../../components/footer/Footer';
 import NavBar from '../../components/navbar/NavBar';
 import { Modal } from 'antd';
 import Loading from '../../components/Loading/Loading';
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 
 const { Meta } = Card;
 
@@ -27,6 +29,7 @@ export default function () {
   const [show, setShow] = useState(false)
   const [open, setOpen] = useState(false)
   const [loading1, setLoading1] = useState(false)
+  const [fetch, setFetch] = useState(true)
   const [loading2, setLoading2] = useState(false)
   const [allow, setAllow] = useState(false)
   const [data, setData] = useState([])
@@ -86,7 +89,7 @@ export default function () {
 
     }
     fetchData()
-
+    setFetch(false)
 
   },[])
 
@@ -197,91 +200,113 @@ export default function () {
 
 
   {/*----------------- Executive Suite Card section ------------------*/}
+                {
+                      fetch ? 
+                        <div>
+                          <Box> 
+                            <Skeleton animation="wave" sx={{ width: 500, height: 900 }}/>
+                          </Box>
+                        </div>
+                      
+                      
+                      :
 
-            <Card
-            cover={
-                <div>
-                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
-
-                    {
-
-                    }
-                  
-                      {
+                      <Card
+                      cover={
                         
-                        rooms[0]?.imageurls.map((url) =>{
-                        return <div>
-                            <img src={url} alt="pictures of rooms" />
-                          </div>
-                          
-                        })
+                          <div>
+                            <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
+          
+                             
+                            
+                                {
+                                  
+                                  rooms[0]?.imageurls.map((url) =>{
+                                  return <div>
+                                      <img src={url} alt="pictures of rooms" />
+                                    </div>
+                                    
+                                  })
+                                }
+                            </Carousel>
+          
+                        </div>
+                        
                       }
-                  </Carousel>
+                      actions={[
+                          <div ><h4>Rent per day</h4> <p>{rooms[0]?.rentperday}.00 USD Dollars</p></div>,
+                          <h3>Maximun Guest per Room is {rooms[0]?.maxcount} if only they are couple.</h3>,
+          
+                          <div>
+                            {
+                              allow?  <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}>{allow? 'BOOK NOW ': ''}</button>: ''
+                            }
+                          </div>          
+                        ]}
+                    >
+                      <Meta
+                        avatar={''}
+                        title={<h2>{rooms[0]?.roomtype}</h2>}
+                        description={''}
+                        
+                      />
+                    </Card>
+          
 
-              </div>
-              
-            }
-            actions={[
-                <div ><h4>Rent per day</h4> <p>{rooms[0]?.rentperday}.00 USD Dollars</p></div>,
-                <h3>Maximun Guest per Room is {rooms[0]?.maxcount} if only they are couple.</h3>,
 
-                <div>
-                  {
-                    allow?  <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}>{allow? 'BOOK NOW ': ''}</button>: ''
-                  }
-                </div>          
-              ]}
-          >
-            <Meta
-              avatar={''}
-              title={<h2>{rooms[0]?.roomtype}</h2>}
-              description={''}
-              
-            />
-          </Card>
-
+                }
+           
 
 
     {/*----------------- Standard suite Card section ------------------*/}
 
-          <Card
+    {
+      fetch ?
+      <Box >
+        <Skeleton animation="wave" sx={{ width: 500, height: 900 }}/>
+      </Box>
+      :
+      <Card
            
-            cover={
-                <div>
-                  <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
-                  
-                      {
-                        
-                        rooms[1]?.imageurls.map((url) =>{
-                        return <div>
-                            <img src={url} alt="pictures of rooms" />
-                          </div>
-                          
-                        })
-                      }
-                  </Carousel>
-                </div>
+        cover={
+            <div>
+              <Carousel className='antd-room-carousel'  arrows infinite={true} draggable={true} autoplay>
               
-            }
-            actions={[
-              <div ><h4>Rent per day</h4> <p>{rooms[1]?.rentperday}.00 USD Dollars</p></div>,
-              <h3>Maximun Guest per Room is {rooms[1]?.maxcount} if only they are couple.</h3>,
-              <div>
-                {
-                   allow?  <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}>{allow? 'BOOK NOW ': ''}</button>: ''
-                }
-              </div>
-
-            ]}
-          >
-            <Meta
-              avatar={''}
-              title={<h2>{rooms[1]?.roomtype}</h2>}
-              description={''}
-              
-            />
-          </Card>
+                  {
+                    
+                    rooms[1]?.imageurls.map((url) =>{
+                    return <div>
+                        <img src={url} alt="pictures of rooms" />
+                      </div>
+                      
+                    })
+                  }
+              </Carousel>
+            </div>
           
+        }
+        actions={[
+          <div ><h4>Rent per day</h4> <p>{rooms[1]?.rentperday}.00 USD Dollars</p></div>,
+          <h3>Maximun Guest per Room is {rooms[1]?.maxcount} if only they are couple.</h3>,
+          <div>
+            {
+              allow?  <button className='bkcard__btn__booknow' onClick={() => handelClick(rooms[1])}>{allow? 'BOOK NOW ': ''}</button>: ''
+            }
+          </div>
+
+        ]}
+      >
+        <Meta
+          avatar={''}
+          title={<h2>{rooms[1]?.roomtype}</h2>}
+          description={''}
+          
+        />
+      </Card>
+    
+    }
+
+         
           
         </section>
         </div>
