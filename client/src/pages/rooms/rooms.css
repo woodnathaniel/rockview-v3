@@ -145,6 +145,17 @@
   color: var(--opt-color);
 }
 
+.rooms__animation{
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 0.2s linear, opacity .2s linear;
+}
+
+.rooms__animation.fade-in {
+  transform: scale(1);
+  opacity: 1;
+}
+
 
 
 
