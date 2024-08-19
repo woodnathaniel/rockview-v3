@@ -13,6 +13,7 @@ import { Modal } from 'antd';
 export const AdminBookings = () => {
 
   const [loading, setLoading] = useState(true)
+  const [fetching, setFetchig] = useState(true)
   const [circles, setCircles] = useState([])
   const [cancelErrors, setCancelErrors] = useState([])
   const [cancelSuccess, setCancelSuccess] = useState([])
@@ -46,6 +47,7 @@ export const AdminBookings = () => {
     }
     fetchData()
     setLoading(false)
+    setFetchig(false)
     
   },[])
   
@@ -273,6 +275,7 @@ async function Reject(index, bookid){
 
   return (
     <div className={'adminGrid'}>
+      {fetching && <LinearProgress sx={{ width: '95%' }}/>}
       { success && <Success style={{marginBottom: '20px'}} msg={'succesfully'} /> }
       { error && <Error style={{marginBottom: '20px'}} message={'No bookings Yet'} /> }
       <div>
@@ -296,7 +299,7 @@ async function Reject(index, bookid){
               }
             {
 
-              bookings.map((book, index)=>{
+              bookings.length===0 ? <Error message={'You Have No Booking'}/> : bookings.map((book, index)=>{
                 return(
                   <tr className='tableRow'>
                     <td>{book._id}</td>
