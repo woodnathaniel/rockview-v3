@@ -166,7 +166,8 @@ export const UsersBookingsCard = () =>{
 
 
   useEffect(()=>{
-    setLoading(true)
+    setFetchig(true)
+    setLoading(false)
     const AborrtController = new AbortController();
     const signal = AborrtController.signal;
     
