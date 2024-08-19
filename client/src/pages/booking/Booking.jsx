@@ -82,16 +82,13 @@ export default function Booking({data}) {
 
   useEffect(() => {
     
-    console.log(data);
     const user = localStorage.getItem('rockviewUser')
     setUser(JSON.parse(user))
-    console.log(user);
     
     return () => {};
   }, []);
 
 
-console.log(typeof(data._id));
 
   const closeClick = () => {
     setShow(!show);
@@ -100,7 +97,6 @@ console.log(typeof(data._id));
 
   async function confirmBooking(e) {
 
-    console.log(data);
     e.preventDefault();
     setLoading(true);
 
@@ -114,7 +110,6 @@ console.log(typeof(data._id));
     //   `${guest}`,
 
     // ]
-    console.log((totaldays * data?.rentperday));
     const totalamount = (totaldays * data?.rentperday)
 
     const bookingDetails = {
@@ -140,7 +135,6 @@ console.log(typeof(data._id));
         `${process.env.REACT_APP_BASE_URL}/api/bookings/bookroom`,
         bookingDetails
       );
-      console.log(confirmedBooked);
 
       if (confirmedBooked.status === 200) {
         try {
@@ -197,7 +191,6 @@ console.log(typeof(data._id));
         return;
     }
     
-    console.log(date);
 
     const startDate = formatDate(date[0].$d);
     const endDate = formatDate(date[1].$d);
@@ -211,8 +204,6 @@ console.log(typeof(data._id));
     const differenceInDays = Math.floor(
       differenceInMilliseconds / (1000 * 60 * 60 * 24)
     );
-    console.log(differenceInDays);
-    console.log(typeof(differenceInDays));
     setTotaldays(differenceInDays);
   }
 

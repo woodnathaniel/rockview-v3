@@ -93,15 +93,12 @@ export default function () {
 
   },[])
 
-  console.log(rooms);
 
  const handelClick = (data)=>{
   const user = localStorage.getItem('rockviewUser')
-  console.log(user)
   if(user === null){
     setOpen(true)
   }else{
-    console.log(data);
     setData(data)
     setShow(!show)
   }

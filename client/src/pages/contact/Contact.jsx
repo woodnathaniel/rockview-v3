@@ -55,7 +55,6 @@ const Contact = () => {
           setSucces(false)
         },300)
       }
-      console.log(sendMail);
 
     } catch (error) {
 

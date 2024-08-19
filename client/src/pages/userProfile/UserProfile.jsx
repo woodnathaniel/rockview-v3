@@ -21,7 +21,6 @@ const Profile = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('rockviewUser'));
     setLogin(user);
-    console.log(user._id);
     setLoading(false)
   }, []);
 
@@ -93,7 +92,6 @@ export const Bookings = ({userid}) => {
     fetchData()
     
   },[userid])
-  console.log(userBookedRooms);
 
   const handleCancel1 = () => {
     setOpen(false)
@@ -112,7 +110,6 @@ export const Bookings = ({userid}) => {
     try {
       const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/bookings/cancelbooking`, {bookid: bookingID,  reason: reason, email: rejectMail})
       console.log('booking canceled successfuly');
-      console.log(result);
 
       !result.status === 200
       ?
@@ -261,7 +258,6 @@ export const Userprofile = () =>{
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('rockviewUser'));
     setLogin(user);
-    console.log(user._id);
     setLoading(false)
   }, []);
 

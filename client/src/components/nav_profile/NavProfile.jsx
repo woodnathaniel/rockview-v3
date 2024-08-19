@@ -17,7 +17,6 @@ function NavProfile() {
   useEffect(()=>{
     const rockviewUser = localStorage.getItem('rockviewUser');
     const user = JSON.parse(rockviewUser)
-    console.log(user);
     setUser(user)
     if(user){
       setIsLogin(true)

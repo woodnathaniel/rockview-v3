@@ -383,7 +383,6 @@ export const AdminRooms = () => {
       try {
         const room = (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/rooms/getallrooms`)).data
         setRooms(room.getroomsInfo)
-        console.log(room);
         if(room.status === 200){
           setLoading(false)
           setSucces(true)
@@ -463,9 +462,7 @@ export const AdminUsers = () => {
     async function fetchData(){
       try {
         const getUsers = (await axios.get(`${process.env.REACT_APP_BASE_URL}/api/users/getallusers`))
-        console.log(getUsers);
         setUsers(getUsers.data)
-        console.log(users);
         if(getUsers.status === 200){
           setLoading(false)
           setSucces(true)
