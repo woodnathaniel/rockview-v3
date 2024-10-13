@@ -139,6 +139,8 @@
 }
 
 .facility__pic-responsive {
+  display: block; 
+  max-width: 100%;
   transform: scale(0.8);
   opacity: 0;
   transition: transform 0.5s linear, opacity 0.5s linear;
@@ -187,12 +189,6 @@
 
 /*----------------------- SMALL DEVICES ---------------------*/
 @media screen and (max-width: 768px){
-
-  .facility__pic-responsive {
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform 0.7s linear, opacity 0.5s linear;
-  }
   
   .facility__pic-responsive.fade-in {
     transform: scale(1);
@@ -202,6 +198,9 @@
   .facility__pic-responsive{
     width: 95vw;
     height: 300px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.7s linear, opacity 0.5s linear;
   }
 
 
