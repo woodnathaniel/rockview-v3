@@ -58,7 +58,7 @@ const loginData = async (req, res) => {
 };
 
 const resetPasswordCheck = async (req, res) =>{
-  const {email} = req.body;
+  const {email, password} = req.body;
   try {
     const userEmail = await usersModelDb.findOne({ email: email});
     console.log(userEmail);
@@ -70,7 +70,7 @@ const resetPasswordCheck = async (req, res) =>{
           name: "Rockview Hospitality 👻",
           address: NODEMAILER_USER
         },
-        to: email,
+        to: userEmail.email,
         subject: "Rockview Hospitality Booking Confirmation",
         text: "PassWord Reset",
         html: `
