@@ -61,6 +61,8 @@ const resetPasswordCheck = async (req, res) =>{
   const {email} = req.body;
   try {
     const userEmail = await usersModelDb.findOne({ email: email});
+    console.log(userEmail);
+    
     if(userEmail){
       res.status(200).send(userEmail)
       const mailOptions = {
@@ -78,6 +80,8 @@ const resetPasswordCheck = async (req, res) =>{
           </header>
         `,
       };
+
+      await transporter.sendMail(mailOptions);
     }else{
       res.status(401).send(`email don't exist`)
     }
