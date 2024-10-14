@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Facilities from './pages/facilities/Facilities';
 import Rooms from './pages/rooms/Rooms';
@@ -13,6 +13,7 @@ import AdminPanel from './pages/adminpanel/AdminPanel';
 import {UsersBookingsCard} from './components/admincards/Admincards.jsx'
 import Profile from './pages/userProfile/UserProfile.jsx';
 import Gallery from './pages/gallery/Gallery.jsx';
+import { ResetPassword } from './pages/resetpassword/ResetPassword.jsx';
 
 
 
@@ -44,11 +45,11 @@ function App() {
           <Route exact path="/adminpcards" element={<UsersBookingsCard />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/gallery" element={<Gallery />} />
+          <Route exact path="/rockview/user/resetpassword" element={<ResetPassword/>} />
         </Routes>
 
       {/* <div></div> */}
       {/* <Footer /> */}
-      
     </div>
   );
 }

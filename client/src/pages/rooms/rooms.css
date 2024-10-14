@@ -19,6 +19,7 @@
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   font-style: normal;
+  color: var(--opt-color);
 }
 
 .room__header-text p{
@@ -26,6 +27,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: var(--opt-color);
 }
 
 .room__type-picContainer{

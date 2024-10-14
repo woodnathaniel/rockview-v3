@@ -1,3 +1,11 @@
+.hide_password{
+  display: none;
+}
+
+.show__text{
+  display: block;
+}
+
 .login_main_container{
   position: relative;
   margin: 0 auto;
