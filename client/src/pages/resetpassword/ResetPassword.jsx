@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Modal } from 'antd';
 import Password from 'antd/es/input/Password'
 import Error from '../../components/error/Error'
@@ -13,7 +13,6 @@ import LockIcon from '@mui/icons-material/Lock';
 import { message } from 'antd';
 
 
-
 export const ResetPassword = () => {
 
   const [messageApi, contextHolder] = message.useMessage();
@@ -21,12 +20,25 @@ export const ResetPassword = () => {
   const [success, setSucces] = useState(false)
   const [open, setOpen] = useState(false)
   const [error, setError] = useState(false)
+  const [antdMssg, setAntdMssg] = useState(false)
   const [response, setResponse] = useState({})
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     confirmPassword: ''
   })
+
+  useEffect(() => {
+    
+    messageApi.open({
+      type: 'success',
+      content: 'Password Changed',
+      duration: 20,
+    });
+    return () => {
+      
+    };
+  }, [antdMssg]);
 
   let formDataResult = {}
 
@@ -58,19 +70,11 @@ export const ResetPassword = () => {
 
     setLoading(true)
     try {
-      const submit = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpasswordcheck`, formDataResult))
+      const submit = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpassword`, formDataResult))
       console.log(submit);
       
       if(submit.status === 200){
-
-        messageApi.open({
-          type: 'success',
-          content: 'Password Changed',
-          duration: 20,
-        });
-        
-        console.log('successful');
-        
+        setAntdMssg(true)        
       }
     } catch (error) {
       console.log(error.message);

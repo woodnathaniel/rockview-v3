@@ -1,4 +1,4 @@
-  import { useState } from 'react';
+  import { useState, useEffect } from 'react';
   import './login.css'
   import axios from 'axios';
   import PersonOutlineIcon from '@mui/icons-material/PersonOutline';  
@@ -26,6 +26,7 @@
     const [error, setError] = useState(false)
     const [response, setResponse] = useState({})
     const [hideMail, setHideMail] = useState(false)
+    const [antdMssg, setAntdMssg] = useState(false)
 
     const [messageApi, contextHolder] = message.useMessage();
     const [formData, setFormData] = useState({
@@ -33,6 +34,20 @@
       password: ''
     });
 
+    useEffect(() => {
+      
+      messageApi.open({
+        type: 'success',
+        content: 'Check out you email to reset password',
+        duration: 20,
+      });
+
+      return () => {
+        
+      };
+    }, [antdMssg]);
+
+  //handle form change 
     function handleOnChange(event){
       console.log(event);
       
@@ -44,6 +59,8 @@
       }))
     }
 
+
+    //handle Modal show up and hide functionalities
     const handleOk2 = () => {
       setOpen(false)
       window.location.href = '/'
@@ -62,6 +79,8 @@
       
     }
 
+
+   //On form submit, checks on either password reset or login option
     const submitLoginDetails = async (e) =>{
       setLoading(true)
       e.preventDefault()
@@ -96,15 +115,10 @@
       }else{
 
         try {
-          
-          const resetPassword = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpassword`, formData))
-
-          if(resetPassword.status == 200){
-            messageApi.open({
-              type: 'success',
-              content: 'Check out you email to reset password',
-              duration: 20,
-            });
+          const resetPassword = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpasswordcheck`, formData))
+          console.log(resetPassword);
+          if(resetPassword){
+            setAntdMssg(true)
           }
         } catch (error) {
           
