@@ -91,34 +91,40 @@ const resetPasswordCheck = async (req, res) =>{
   }
 }
 
-const resetPassword = async (req, res) =>{
-  const {email, password} = req.body;
-  try {
-    const userEmail = await usersModelDb.findOne({ email: email});
-    if(userEmail){
-      try {
-        const filter = { email: email };
-        const updateDoc = {
-          $set: { password: password } 
-        };
-        const updatePassword = await usersModelDb.updateOne(filter, updateDoc);
-        res.status(200).send(updatePassword)
+const resetPassword = async (req, res) => {
+  const { email, password } = req.body;
 
-      } catch (error) {
-        res.status(500).json({error: 'failed', details: error.message })
+  try {
+    // Find the user by email
+    const userEmail = await usersModelDb.findOne({ email: email });
+    
+    if (userEmail) {
+      // Update the password directly (without hashing)
+      const filter = { email: email };
+      const updateDoc = {
+        $set: { password: password } // Storing password as plain text (not recommended for production)
+      };
+
+      // Update the user document in the database
+      const updatePassword = await usersModelDb.updateOne(filter, updateDoc);
+
+      // If the update was successful, send a success response
+      if (updatePassword.modifiedCount > 0) {
+        return res.status(200).json({ message: 'Password updated successfully' });
+      } else {
+        return res.status(500).json({ error: 'Failed to update password' });
       }
 
-    }else{
-      res.status(401).send(`email don't exist`)
+    } else {
+      // If the email is not found in the database
+      return res.status(404).json({ error: 'Email not found' });
     }
 
-
-
   } catch (error) {
-    res.status(500).json({error: 'failed', details: error.message })
-    console.log(`login api err: ${error}`);
+    // Catch any errors and return a failure response
+    return res.status(500).json({ error: 'Failed to reset password', details: error.message });
   }
-}
+};
 
 const getAllUsers = async(req, res)=>{
 
