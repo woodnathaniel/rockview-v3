@@ -43,7 +43,6 @@ export const ResetPassword = () => {
   let formDataResult = {}
 
   const handleOnChange= (e)=>{
-    e.preventDefault()
     const {name, value} = e.target
     setFormData((prev) =>({
         ...prev,
@@ -67,7 +66,7 @@ export const ResetPassword = () => {
   };
 
   const handleOnSubmit = async (e)=>{
-
+    e.preventDefault()
     setLoading(true)
     try {
       const submit = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpassword`, formDataResult))
