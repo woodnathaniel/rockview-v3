@@ -25,9 +25,10 @@ export default function Footer() {
           <span></span>
         </div>
         <div className="footer__socials ">
-          <span><FacebookIcon/> Facebook</span>
-          <span><InstagramIcon/> Instagram</span>
-          <span><TwitterIcon/> Twitter</span>
+          <span><FacebookIcon/> <a href="https://web.facebook.com/profile.php?id=61567487964044" target='blank'>Facebook</a> </span>
+          <span><InstagramIcon/> <a href="https://www.instagram.com/rock.view.hotel/" target='blank'>Instagram</a> </span>
+          <span><TwitterIcon/> <a href="https://x.com/rockviewhotel_" target='blank'>Twitter</a> </span>
+          <span></span>
         </div>
       </section>
     </div>

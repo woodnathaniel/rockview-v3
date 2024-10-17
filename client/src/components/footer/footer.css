@@ -41,6 +41,10 @@
   cursor: pointer;
 }
 
+.footer__socials span a{
+  color: white;
+}
+
 span{
   width: fit-content;
   display: flex;
