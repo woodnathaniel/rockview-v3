@@ -44,7 +44,7 @@ const loginData = async (req, res) => {
   try {
     const userLogin = await usersModelDb.findOne({ email: email, password: password });
 
-    if (userLogin) {
+    if (userLogin){
       res.status(200).send(userLogin);
       console.log(`login api: ${userLogin}`);
     } else {
@@ -64,7 +64,6 @@ const resetPasswordCheck = async (req, res) =>{
     console.log(userEmail);
     
     if(userEmail){
-      res.status(200).send(userEmail)
       const mailOptions = {
         from: {
           name: "Rockview Hospitality 👻",
@@ -82,12 +81,13 @@ const resetPasswordCheck = async (req, res) =>{
       };
 
       await transporter.sendMail(mailOptions);
+      res.status(200).send(userEmail)
     }else{
       res.status(401).send(`email don't exist`)
     }
-  } catch (error) {
-    res.status(500).json({error: 'failed', details: error.message })
-    console.log(`login api err: ${error}`);
+  }catch (error) {
+      res.status(500).json({error: 'failed', details: error.message })
+      console.log(`login api err: ${error}`);
   }
 }
 
