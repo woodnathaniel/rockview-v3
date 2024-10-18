@@ -22,38 +22,35 @@ export const ResetPassword = () => {
   const [error, setError] = useState(false)
   const [antdMssg, setAntdMssg] = useState(false)
   const [response, setResponse] = useState({})
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     confirmPassword: ''
   })
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    messageApi.open({
-      type: 'success',
-      content: 'Password Changed',
-      duration: 20,
-    });
-    return () => {
+  //   messageApi.open({
+  //     type: 'success',
+  //     content: 'Password Changed',
+  //     duration: 20,
+  //   });
+  //   return () => {
       
-    };
-  }, [antdMssg]);
+  //   };
+  // }, [antdMssg]);
 
-  let formDataResult = {}
 
-  const handleOnChange= (e)=>{
-    const {name, value} = e.target
-    setFormData((prev) =>({
+    const handleOnChange= (e)=>{
+      const {name, value} = e.target
+
+      setFormData((prev) =>({
         ...prev,
         [name]: value    
       }))
-
-      formDataResult = {
-        email: formData.email,
-        password: formData.password
-      }
-  }
+    }
+  
 
   const handleOk2 = () => {
     setOpen(false)
@@ -66,21 +63,37 @@ export const ResetPassword = () => {
   };
 
   const handleOnSubmit = async (e)=>{
+
     e.preventDefault()
-    setLoading(true)
-    try {
-      const submit = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpassword`, formDataResult))
-      console.log(submit);
+
+    if(formData.password === formData.confirmPassword){
+      console.log(formData);
       
-      if(submit.status === 200){
-        setAntdMssg(true)        
+      setLoading(true)
+      try {
+        const submit = await (axios.post(`${process.env.REACT_APP_BASE_URL}/api/users/rockview/resetpassword`, formData))
+        console.log(submit);
+        
+        if(submit.status === 200){
+          setSucces(true)  
+          setInterval(()=>{
+            setSucces(false)
+            setOpen(true)
+          }, 600)     
+        }
+      } catch (error) {
+        setError(true)
+        setResponse(error.message)
+        setInterval(()=>{
+          setError(false)
+        }, 4000)
+        console.log(error);
+        
       }
-    } catch (error) {
-      console.log(error);
-      
+
     }
-    setLoading(true)
-    
+ 
+    setLoading(false) 
   }
 
 
@@ -103,7 +116,7 @@ export const ResetPassword = () => {
               }</h5>
             <div className="email_div">
               <div className='icon'><PersonIcon/></div>
-              <input name='email' type="email" placeholder='Email' onChange={(e)=>handleOnChange(e)}/>
+              <input name='email' type="email" placeholder='email' onChange={(e)=>handleOnChange(e)}/>
             </div>
           </div>
           
@@ -115,7 +128,7 @@ export const ResetPassword = () => {
               <h5 style={{color: 'red' }}>{formData.password === ''? 'required*' : ''}</h5>
             <div className="password_div">
               <div className='icon'><LockIcon /></div>
-              <input name='password' type="text" placeholder='Password' onChange={(e)=>handleOnChange(e)}/>
+              <input name='password' type="text" placeholder='password' onChange={(e)=>handleOnChange(e)}/>
             </div>
             
             <section>
@@ -128,7 +141,7 @@ export const ResetPassword = () => {
                   }</h5>
               <div className="password_div">
                 <div className='icon'><LockIcon /></div>
-                <input name='confirmPassword' type="text" placeholder='Password' onChange={(e)=>handleOnChange(e)}/>
+                <input name='confirmPassword' type="text" placeholder='confirm password' onChange={(e)=>handleOnChange(e)}/>
               </div>
             </section>
           </div>
@@ -143,7 +156,7 @@ export const ResetPassword = () => {
                 alignItems: 'center',
                 gap:'20px', 
                 padding: '5px 7px'
-              }}><LoginIcon/><h4>Login</h4></div>
+              }}><LoginIcon/><h4>Reset</h4></div>
             }
           </button>
         </form>
@@ -152,7 +165,7 @@ export const ResetPassword = () => {
       </header>
       <div style={{ marginTop: '20px'}}>
         {
-          success && <Success msg={'Login successful'}/> 
+          success && <Success msg={'Password Changed Successfuly'}/> 
         }
         {
           error && <Error message={`Error: ${response}`}/>

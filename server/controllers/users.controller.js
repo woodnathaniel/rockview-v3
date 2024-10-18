@@ -16,26 +16,27 @@ const transporter = nodemailer.createTransport({
 const userData = async (req, res) => {
   const { name, email, password } = req.body;
 
-  // Check if required fields are provided
-  if (!name || !email || !password) {
-    return res.status(400).json({ error: 'Name, email, and password are required' });
+  const isEmailAlreadyExisting = await usersModelDb.findOne({email: email})
+  if(isEmailAlreadyExisting){
+    try {
+      const newUsers = new usersModelDb({
+        name: name,
+        email: email,
+        password: password
+      });
+  
+     const register = await newUsers.save();
+    res.status(200).json(register);
+    console.log('User registered successfully');
+  
+      } catch (error) {
+        res.status(500).json({ error: 'Failed to register user', details: error.message });
+        console.error('Failed to register user:', error);
+    }
+  }else{
+    res.status(404).json({error: 'email already exist'})
   }
-
-  try {
-    const newUsers = new usersModelDb({
-      name: name,
-      email: email,
-      password: password
-    });
-
-   const register = await newUsers.save();
-  res.status(200).json(register);
-  console.log('User registered successfully');
-
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to register user', details: error.message });
-      console.error('Failed to register user:', error);
-  }
+  
 };
 
 const loginData = async (req, res) => {
@@ -74,7 +75,7 @@ const resetPasswordCheck = async (req, res) =>{
         text: "PassWord Reset",
         html: `
           <header>
-            <h2>Click to change your password. <a>http://rockviewhotel.vercel.app/rockview/user/resetpassword</a></h2>
+            <h2>Click to change your password. <a href="http://rockviewhotel.vercel.app/rockview/user/resetpassword">Reset Password</a></h2>
             <h4>Please if you Didn't request for this action, ignore this message</h4>
           </header>
         `,
@@ -93,10 +94,11 @@ const resetPasswordCheck = async (req, res) =>{
 
 const resetPassword = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email);
 
   try {
     // Find the user by email
-    const userEmail = await usersModelDb.findOne({ email: email });
+    const userEmail = await usersModelDb.findOne({ email: email});
     console.log(userEmail);
     
     if (userEmail) {
