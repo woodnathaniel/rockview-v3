@@ -76,7 +76,7 @@ export const ResetPassword = () => {
         setAntdMssg(true)        
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       
     }
     setLoading(true)
