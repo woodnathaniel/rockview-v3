@@ -97,6 +97,7 @@ const resetPassword = async (req, res) => {
   try {
     // Find the user by email
     const userEmail = await usersModelDb.findOne({ email: email });
+    console.log(userEmail);
     
     if (userEmail) {
       // Update the password directly (without hashing)
