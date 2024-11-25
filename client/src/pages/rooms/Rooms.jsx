@@ -127,7 +127,7 @@ const Rooms = () => {
                 <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6331.JPG?alt=media&token=79d3ea5b-3b7b-4576-948d-a12e7e652af5" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6326.JPG?alt=media&token=da2d80f7-bc70-48ae-b251-38892f94e553" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/excutive_pic_update.jpg?alt=media&token=eaa70fd1-8a39-440b-b91d-52a90322d98b" alt="pictures of rooms" />
               </div>
             </Carousel>
             </div>
