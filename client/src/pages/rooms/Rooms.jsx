@@ -150,10 +150,10 @@ const Rooms = () => {
             <div className='room__type-pic'>
             <Carousel className='antd-room-carousel' autoplay arrows infinite={true}>
               <div>
-               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5746.JPG?alt=media&token=10025961-c098-4512-bfb5-12aee2c0b45a" alt="pictures of rooms" />
+               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/standard_2.jpg?alt=media&token=75fffb6f-5b03-4420-9983-278d8fa92146" alt="pictures of rooms" />
               </div>
               <div>
-                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5749.JPG?alt=media&token=c190c24a-1470-4898-b360-89d9b055799a" alt="pictures of rooms" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/standard_4.jpg?alt=media&token=b8450489-ff86-4c9a-ab75-e66e3828ea45" alt="pictures of rooms" />
               </div>
               <div>
                 <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5753.JPG?alt=media&token=682b02fa-caf2-4783-b8da-c39a1fed59eb" />
