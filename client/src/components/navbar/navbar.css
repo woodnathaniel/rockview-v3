@@ -47,9 +47,9 @@ scale: 1.1;
 
 
 .active{
-  border-bottom: #fff solid 2px;
+  border-bottom: var(--icons-colors) solid 2px;
   scale: 1.1;
-  color:  var(--icons-colors)
+  color:  
  }
 
 .nav__bar a{
