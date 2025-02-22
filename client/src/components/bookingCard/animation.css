@@ -1,0 +1,45 @@
+/*
+    The CSS export should solely be used as a reference.
+    For a more detailed animation export the JSON file should be used.
+    */
+    #Joseph {
+  transform: translateX(-50%)translateX(-50%) translateX(var(--fgmtn-translate-x)) translateY(var(--fgmtn-translate-y)) scaleX(var(--fgmtn-scale-x)) scaleY(var(--fgmtn-scale-y)) rotate(var(--fgmtn-rotation));
+  animation: Joseph__x__1 300ms 0ms cubic-bezier(0,0,0,0.808) forwards, Joseph__opacity__1 544ms 0ms cubic-bezier(0,0,0,0.808) forwards, Joseph__rotation__1 300ms 0ms linear forwards, Joseph__strokeWidth__1 544ms 0ms linear forwards;
+}
+
+@keyframes Joseph__x__1 {
+  from {
+    left: 478px;
+  }
+
+  to {
+    left: 498px;
+  }
+}
+@keyframes Joseph__opacity__1 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes Joseph__rotation__1 {
+  from {
+    --fgmtn-rotation: 0deg;
+  }
+
+  to {
+    --fgmtn-rotation: 0deg;
+  }
+}
+@keyframes Joseph__strokeWidth__1 {
+  from {
+    border-width: 9px;
+  }
+
+  to {
+    border-width: 9px;
+  }
+}

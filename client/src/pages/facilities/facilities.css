@@ -1,0 +1,308 @@
+.facilities__header-text{
+  display: grid;
+  place-items: center;
+  margin-top: 50px;
+  gap: 50px;
+  color: var(--icons-colors);
+}
+
+.facilities__header-text p{
+  text-align: center;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+}
+
+
+.facilities__header-text h1{
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+  /* font-size: 25px; */
+}
+
+
+.facilities__pic-section{
+  display: grid;
+  place-items: center;
+  gap: 100px;
+  margin-top: 100px;
+}
+
+.facility__pic-conference{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6236.JPG?alt=media&token=c601999c-4718-4481-9ccc-19c17f770829');
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50vw;
+  height: 600px;
+  position: relative;
+}
+
+.facility__pic-conference::after{
+  content: 'Conference Room';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--secondary-color);
+  color: var(--icons-colors);
+  padding: 10px 70px;
+  width: 250px;
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: larger;
+  text-align:center;
+}
+
+
+.facility__pic-restaurant{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6278%20(1).JPG?alt=media&token=01e69354-0236-4596-8419-f45dfd3af44f');
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
+  overflow: hidden; 
+  width: 50vw;
+  height: 600px;
+  position: relative;
+}
+
+.facility__pic-restaurant::after{
+  content: 'Restaurant';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--secondary-color);
+  color: var(--icons-colors);
+  width: 250px;
+  padding: 10px 70px;
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: larger;
+  text-align:center;
+}
+
+.facility__pic-miniMart{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6261.JPG?alt=media&token=ac3d05c2-323f-4031-9032-28ed9d454709');
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
+  overflow: hidden;
+  width: 50vw;
+  height: 600px;
+  position: relative;
+}
+
+.facility__pic-miniMart::after{
+  content: 'Mini Mart';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--secondary-color);
+  color: var(--icons-colors);
+  width: 250px;
+  padding: 10px 70px;
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: larger;
+  text-align:center;
+}
+
+.facility__pic-indoorGames{
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/table%20tennis.jpg?alt=media&token=e9cb105b-20a9-4adf-ad72-8b438ae1b721');
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: contain;
+  overflow: hidden;
+  width: 50vw;
+  height: 600px;
+  position: relative;
+}
+
+.facility__pic-indoorGames::after{
+  content: 'Indoor Games';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--secondary-color);
+  color: var(--icons-colors);
+  width: 250px;
+  padding: 10px 70px;
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: larger;
+  text-align:center;
+}
+
+.facility__pic-responsive {
+  display: block; 
+  max-width: 100%;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.5s linear, opacity 0.5s linear;
+}
+
+.facility__pic-responsive.fade-in {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.facilityText__animation{
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 0.2s linear, opacity .2s linear;
+}
+
+.facilityText__animation.fade-in {
+  transform: scale(1);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference){
+    
+  /* .facility__pic-responsive{
+    scale: 0.8;
+    opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 400px;
+  } */
+
+  @keyframes fade-in{
+    /* from {
+      
+    } */
+
+    to{
+      scale: 1;
+      opacity: 1;
+    }
+  }
+}
+
+
+
+
+/*----------------------- SMALL DEVICES ---------------------*/
+@media screen and (max-width: 768px){
+  
+  .facility__pic-responsive.fade-in {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .facility__pic-responsive{
+    width: 95vw;
+    height: 300px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.7s linear, opacity 0.5s linear;
+  }
+
+
+  /* .facility__pic-indoorGames{
+    width: 100vw;
+  } */
+
+  .facility__pic-indoorGames::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .facility__pic-conference::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .facility__pic-miniMart::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .facility__pic-restaurant::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+
+/*------------------- MEDIUM DEVICES ----------------*/
+@media screen and (min-width: 766px) and (max-width: 1042px){
+  .facility__pic-responsive{
+    width: 75vw;
+    height: 450px;
+  }
+  .facility__pic-indoorGames::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .facility__pic-conference::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .facility__pic-miniMart::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .facility__pic-restaurant::after{
+    width: 100px;
+    height: 45px;
+    padding: 5px 50px 0px;
+    line-height: 22px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

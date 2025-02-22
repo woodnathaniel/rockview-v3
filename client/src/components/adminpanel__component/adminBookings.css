@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.adminGrid{
+  display: grid;
+  width: 500px;
+  animation: slideDown 1s ease forwards;  width: fit-content;
+  height: fit-content;
+}
+
+.tableContainer {
+  width: 1300px;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: rgb(59, 59, 59);
+  color: whitesmoke;
+  box-shadow:  5px 5px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tableHeader{
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 1);
+  font-family: 'Poppins';
+  font-weight: 900;
+  gap: 20px;
+}
+
+.tableHeader th {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+  /* background-color: #252525;
+  color: rgb(235, 235, 235); */
+}
+.tableRow{
+  
+}
+
+.tableRow td {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 8px;
+  color: white;
+  padding-top: 14px;
+  padding-bottom: 15px;
+}
+
+@keyframes zoomIn {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    width: fit-content;
+    height: fit-content;
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-3%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(10);
+    opacity: 1;
+  }
+}

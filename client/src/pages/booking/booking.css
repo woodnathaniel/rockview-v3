@@ -1,0 +1,234 @@
+.booking__main__container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 50vw; */
+  /* border-top: solid 2px var(--opt-color); */
+}
+
+.alerts{
+  margin: 10px 10px;
+}
+
+/* .setShow{
+  display: none;
+} */
+
+.click__icon{
+  /* position: absolute; */
+}
+
+.booking__header_container{
+  display: flex;
+  width: 100vw;
+  height: 300px;
+  background-color: var(--opt-color);
+  position: relative;
+}
+
+.booking__header_container header{
+  position: absolute;
+  bottom: 0;
+  color: white;
+}
+
+form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  color: var(--opt-color);
+  padding: 20px 20px;
+}
+
+form button{
+  padding: 20px 20px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(90deg, rgb(51, 81, 141) 0%,  rgb(20, 114, 151)  100%);
+}
+
+
+
+.form__first__section__container{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.form__field__container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border: solid 2px var(--opt-color);
+  border-radius: 10px;
+  margin: 0px 20px;
+}
+
+.form__field__container input{
+  height: 40px;
+}
+
+.booking__inputdetails__container{
+  position: relative;
+  overflow-y: scroll;
+  /* overflow-x: hidden; */
+  scrollbar-width:thin;
+  scrollbar-color: rgba(20, 39, 74, 0.7) rgba(255, 255, 255, 0.2) ;
+  height: 70vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center;
+  color: white;
+  background-image: linear-gradient(360deg, rgb(245, 191, 191) 0%, rgb(201, 175, 175) 100%);
+  border-radius: 10px;
+  border: solid 0.01rem rgb(20, 39, 74);
+  box-shadow: 2px 5px 20px rgb(109, 90, 90);
+}
+
+
+.form__wrapper{
+  display: grid;
+  place-items: center;   
+  padding: 0 20px;
+  position: relative;
+}
+
+.date__picker{
+  margin: 50px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid var(--opt-color) 2px;
+  border-radius: 20px;
+  padding: 20px;
+  /* position: absolute; */
+  top: 0;
+}
+
+.date__picker h2{
+  font-family: "Courgette", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.success{
+  color: rgb(0, 255, 0);
+  opacity: 0.7;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 50px;
+  width: 600px;
+  border-radius: 5px;
+  transition: opacity 1.5s ease;
+  background-color: rgb(174, 211, 174);
+}
+
+
+
+/*----------------antd css design overwrite ----------------------*/
+.ant-picker, .ant-space-item{
+  width: 80%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-picker .ant-picker-input input{
+  color: black;
+  font-weight: 900;
+}
+
+.ant-picker .ant-picker-input input::placeholder{
+  color: black;
+  font-weight: 900;
+}
+
+
+.ant-space, .ant-space-item{
+  /* border: solid 2px red; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-space-item{
+  width: 100%;
+}
+
+
+.ant-picker-range .ant-picker-active-bar {
+  height: 10px;
+}
+
+
+
+@media screen and (max-width: 768px){
+  .booking__main__container{
+    width: 90vw;
+  }
+  /* .form__field__container input{
+    width: 90vw;
+  } */
+
+  .booking__inputdetails__container{
+    width: 90vw;
+  }
+
+  .ant-picker-panels{
+    width: 70vw;
+    flex-direction: column;
+  }
+
+  .ant-picker-dropdown .ant-picker-date-panel, :where(.css-dev-only-do-not-override-m4timi).ant-picker-dropdown .ant-picker-time-panel {
+    width: 100%
+  }
+
+  .form__field__container input{
+    width: 98%;
+  }
+
+  .ant-picker .ant-picker-input input::placeholder{
+    color: black;
+    font-weight: 400;
+  }
+/* 
+  .form__wrapper{
+    width: 100%;
+  } */
+}
+
+@media screen and (min-width: 766px) and (max-width: 1042px){
+  .booking__main__container{
+    width: 90vw;
+  }
+  /* .form__field__container input{
+    width: 90vw;
+  } */
+
+  .booking__inputdetails__container{
+    width: 90vw;
+  }
+
+  .form__field__container input{
+width: 60%;  }
+
+.ant-picker .ant-picker-input input::placeholder{
+  color: black;
+  font-weight: 700;
+}
+
+  /* .ant-picker-panels{
+    width: 100vw;
+    border: solid red 2px;
+  } */
+}

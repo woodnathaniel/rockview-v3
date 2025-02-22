@@ -1,0 +1,157 @@
+.hide_password{
+  display: none;
+}
+
+.show__text{
+  display: block;
+}
+
+.login_main_container{
+  position: relative;
+  margin: 0 auto;
+  width: 100vw;
+  height: 90vh;
+  /* margin-bottom: 10%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} 
+
+
+.login_container{
+  position: relative;
+  width: 40vw;
+  height: 80%;
+  border: solid rgb(2, 22, 66) 1px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.icon_section{
+  position: absolute;
+  top: 34px;
+  z-index: 2;
+  width: 120px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: rgb(2, 22, 66);
+}
+
+.icon_section svg{
+  font-size: 80px;
+  color: white;
+  display: grid;
+  place-items: center;
+}
+
+.login_details_section{
+  background-image: linear-gradient(90deg, rgb(245, 191, 191) 0%, rgb(201, 175, 175) 100%);
+ border-radius: 50px;
+ margin-top: 100px;
+ width: 80%;
+ height: 450px;
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.login_details_section form{
+ display: flex;
+ flex-direction: column;
+ padding-top: 50px;
+ margin: 20px;
+ margin-top: 50px;
+ position: absolute;
+ bottom: 10px;
+}
+
+.icon{
+
+  background-color: rgb(2, 22, 66);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.icon sub{
+  display: flex;
+  flex-direction: column;
+}
+
+.login_details_section form svg{
+  font-size: xx-large;
+  color: white;
+}
+
+.login_details_section form button{
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 20px;
+  background-image: linear-gradient(90deg, rgb(51, 81, 141) 0%,  rgb(20, 114, 151)  100%);
+}
+
+.login_details_section form button:hover{
+  opacity: .7;
+}
+
+.login_details_section form input{
+  height: 50px;
+  background-color: rgb(1, 82, 114);
+  border: none;
+  width: 80%;
+  color: white;
+  font-size: larger;
+}
+
+input::placeholder{
+  padding-left: 20px;
+  color: white;
+}
+
+.email_div, .password_div{
+ display: flex;
+ /* justify-content: center; */
+ align-items: center;
+ width: 100%;
+ padding: 0;
+ /* border: solid black 1px; */
+}
+
+@media screen and (max-width: 768px) {
+  
+  .login_container{
+    width: 40vw;
+  }
+
+  .login_details_section{
+  
+   width: 98vw
+ 
+  }
+}
+
+/* @media screen and (max-width: 1024px) {
+  
+  .login_container{
+    width: 40vw;
+  }
+
+  .login_details_section{
+  
+   width: 90%;
+ 
+  }
+} */

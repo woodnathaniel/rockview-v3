@@ -1,0 +1,120 @@
+.fac_main_header_container{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100vw;
+  height: 300px;
+  background-color: var(--opt-color);
+}
+.fac_main_header_container h3{
+  color: white;
+  font-size: 70px;
+}
+
+.fac_text_header{
+  margin-left: 200px;
+  background-color: red;
+  margin-top: 50px;
+}
+
+.fac_main_header_container h5{
+  color: rgb(252, 131, 131);
+  font-size: 20px;
+}
+
+.facility_gallery_header{
+  /* width: 100vw;
+  height: 300px; */
+  isolation: isolate;
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  object-position:center;
+  object-fit: fill;
+  overflow: hidden;
+  background-color: var(--opt-color);
+  width: 70vw;
+  padding: 20px ;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  border-top-right-radius: 90px;
+}
+
+.facility_gallery_header h4{
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.facility_gallery_header img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+
+
+/* modal styles */
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.backdrop img{
+  display: block;
+  max-width: 60%;
+  max-height: 80%;
+  margin: 60px auto;
+  box-shadow: 3px solid white;
+  border: solid white 2px;
+  border-radius: 2px;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -10px; /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 10px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.masonry-item {
+  margin-bottom: 15px; /* gap between items */
+}
+
+.masonry-item img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: var(--transitions-sm) linear;
+}
+
+.masonry-item img:hover{
+  scale: 1.03;
+  transition: var(--transitions-sm) linear;
+  border-radius: 15px;
+}
+
+/* .masonry-item img */
+
+
+@media screen and (max-width: 768px) {
+  .fac_main_header_container h3{
+    font-size: 30px;
+  }
+
+  .fac_main_header_container h5{
+    font-size: 20px;
+  }
+}

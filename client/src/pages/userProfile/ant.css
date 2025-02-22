@@ -1,0 +1,54 @@
+.ant-picker-header{
+  gap: 10px;
+}
+
+.ant-picker-header button{
+  width: 40px;
+  border-radius: 10px;
+
+}
+
+.ant-space{
+  width: 800px;
+}
+
+.ant-space-item{
+  width: 800px;
+}
+
+.ant-picker{
+  width: 600px;
+ 
+}
+
+.ant-picker-panels{
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-input-number-outlined{
+  border-color: solid rgb(194, 18, 18) 5px;
+}
+
+.ant-tabs{
+  width: 500px;
+  padding: 20px;
+}
+
+.ant-carousel{
+  border: solid green 3px;
+}
+
+/* .slick-list{
+  position: absolute;
+}
+
+.slick-track{
+  position: absolute;
+}
+
+.slick-slider{
+  position: absolute;
+} */

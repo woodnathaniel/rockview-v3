@@ -1,0 +1,52 @@
+span .rejected{
+  color: rgb(228, 14, 14);
+}
+
+span .pending{
+  color: rgb(1, 180, 180);
+}
+
+span .approved{
+  color: rgb(78, 129, 0);
+}
+
+.bookCont{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 60px;
+}
+
+.ant-float-btn-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-float-btn-default .ant-float-btn-body{
+  width:  80px;
+  height: 80px;
+  border-radius: 100%;
+  background-image: linear-gradient(90deg, rgb(51, 81, 141) 0%,  rgb(20, 114, 151)  100%);
+  transition: var(--transitions-lg);
+  color: white;
+}
+
+.ant-float-btn-body svg{
+  color: white;
+  font-size: xx-large;
+}
+
+.ant-float-btn-default .ant-float-btn-body:hover{
+  scale: 1.1;
+}
+
+.user_card__header__container{
+  background-color : white;
+  width: 480px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 10px ;
+  gap: 5px;
+}
+

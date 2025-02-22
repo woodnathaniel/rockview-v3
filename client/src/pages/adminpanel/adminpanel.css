@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+.profileCOnt{
+  margin: 50px;
+  width: 100vw;
+  /* box-shadow:  8px 6px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  border: solid rgb(197, 197, 197) 1px; */
+  /* position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%, -50%); */
+}
+
+.adminHeader{
+
+  /* width: 100vw; */
+  position: absolute;
+  left: 30%;
+  transform: translateX(-50%, -50%); 
+}
+
+.adminHeader h1{
+  font-family: 'Poppins';
+  font-weight: 900;
+  font-size: 40px;
+  color: var(--opt-color);
+}
+
+.ant-tabs .ant-tabs-content{
+  width: 100vw;
+  margin: 0;
+}
+
+@media screen and (max-width: 969px) {
+  .adminHeader h1{
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .adminHeader h1{
+    font-size: 15px;
+    text-align: center;
+  }
+}
