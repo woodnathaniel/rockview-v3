@@ -3,7 +3,9 @@
   /* width: 100vw; */
   display: grid;
   place-items: center;
-  background-color: var(--opt-color);
+  background-color: 
+  /* var(--opt-color) */
+  red;
   /* position: absolute;
   bottom: 0; */
 }
