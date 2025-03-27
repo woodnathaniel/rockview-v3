@@ -127,7 +127,11 @@ const Rooms = () => {
                 <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6331.JPG?alt=media&token=79d3ea5b-3b7b-4576-948d-a12e7e652af5" alt="pictures of rooms" />
               </div>
               <div>
+<<<<<<< HEAD
                 <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_6326.JPG?alt=media&token=da2d80f7-bc70-48ae-b251-38892f94e553" alt="pictures of rooms" />
+=======
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/excutive_pic_update.jpg?alt=media&token=eaa70fd1-8a39-440b-b91d-52a90322d98b" alt="pictures of rooms" />
+>>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
               </div>
             </Carousel>
             </div>
@@ -150,10 +154,17 @@ const Rooms = () => {
             <div className='room__type-pic'>
             <Carousel className='antd-room-carousel' autoplay arrows infinite={true}>
               <div>
+<<<<<<< HEAD
                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5746.JPG?alt=media&token=10025961-c098-4512-bfb5-12aee2c0b45a" alt="pictures of rooms" />
               </div>
               <div>
                 <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5749.JPG?alt=media&token=c190c24a-1470-4898-b360-89d9b055799a" alt="pictures of rooms" />
+=======
+               <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/standard_2.jpg?alt=media&token=75fffb6f-5b03-4420-9983-278d8fa92146" alt="pictures of rooms" />
+              </div>
+              <div>
+                <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/standard_4.jpg?alt=media&token=b8450489-ff86-4c9a-ab75-e66e3828ea45" alt="pictures of rooms" />
+>>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
               </div>
               <div>
                 <img src="https://firebasestorage.googleapis.com/v0/b/todofirebase-df58c.appspot.com/o/IMG_5753.JPG?alt=media&token=682b02fa-caf2-4783-b8da-c39a1fed59eb" />

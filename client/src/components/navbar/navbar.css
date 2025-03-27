@@ -47,8 +47,14 @@ scale: 1.1;
 
 
 .active{
+<<<<<<< HEAD
   border-bottom: #fff solid 2px;
   scale: 1.1;
+=======
+  border-bottom: var(--icons-colors) solid 2px;
+  scale: 1.1;
+  color:  
+>>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
  }
 
 .nav__bar a{
@@ -215,4 +221,8 @@ scale: 1.1;
     display: block;
    }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
