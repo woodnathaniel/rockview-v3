@@ -1,18 +1,14 @@
 .footer__container{
   margin-top: 200px;
-<<<<<<< HEAD
   /* width: 100vw; */
   display: grid;
   place-items: center;
-  background-color: 
-  /* var(--opt-color) */
-  red;
-=======
+  background-color: var(--opt-color);
   width: 100vw;
   display: grid;
   place-items: center;
   background-color: var(--opt-color);
->>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
+
   /* position: absolute;
   bottom: 0; */
 }
@@ -22,13 +18,11 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-<<<<<<< HEAD
   gap: 70px;
   width: 90vw;
-=======
-  gap: 20px;
-  width: 100vw;
->>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
+  /* gap: 20px;
+  width: 100vw; */
+
 }
 
 .footer__header div{
@@ -79,8 +73,4 @@ span{
     gap: 0px;
   }
   
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 60710a1243c0bab3b0a2dfa6f32937934e85cc02
