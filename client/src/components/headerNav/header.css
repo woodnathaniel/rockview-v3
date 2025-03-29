@@ -83,12 +83,10 @@
 .header__text h5{
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-
-  font-weight: 200;
+  font-weight: 500;
   font-style: normal;
   font-size: 35px;
   color: var(--icons-colors)
-
   /* font-weight: 100;
   font-style: normal;
   font-size: 35px; */
